@@ -17,16 +17,6 @@
 
 @synthesize stationsTableView;
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = NSLocalizedString(@"Stations", nil);
@@ -84,7 +74,6 @@
 }
 
 - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	if(self.navigationController.topViewController != self) {
@@ -134,11 +123,6 @@
 
 	MapViewController *mapViewController = [[self.navigationController viewControllers] objectAtIndex:0];
 	[mapViewController centerOnPOICoordinate:stationCoordinate withZoom:15.0]; // TODO: determine right zoom
-//	[mapViewController centerOnLat:stationCoordinate.latitude Long:stationCoordinate.longitude withZoom:16
-//					 andDropMarker:(stationType == kStationTypeLU ? @"underground" : @"rail") 
-//						 withTitle:(NSString *)[stationRecord objectAtIndex:0] 
-//						atPostcode:nil];
-	
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -163,4 +147,3 @@
 }
 
 @end
-
