@@ -43,4 +43,17 @@
 	return [TTTableSubtitleItem itemWithText:title subtitle:subtitle URL:URL];
 }
 
+- (UIImage*)imageForEmpty {
+	return TTIMAGE(@"bundle://Three20.bundle/images/empty.png");
+}
+
+- (NSString*)titleForEmpty {
+	return NSLocalizedString(@"No favourites", nil);
+}
+
+- (NSString*)subtitleForEmpty {
+	return NSLocalizedString(@"To add a cycle hire location to your favourites, "\
+							 "tap on the location marker on the map and select 'Add to favourites'", nil);
+}
+
 @end

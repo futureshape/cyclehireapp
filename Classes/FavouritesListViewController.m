@@ -12,10 +12,12 @@
 
 - (id)initWithName:(NSString*)name query:(NSDictionary*)query {
 	if (self = [super init]) {
-		self.title = NSLocalizedString(@"Favourites", nil);
-		self.navigationItem.rightBarButtonItem = self.editButtonItem;
-		
+		self.title = NSLocalizedString(@"Favourites", nil);		
 		NSArray *favouriteLocations = [(CycleHireLocations *)[query objectForKey:@"locations"] favouriteLocations];
+		
+		if([favouriteLocations count] > 0) {
+			self.navigationItem.rightBarButtonItem = self.editButtonItem;
+		}
 
 		self.dataSource = [[[FavouritesListDataSource alloc] initWithFavouriteLocations:favouriteLocations] autorelease];
 		
