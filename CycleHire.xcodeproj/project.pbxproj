@@ -1,0 +1,804 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* CycleHireAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CycleHireAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* Xibs in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* Xibs */; };
+		28C286E10D94DF7D0034E888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* MapViewController.m */; };
+		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		FA04C2891167A307003126BD /* GlobalStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA04C2881167A307003126BD /* GlobalStyleSheet.m */; };
+		FA04C2CC1167AEC3003126BD /* bike-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C2CB1167AEC3003126BD /* bike-icon.png */; };
+		FA04C31C1167D0AD003126BD /* bike-parking.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C31B1167D0AD003126BD /* bike-parking.png */; };
+		FA22A6D11188A74300FBF741 /* FavouritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */; };
+		FA3077621188DAD000E6D336 /* FavouritesListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */; };
+		FA457C63115192D5007B42A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA457C62115192D5007B42A8 /* Localizable.strings */; };
+		FA457DBC11522593007B42A8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA457DBB11522593007B42A8 /* Default.png */; };
+		FA457DC71152260C007B42A8 /* StationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA457DC51152260C007B42A8 /* StationsViewController.m */; };
+		FA457DC81152260C007B42A8 /* StationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA457DC61152260C007B42A8 /* StationsViewController.xib */; };
+		FA578181116B2B5B00A26504 /* LocationPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA578180116B2B5B00A26504 /* LocationPopupViewController.m */; };
+		FA578479116F192800A26504 /* CycleHireLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA578478116F192800A26504 /* CycleHireLocation.m */; };
+		FA6D7D5E118ACA6D005A3629 /* CycleHireLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6D7D5D118ACA6D005A3629 /* CycleHireLocations.m */; };
+		FA6D7F801190807A005A3629 /* PostcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6D7F7F1190807A005A3629 /* PostcodeDatabase.m */; };
+		FA6D7FF51190C0DB005A3629 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6D7FF41190C0DB005A3629 /* RegexKitLite.m */; };
+		FA6D80061190C4D5005A3629 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6D80051190C4D5005A3629 /* libicucore.dylib */; };
+		FA6D810B1191556D005A3629 /* marker-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6D810A1191556D005A3629 /* marker-pin.png */; };
+		FA6D81EA1192C001005A3629 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6D81E91192C001005A3629 /* InfoViewController.m */; };
+		FA6D823611933154005A3629 /* InfoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6D823511933154005A3629 /* InfoWebViewController.m */; };
+		FA8BD0DA11939B41009CDBFF /* underground.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA8BD0D911939B41009CDBFF /* underground.csv */; };
+		FA8BD0FC11939B8F009CDBFF /* postcodes.db in Resources */ = {isa = PBXBuildFile; fileRef = FA8BD0FB11939B8F009CDBFF /* postcodes.db */; };
+		FA8BD13611939CF4009CDBFF /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = FA8BD13511939CF4009CDBFF /* acknowledgements.html */; };
+		FA8F51C51152DB41003966EE /* parseCSV.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F51C41152DB41003966EE /* parseCSV.m */; };
+		FA8F51D31152DBFF003966EE /* rail.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA8F51D21152DBFF003966EE /* rail.csv */; };
+		FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */; };
+		FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */; };
+		FAA1EB07115E736A00BC90E2 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1EB04115E735E00BC90E2 /* libThree20.a */; };
+		FAA1EB17115E73AB00BC90E2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EB16115E73AB00BC90E2 /* Three20.bundle */; };
+		FAA1EB28115E757C00BC90E2 /* AttractionCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1EB27115E757C00BC90E2 /* AttractionCategoryViewController.m */; };
+		FAA1EB99115FD0A400BC90E2 /* stopwatch.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EB98115FD0A400BC90E2 /* stopwatch.png */; };
+		FAA1EBA31160071300BC90E2 /* AttractionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1EBA21160071300BC90E2 /* AttractionListViewController.m */; };
+		FAA1EBB511600C7100BC90E2 /* attractions-churches.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBAC11600C7100BC90E2 /* attractions-churches.csv */; };
+		FAA1EBB611600C7100BC90E2 /* attractions-cinema.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBAD11600C7100BC90E2 /* attractions-cinema.csv */; };
+		FAA1EBB711600C7100BC90E2 /* attractions-fun.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBAE11600C7100BC90E2 /* attractions-fun.csv */; };
+		FAA1EBB811600C7100BC90E2 /* attractions-galleries.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBAF11600C7100BC90E2 /* attractions-galleries.csv */; };
+		FAA1EBB911600C7100BC90E2 /* attractions-museums.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBB011600C7100BC90E2 /* attractions-museums.csv */; };
+		FAA1EBBA11600C7100BC90E2 /* attractions-music.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBB111600C7100BC90E2 /* attractions-music.csv */; };
+		FAA1EBBB11600C7100BC90E2 /* attractions-parks.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBB211600C7100BC90E2 /* attractions-parks.csv */; };
+		FAA1EBBC11600C7100BC90E2 /* attractions-shopping.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBB311600C7100BC90E2 /* attractions-shopping.csv */; };
+		FAA1EBBD11600C7100BC90E2 /* attractions-theatre.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EBB411600C7100BC90E2 /* attractions-theatre.csv */; };
+		FAA1ECF51160B73200BC90E2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1ECF41160B73200BC90E2 /* MessageUI.framework */; };
+		FACEFCEC1174614F006AE272 /* CycleStreetsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEFCEB1174614F006AE272 /* CycleStreetsRoute.m */; };
+		FACEFEAB117685D6006AE272 /* red-x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEFEAA117685D6006AE272 /* red-x.png */; };
+		FACEFEE211779821006AE272 /* CoreLocationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEFEE111779821006AE272 /* CoreLocationAdditions.m */; };
+		FAD99CE1115187F6007C66DC /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD99CD7115187DC007C66DC /* libMapView.a */; };
+		FAD99CE711518819007C66DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD99CE611518819007C66DC /* CoreLocation.framework */; };
+		FAD99CE91151881D007C66DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD99CE81151881D007C66DC /* QuartzCore.framework */; };
+		FAD99CEB11518828007C66DC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD99CEA11518828007C66DC /* libsqlite3.dylib */; };
+		FAD99D1411518B08007C66DC /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0A11518B06007C66DC /* cancel.png */; };
+		FAD99D1511518B08007C66DC /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0B11518B07007C66DC /* crosshair.png */; };
+		FAD99D1611518B08007C66DC /* crosshair-white.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0C11518B07007C66DC /* crosshair-white.png */; };
+		FAD99D1711518B08007C66DC /* cycle-hire-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0D11518B07007C66DC /* cycle-hire-icon.png */; };
+		FAD99D1811518B08007C66DC /* landmarks.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0E11518B07007C66DC /* landmarks.png */; };
+		FAD99D1911518B08007C66DC /* LDNZone1.db in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D0F11518B07007C66DC /* LDNZone1.db */; };
+		FAD99D1A11518B08007C66DC /* marker-blue-bike.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D1011518B08007C66DC /* marker-blue-bike.png */; };
+		FAD99D1B11518B08007C66DC /* rail.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D1111518B08007C66DC /* rail.png */; };
+		FAD99D1D11518B08007C66DC /* you-are-here.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD99D1311518B08007C66DC /* you-are-here.png */; };
+		FAE1D16811730CE20051D828 /* CycleStreetsPlanner.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE1D16711730CE20051D828 /* CycleStreetsPlanner.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAA1EB03115E735E00BC90E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		FAA1EB05115E735E00BC90E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = UnitTests;
+		};
+		FAA1EB13115E737E00BC90E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
+			remoteInfo = Three20;
+		};
+		FAD99CD6115187DC007C66DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAD99CCF115187DC007C66DC /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B8C974590E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
+		FAD99CD8115187DC007C66DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAD99CCF115187DC007C66DC /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BF3078F0F8AC5C0007014EE;
+			remoteInfo = "Unit Tests";
+		};
+		FAD99CE311518809007C66DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAD99CCF115187DC007C66DC /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* CycleHireAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHireAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* CycleHireAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleHireAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Cycle Hire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cycle Hire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* CycleHire_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHire_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* Xibs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Xibs; sourceTree = "<group>"; };
+		28C286DF0D94DF7D0034E888 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Classes/MapViewController.h; sourceTree = "<group>"; };
+		28C286E00D94DF7D0034E888 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Classes/MapViewController.m; sourceTree = "<group>"; };
+		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; name = RootViewController.xib; path = Xibs/RootViewController.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* CycleHire-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CycleHire-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		FA04C2871167A307003126BD /* GlobalStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalStyleSheet.h; path = Classes/GlobalStyleSheet.h; sourceTree = "<group>"; };
+		FA04C2881167A307003126BD /* GlobalStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalStyleSheet.m; path = Classes/GlobalStyleSheet.m; sourceTree = "<group>"; };
+		FA04C2CB1167AEC3003126BD /* bike-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-icon.png"; path = "Resources/UIImages/bike-icon.png"; sourceTree = "<group>"; };
+		FA04C31B1167D0AD003126BD /* bike-parking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-parking.png"; path = "Resources/UIImages/bike-parking.png"; sourceTree = "<group>"; };
+		FA22A6CF1188A74300FBF741 /* FavouritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListViewController.h; path = Classes/FavouritesListViewController.h; sourceTree = "<group>"; };
+		FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListViewController.m; path = Classes/FavouritesListViewController.m; sourceTree = "<group>"; };
+		FA3077601188DAD000E6D336 /* FavouritesListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListDataSource.h; path = Classes/FavouritesListDataSource.h; sourceTree = "<group>"; };
+		FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListDataSource.m; path = Classes/FavouritesListDataSource.m; sourceTree = "<group>"; };
+		FA457C5F115192BA007B42A8 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA457DBB11522593007B42A8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FA457DC41152260C007B42A8 /* StationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationsViewController.h; path = Classes/StationsViewController.h; sourceTree = "<group>"; };
+		FA457DC51152260C007B42A8 /* StationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationsViewController.m; path = Classes/StationsViewController.m; sourceTree = "<group>"; };
+		FA457DC61152260C007B42A8 /* StationsViewController.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; name = StationsViewController.xib; path = Xibs/StationsViewController.xib; sourceTree = "<group>"; };
+		FA57817F116B2B5B00A26504 /* LocationPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationPopupViewController.h; path = Classes/LocationPopupViewController.h; sourceTree = "<group>"; };
+		FA578180116B2B5B00A26504 /* LocationPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPopupViewController.m; path = Classes/LocationPopupViewController.m; sourceTree = "<group>"; };
+		FA578477116F192800A26504 /* CycleHireLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleHireLocation.h; path = Classes/CycleHireLocation.h; sourceTree = "<group>"; };
+		FA578478116F192800A26504 /* CycleHireLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleHireLocation.m; path = Classes/CycleHireLocation.m; sourceTree = "<group>"; };
+		FA6D7D5C118ACA6D005A3629 /* CycleHireLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleHireLocations.h; path = Classes/CycleHireLocations.h; sourceTree = "<group>"; };
+		FA6D7D5D118ACA6D005A3629 /* CycleHireLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleHireLocations.m; path = Classes/CycleHireLocations.m; sourceTree = "<group>"; };
+		FA6D7F7E1190807A005A3629 /* PostcodeDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostcodeDatabase.h; path = Classes/PostcodeDatabase.h; sourceTree = "<group>"; };
+		FA6D7F7F1190807A005A3629 /* PostcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostcodeDatabase.m; path = Classes/PostcodeDatabase.m; sourceTree = "<group>"; };
+		FA6D7FF31190C0DB005A3629 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = Classes/RegexKitLite.h; sourceTree = "<group>"; };
+		FA6D7FF41190C0DB005A3629 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = Classes/RegexKitLite.m; sourceTree = "<group>"; };
+		FA6D80051190C4D5005A3629 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		FA6D810A1191556D005A3629 /* marker-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-pin.png"; path = "Resources/MarkerImages/marker-pin.png"; sourceTree = "<group>"; };
+		FA6D81E81192C001005A3629 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoViewController.h; path = Classes/InfoViewController.h; sourceTree = "<group>"; };
+		FA6D81E91192C001005A3629 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoViewController.m; path = Classes/InfoViewController.m; sourceTree = "<group>"; };
+		FA6D823411933154005A3629 /* InfoWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoWebViewController.h; path = Classes/InfoWebViewController.h; sourceTree = "<group>"; };
+		FA6D823511933154005A3629 /* InfoWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoWebViewController.m; path = Classes/InfoWebViewController.m; sourceTree = "<group>"; };
+		FA8BD0D911939B41009CDBFF /* underground.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = underground.csv; path = Resources/underground.csv; sourceTree = "<group>"; };
+		FA8BD0FB11939B8F009CDBFF /* postcodes.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = postcodes.db; path = Resources/postcodes.db; sourceTree = "<group>"; };
+		FA8BD13511939CF4009CDBFF /* acknowledgements.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = acknowledgements.html; path = Resources/HTML/acknowledgements.html; sourceTree = "<group>"; };
+		FA8F51C31152DB41003966EE /* parseCSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parseCSV.h; path = Classes/parseCSV.h; sourceTree = "<group>"; };
+		FA8F51C41152DB41003966EE /* parseCSV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = parseCSV.m; path = Classes/parseCSV.m; sourceTree = "<group>"; };
+		FA8F51D21152DBFF003966EE /* rail.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rail.csv; path = Resources/rail.csv; sourceTree = "<group>"; };
+		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
+		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
+		FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
+		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		FAA1EB26115E757C00BC90E2 /* AttractionCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttractionCategoryViewController.h; path = Classes/AttractionCategoryViewController.h; sourceTree = "<group>"; };
+		FAA1EB27115E757C00BC90E2 /* AttractionCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttractionCategoryViewController.m; path = Classes/AttractionCategoryViewController.m; sourceTree = "<group>"; };
+		FAA1EB98115FD0A400BC90E2 /* stopwatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stopwatch.png; path = Resources/UIImages/stopwatch.png; sourceTree = "<group>"; };
+		FAA1EBA11160071300BC90E2 /* AttractionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttractionListViewController.h; path = Classes/AttractionListViewController.h; sourceTree = "<group>"; };
+		FAA1EBA21160071300BC90E2 /* AttractionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttractionListViewController.m; path = Classes/AttractionListViewController.m; sourceTree = "<group>"; };
+		FAA1EBAC11600C7100BC90E2 /* attractions-churches.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-churches.csv"; path = "Resources/Attractions/attractions-churches.csv"; sourceTree = "<group>"; };
+		FAA1EBAD11600C7100BC90E2 /* attractions-cinema.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-cinema.csv"; path = "Resources/Attractions/attractions-cinema.csv"; sourceTree = "<group>"; };
+		FAA1EBAE11600C7100BC90E2 /* attractions-fun.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-fun.csv"; path = "Resources/Attractions/attractions-fun.csv"; sourceTree = "<group>"; };
+		FAA1EBAF11600C7100BC90E2 /* attractions-galleries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-galleries.csv"; path = "Resources/Attractions/attractions-galleries.csv"; sourceTree = "<group>"; };
+		FAA1EBB011600C7100BC90E2 /* attractions-museums.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-museums.csv"; path = "Resources/Attractions/attractions-museums.csv"; sourceTree = "<group>"; };
+		FAA1EBB111600C7100BC90E2 /* attractions-music.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-music.csv"; path = "Resources/Attractions/attractions-music.csv"; sourceTree = "<group>"; };
+		FAA1EBB211600C7100BC90E2 /* attractions-parks.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-parks.csv"; path = "Resources/Attractions/attractions-parks.csv"; sourceTree = "<group>"; };
+		FAA1EBB311600C7100BC90E2 /* attractions-shopping.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-shopping.csv"; path = "Resources/Attractions/attractions-shopping.csv"; sourceTree = "<group>"; };
+		FAA1EBB411600C7100BC90E2 /* attractions-theatre.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "attractions-theatre.csv"; path = "Resources/Attractions/attractions-theatre.csv"; sourceTree = "<group>"; };
+		FAA1ECF41160B73200BC90E2 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		FAA1EE1A1162A3E000BC90E2 /* Greek */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Greek; path = Greek.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FACEFCEA1174614F006AE272 /* CycleStreetsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleStreetsRoute.h; path = Classes/CycleStreetsRoute.h; sourceTree = "<group>"; };
+		FACEFCEB1174614F006AE272 /* CycleStreetsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleStreetsRoute.m; path = Classes/CycleStreetsRoute.m; sourceTree = "<group>"; };
+		FACEFEAA117685D6006AE272 /* red-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "red-x.png"; path = "Resources/UIImages/red-x.png"; sourceTree = "<group>"; };
+		FACEFEE011779821006AE272 /* CoreLocationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationAdditions.h; path = Classes/CoreLocationAdditions.h; sourceTree = "<group>"; };
+		FACEFEE111779821006AE272 /* CoreLocationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreLocationAdditions.m; path = Classes/CoreLocationAdditions.m; sourceTree = "<group>"; };
+		FAD99CCF115187DC007C66DC /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "../route-me-read-only/MapView/MapView.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		FAD99CE611518819007C66DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FAD99CE81151881D007C66DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FAD99CEA11518828007C66DC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FAD99D0A11518B06007C66DC /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel.png; path = Resources/UIImages/cancel.png; sourceTree = "<group>"; };
+		FAD99D0B11518B07007C66DC /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = crosshair.png; path = Resources/UIImages/crosshair.png; sourceTree = "<group>"; };
+		FAD99D0C11518B07007C66DC /* crosshair-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "crosshair-white.png"; path = "Resources/UIImages/crosshair-white.png"; sourceTree = "<group>"; };
+		FAD99D0D11518B07007C66DC /* cycle-hire-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cycle-hire-icon.png"; sourceTree = "<group>"; };
+		FAD99D0E11518B07007C66DC /* landmarks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = landmarks.png; path = Resources/UIImages/landmarks.png; sourceTree = "<group>"; };
+		FAD99D0F11518B07007C66DC /* LDNZone1.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = LDNZone1.db; path = Resources/LDNZone1.db; sourceTree = "<group>"; };
+		FAD99D1011518B08007C66DC /* marker-blue-bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike.png"; path = "Resources/MarkerImages/marker-blue-bike.png"; sourceTree = "<group>"; };
+		FAD99D1111518B08007C66DC /* rail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rail.png; path = Resources/UIImages/rail.png; sourceTree = "<group>"; };
+		FAD99D1311518B08007C66DC /* you-are-here.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "you-are-here.png"; path = "Resources/MarkerImages/you-are-here.png"; sourceTree = "<group>"; };
+		FAE1D16611730CE20051D828 /* CycleStreetsPlanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleStreetsPlanner.h; path = Classes/CycleStreetsPlanner.h; sourceTree = "<group>"; };
+		FAE1D16711730CE20051D828 /* CycleStreetsPlanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleStreetsPlanner.m; path = Classes/CycleStreetsPlanner.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				FAD99CE1115187F6007C66DC /* libMapView.a in Frameworks */,
+				FAD99CE711518819007C66DC /* CoreLocation.framework in Frameworks */,
+				FAD99CE91151881D007C66DC /* QuartzCore.framework in Frameworks */,
+				FAD99CEB11518828007C66DC /* libsqlite3.dylib in Frameworks */,
+				FAA1EB07115E736A00BC90E2 /* libThree20.a in Frameworks */,
+				FAA1ECF51160B73200BC90E2 /* MessageUI.framework in Frameworks */,
+				FA6D80061190C4D5005A3629 /* libicucore.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* CycleHireAppDelegate.h */,
+				1D3623250D0F684500981E51 /* CycleHireAppDelegate.m */,
+			);
+			name = "App Delegate";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Cycle Hire.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1D16511730CAD0051D828 /* Route Planning */,
+				FA578474116F190200A26504 /* Data Model */,
+				080E96DDFE201D6D7F000001 /* App Delegate */,
+				FA457DCB11522633007B42A8 /* Map View */,
+				FA457DCC1152265C007B42A8 /* Stations View */,
+				FAA1EB29115E758400BC90E2 /* Attraction Category View */,
+				FAA1EB9E116006D200BC90E2 /* Attraction List View */,
+				FA22A6CC1188A6E800FBF741 /* Favourites List View */,
+				FA6D81E51192BFC5005A3629 /* Information Views */,
+				FA8F52261152E996003966EE /* Helpers */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				FAA1EB16115E73AB00BC90E2 /* Three20.bundle */,
+				FAD99CCF115187DC007C66DC /* MapView.xcodeproj */,
+				FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				FAA1ECF41160B73200BC90E2 /* MessageUI.framework */,
+				FA6D80051190C4D5005A3629 /* libicucore.dylib */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* CycleHire_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA8BD13311939CDF009CDBFF /* HTML */,
+				FA8BD0B311939A9B009CDBFF /* Attractions lists */,
+				FA8BD0B011939A15009CDBFF /* UI Images */,
+				FA6D805D1191452F005A3629 /* Map Markers */,
+				FA7EE222115374CD0003861D /* Location & Map Data */,
+				FA457DBB11522593007B42A8 /* Default.png */,
+				FAD99D0D11518B07007C66DC /* cycle-hire-icon.png */,
+				28AD735F0D9D9599002E5188 /* Xibs */,
+				8D1107310486CEB800E47090 /* CycleHire-Info.plist */,
+				FA457C62115192D5007B42A8 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAD99CE611518819007C66DC /* CoreLocation.framework */,
+				FAD99CE81151881D007C66DC /* QuartzCore.framework */,
+				FAD99CEA11518828007C66DC /* libsqlite3.dylib */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA22A6CC1188A6E800FBF741 /* Favourites List View */ = {
+			isa = PBXGroup;
+			children = (
+				FA22A6CF1188A74300FBF741 /* FavouritesListViewController.h */,
+				FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */,
+				FA3077601188DAD000E6D336 /* FavouritesListDataSource.h */,
+				FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */,
+			);
+			name = "Favourites List View";
+			sourceTree = "<group>";
+		};
+		FA457DCB11522633007B42A8 /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				28C286DF0D94DF7D0034E888 /* MapViewController.h */,
+				28C286E00D94DF7D0034E888 /* MapViewController.m */,
+				28F335F01007B36200424DE2 /* RootViewController.xib */,
+				FA57817F116B2B5B00A26504 /* LocationPopupViewController.h */,
+				FA578180116B2B5B00A26504 /* LocationPopupViewController.m */,
+			);
+			name = "Map View";
+			sourceTree = "<group>";
+		};
+		FA457DCC1152265C007B42A8 /* Stations View */ = {
+			isa = PBXGroup;
+			children = (
+				FA457DC41152260C007B42A8 /* StationsViewController.h */,
+				FA457DC51152260C007B42A8 /* StationsViewController.m */,
+				FA457DC61152260C007B42A8 /* StationsViewController.xib */,
+			);
+			name = "Stations View";
+			sourceTree = "<group>";
+		};
+		FA578474116F190200A26504 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA578477116F192800A26504 /* CycleHireLocation.h */,
+				FA578478116F192800A26504 /* CycleHireLocation.m */,
+				FA6D7D5C118ACA6D005A3629 /* CycleHireLocations.h */,
+				FA6D7D5D118ACA6D005A3629 /* CycleHireLocations.m */,
+				FA6D7F7E1190807A005A3629 /* PostcodeDatabase.h */,
+				FA6D7F7F1190807A005A3629 /* PostcodeDatabase.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		FA6D7FF11190C0CF005A3629 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D7FF31190C0DB005A3629 /* RegexKitLite.h */,
+				FA6D7FF41190C0DB005A3629 /* RegexKitLite.m */,
+			);
+			name = RegexKitLite;
+			sourceTree = "<group>";
+		};
+		FA6D805D1191452F005A3629 /* Map Markers */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D810A1191556D005A3629 /* marker-pin.png */,
+				FAD99D1311518B08007C66DC /* you-are-here.png */,
+				FAD99D1011518B08007C66DC /* marker-blue-bike.png */,
+				FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */,
+			);
+			name = "Map Markers";
+			sourceTree = "<group>";
+		};
+		FA6D81E51192BFC5005A3629 /* Information Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D81E81192C001005A3629 /* InfoViewController.h */,
+				FA6D81E91192C001005A3629 /* InfoViewController.m */,
+				FA6D823411933154005A3629 /* InfoWebViewController.h */,
+				FA6D823511933154005A3629 /* InfoWebViewController.m */,
+			);
+			name = "Information Views";
+			sourceTree = "<group>";
+		};
+		FA7EE222115374CD0003861D /* Location & Map Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA8BD0FB11939B8F009CDBFF /* postcodes.db */,
+				FA8BD0D911939B41009CDBFF /* underground.csv */,
+				FAD99D0F11518B07007C66DC /* LDNZone1.db */,
+				FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */,
+				FA8F51D21152DBFF003966EE /* rail.csv */,
+			);
+			name = "Location & Map Data";
+			sourceTree = "<group>";
+		};
+		FA8BD0B011939A15009CDBFF /* UI Images */ = {
+			isa = PBXGroup;
+			children = (
+				FAD99D0A11518B06007C66DC /* cancel.png */,
+				FAD99D0B11518B07007C66DC /* crosshair.png */,
+				FAD99D0C11518B07007C66DC /* crosshair-white.png */,
+				FAD99D0E11518B07007C66DC /* landmarks.png */,
+				FAD99D1111518B08007C66DC /* rail.png */,
+				FACEFEAA117685D6006AE272 /* red-x.png */,
+				FA04C31B1167D0AD003126BD /* bike-parking.png */,
+				FA04C2CB1167AEC3003126BD /* bike-icon.png */,
+				FAA1EB98115FD0A400BC90E2 /* stopwatch.png */,
+			);
+			name = "UI Images";
+			sourceTree = "<group>";
+		};
+		FA8BD0B311939A9B009CDBFF /* Attractions lists */ = {
+			isa = PBXGroup;
+			children = (
+				FAA1EBAC11600C7100BC90E2 /* attractions-churches.csv */,
+				FAA1EBAD11600C7100BC90E2 /* attractions-cinema.csv */,
+				FAA1EBAE11600C7100BC90E2 /* attractions-fun.csv */,
+				FAA1EBAF11600C7100BC90E2 /* attractions-galleries.csv */,
+				FAA1EBB011600C7100BC90E2 /* attractions-museums.csv */,
+				FAA1EBB111600C7100BC90E2 /* attractions-music.csv */,
+				FAA1EBB211600C7100BC90E2 /* attractions-parks.csv */,
+				FAA1EBB311600C7100BC90E2 /* attractions-shopping.csv */,
+				FAA1EBB411600C7100BC90E2 /* attractions-theatre.csv */,
+			);
+			name = "Attractions lists";
+			sourceTree = "<group>";
+		};
+		FA8BD13311939CDF009CDBFF /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				FA8BD13511939CF4009CDBFF /* acknowledgements.html */,
+			);
+			name = HTML;
+			sourceTree = "<group>";
+		};
+		FA8F51D11152DB50003966EE /* CSV Parser */ = {
+			isa = PBXGroup;
+			children = (
+				FA8F51C31152DB41003966EE /* parseCSV.h */,
+				FA8F51C41152DB41003966EE /* parseCSV.m */,
+			);
+			name = "CSV Parser";
+			sourceTree = "<group>";
+		};
+		FA8F52261152E996003966EE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D7FF11190C0CF005A3629 /* RegexKitLite */,
+				FA8F51D11152DB50003966EE /* CSV Parser */,
+				FA04C2871167A307003126BD /* GlobalStyleSheet.h */,
+				FA04C2881167A307003126BD /* GlobalStyleSheet.m */,
+				FACEFEE011779821006AE272 /* CoreLocationAdditions.h */,
+				FACEFEE111779821006AE272 /* CoreLocationAdditions.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		FAA1EAFF115E735E00BC90E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAA1EB04115E735E00BC90E2 /* libThree20.a */,
+				FAA1EB06115E735E00BC90E2 /* UnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAA1EB29115E758400BC90E2 /* Attraction Category View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA1EB26115E757C00BC90E2 /* AttractionCategoryViewController.h */,
+				FAA1EB27115E757C00BC90E2 /* AttractionCategoryViewController.m */,
+			);
+			name = "Attraction Category View";
+			sourceTree = "<group>";
+		};
+		FAA1EB9E116006D200BC90E2 /* Attraction List View */ = {
+			isa = PBXGroup;
+			children = (
+				FAA1EBA11160071300BC90E2 /* AttractionListViewController.h */,
+				FAA1EBA21160071300BC90E2 /* AttractionListViewController.m */,
+			);
+			name = "Attraction List View";
+			sourceTree = "<group>";
+		};
+		FAD99CD0115187DC007C66DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAD99CD7115187DC007C66DC /* libMapView.a */,
+				FAD99CD9115187DC007C66DC /* RM Unit Tests.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAE1D16511730CAD0051D828 /* Route Planning */ = {
+			isa = PBXGroup;
+			children = (
+				FAE1D16611730CE20051D828 /* CycleStreetsPlanner.h */,
+				FAE1D16711730CE20051D828 /* CycleStreetsPlanner.m */,
+				FACEFCEA1174614F006AE272 /* CycleStreetsRoute.h */,
+				FACEFCEB1174614F006AE272 /* CycleStreetsRoute.m */,
+			);
+			name = "Route Planning";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* CycleHire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CycleHire" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAD99CE411518809007C66DC /* PBXTargetDependency */,
+				FAA1EB14115E737E00BC90E2 /* PBXTargetDependency */,
+			);
+			name = CycleHire;
+			productName = CycleHire;
+			productReference = 1D6058910D05DD3D006BFB54 /* Cycle Hire.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Alexander Baxevanis";
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CycleHire" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+				Greek,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FAD99CD0115187DC007C66DC /* Products */;
+					ProjectRef = FAD99CCF115187DC007C66DC /* MapView.xcodeproj */;
+				},
+				{
+					ProductGroup = FAA1EAFF115E735E00BC90E2 /* Products */;
+					ProjectRef = FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* CycleHire */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FAA1EB04115E735E00BC90E2 /* libThree20.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libThree20.a;
+			remoteRef = FAA1EB03115E735E00BC90E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FAA1EB06115E735E00BC90E2 /* UnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.octest;
+			remoteRef = FAA1EB05115E735E00BC90E2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FAD99CD7115187DC007C66DC /* libMapView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapView.a;
+			remoteRef = FAD99CD6115187DC007C66DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FAD99CD9115187DC007C66DC /* RM Unit Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "RM Unit Tests.app";
+			remoteRef = FAD99CD8115187DC007C66DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* Xibs in Resources */,
+				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
+				FAD99D1411518B08007C66DC /* cancel.png in Resources */,
+				FAD99D1511518B08007C66DC /* crosshair.png in Resources */,
+				FAD99D1611518B08007C66DC /* crosshair-white.png in Resources */,
+				FAD99D1711518B08007C66DC /* cycle-hire-icon.png in Resources */,
+				FAD99D1811518B08007C66DC /* landmarks.png in Resources */,
+				FAD99D1911518B08007C66DC /* LDNZone1.db in Resources */,
+				FAD99D1A11518B08007C66DC /* marker-blue-bike.png in Resources */,
+				FAD99D1B11518B08007C66DC /* rail.png in Resources */,
+				FAD99D1D11518B08007C66DC /* you-are-here.png in Resources */,
+				FA457C63115192D5007B42A8 /* Localizable.strings in Resources */,
+				FA457DBC11522593007B42A8 /* Default.png in Resources */,
+				FA457DC81152260C007B42A8 /* StationsViewController.xib in Resources */,
+				FA8F51D31152DBFF003966EE /* rail.csv in Resources */,
+				FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */,
+				FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */,
+				FAA1EB17115E73AB00BC90E2 /* Three20.bundle in Resources */,
+				FAA1EB99115FD0A400BC90E2 /* stopwatch.png in Resources */,
+				FAA1EBB511600C7100BC90E2 /* attractions-churches.csv in Resources */,
+				FAA1EBB611600C7100BC90E2 /* attractions-cinema.csv in Resources */,
+				FAA1EBB711600C7100BC90E2 /* attractions-fun.csv in Resources */,
+				FAA1EBB811600C7100BC90E2 /* attractions-galleries.csv in Resources */,
+				FAA1EBB911600C7100BC90E2 /* attractions-museums.csv in Resources */,
+				FAA1EBBA11600C7100BC90E2 /* attractions-music.csv in Resources */,
+				FAA1EBBB11600C7100BC90E2 /* attractions-parks.csv in Resources */,
+				FAA1EBBC11600C7100BC90E2 /* attractions-shopping.csv in Resources */,
+				FAA1EBBD11600C7100BC90E2 /* attractions-theatre.csv in Resources */,
+				FA04C2CC1167AEC3003126BD /* bike-icon.png in Resources */,
+				FA04C31C1167D0AD003126BD /* bike-parking.png in Resources */,
+				FACEFEAB117685D6006AE272 /* red-x.png in Resources */,
+				FA6D810B1191556D005A3629 /* marker-pin.png in Resources */,
+				FA8BD0DA11939B41009CDBFF /* underground.csv in Resources */,
+				FA8BD0FC11939B8F009CDBFF /* postcodes.db in Resources */,
+				FA8BD13611939CF4009CDBFF /* acknowledgements.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* CycleHireAppDelegate.m in Sources */,
+				28C286E10D94DF7D0034E888 /* MapViewController.m in Sources */,
+				FA457DC71152260C007B42A8 /* StationsViewController.m in Sources */,
+				FA8F51C51152DB41003966EE /* parseCSV.m in Sources */,
+				FAA1EB28115E757C00BC90E2 /* AttractionCategoryViewController.m in Sources */,
+				FAA1EBA31160071300BC90E2 /* AttractionListViewController.m in Sources */,
+				FA04C2891167A307003126BD /* GlobalStyleSheet.m in Sources */,
+				FA578181116B2B5B00A26504 /* LocationPopupViewController.m in Sources */,
+				FA578479116F192800A26504 /* CycleHireLocation.m in Sources */,
+				FAE1D16811730CE20051D828 /* CycleStreetsPlanner.m in Sources */,
+				FACEFCEC1174614F006AE272 /* CycleStreetsRoute.m in Sources */,
+				FACEFEE211779821006AE272 /* CoreLocationAdditions.m in Sources */,
+				FA22A6D11188A74300FBF741 /* FavouritesListViewController.m in Sources */,
+				FA3077621188DAD000E6D336 /* FavouritesListDataSource.m in Sources */,
+				FA6D7D5E118ACA6D005A3629 /* CycleHireLocations.m in Sources */,
+				FA6D7F801190807A005A3629 /* PostcodeDatabase.m in Sources */,
+				FA6D7FF51190C0DB005A3629 /* RegexKitLite.m in Sources */,
+				FA6D81EA1192C001005A3629 /* InfoViewController.m in Sources */,
+				FA6D823611933154005A3629 /* InfoWebViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAA1EB14115E737E00BC90E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Three20;
+			targetProxy = FAA1EB13115E737E00BC90E2 /* PBXContainerItemProxy */;
+		};
+		FAD99CE411518809007C66DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = FAD99CE311518809007C66DC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA457C62115192D5007B42A8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA457C5F115192BA007B42A8 /* English */,
+				FAA1EE1A1162A3E000BC90E2 /* Greek */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../route-me-read-only/MapView\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CycleHire_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					../three20/src/,
+					"../route-me-read-only/MapView/**",
+				);
+				INFOPLIST_FILE = "CycleHire-Info.plist";
+				PRODUCT_NAME = "Cycle Hire";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../route-me-read-only/MapView\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CycleHire_Prefix.pch;
+				INFOPLIST_FILE = "CycleHire-Info.plist";
+				PRODUCT_NAME = CycleHire;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "../three20/src/**";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CycleHire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CycleHire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

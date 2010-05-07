@@ -1,0 +1,63 @@
+/* 
+   Localizable.strings
+   CycleHire
+
+   Created by Alexander Baxevanis on 17/03/2010.
+   Copyright 2010 Alexander Baxevanis. All rights reserved.
+ */
+
+/* Map View */
+
+"Map" = "Χάρτης";
+
+/* out of London cycle hire area */
+
+"Out of area title"		= "Out of Cycle Hire area";
+"Out of area message"	= "You're currently outside the area covered by the London Cycle Hire scheme. \n If you're heading somewhere specific, try to look for bikes around a station or landmark, or browse the map."; 
+
+/* location timout */
+
+"Location timeout title"	= "Can't find location";
+"Location timeout message"	= "Your location can be found right now. Please try again later.";
+
+/* stations list */
+
+"Stations" = "Σταθμοί";
+
+/* attractions list */
+
+"Attractions" = "Αξιοθέατα";
+"Thank you" = "Ευχαριστούμε";
+"Attractions thank you message" = "We'll check your suggestion and update this list in the next version of the Cycle Hire app";
+
+"Famous areas & landmarks" = "Famous areas & landmarks";
+"Museums" = "Μουσεία"; 
+"Art Galleries" = "Τέχνες";
+"Fun & leisure" = "Αναψυχή";
+"Churches" = "Εκκλησίες";
+"Music" = "Μουσική";
+"Cinema" = "Κινηματογράφος";
+"Theatre" = "Θέατρο";
+"Shopping & Markets" = "Αγορές & ψώνια";
+"Parks" = "Πάρκα"; 
+
+/* popup */
+
+"No bikes available" = "Δεν υπάρχουν ποδήλατα";
+"%1 bike available" = "1 διαθέσιμο ποδήλατο";
+"%d bikes available" = "%d διαθέσιμα ποδήλατα";
+
+"No free spaces" = "Δεν υπάρχουν θέσεις";
+"1 free spaces" = "1 ελέυθερη θέση";
+"%d free spaces" = "%d ελέυθερες θέσεις";
+
+"Directions from here" = "Οδηγίες από εδώ";
+"Directions to here" = "Οδηγίες προς εδώ";
+"Add to favourites" = "Προσθήκη στα αγαπημένα";
+"Report a problem" = "Αναφορά προβλήματος"; 
+
+/* directions */
+
+"km" = "χλμ.";
+"miles" = "μίλια";
+"minutes" = "λεπτά";

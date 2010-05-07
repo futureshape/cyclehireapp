@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+	<name><![CDATA[Category:Stations in London fare zone 1]]></name>
+	<open>1</open>
+		<Placemark>
+			<name><![CDATA[Aldgate East tube station]]></name>
+			<Point>
+				<coordinates>-0.0722,51.5152,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Aldgate_East_tube_station">Aldgate East tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Aldgate tube station]]></name>
+			<Point>
+				<coordinates>-0.082,51.516,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Aldgate_tube_station">Aldgate tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Angel tube station]]></name>
+			<Point>
+				<coordinates>-0.106,51.532,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Angel_tube_station">Angel tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Baker Street tube station]]></name>
+			<Point>
+				<coordinates>-0.157,51.522,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Baker_Street_tube_station">Baker Street tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Bank-Monument station]]></name>
+			<Point>
+				<coordinates>-0.088,51.513,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Bank-Monument_station">Bank-Monument station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Barbican tube station]]></name>
+			<Point>
+				<coordinates>-0.0977,51.5202,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Barbican_tube_station">Barbican tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Bayswater tube station]]></name>
+			<Point>
+				<coordinates>-0.188,51.512,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Bayswater_tube_station">Bayswater tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Blackfriars station]]></name>
+			<Point>
+				<coordinates>-0.103,51.5116,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Blackfriars_station">Blackfriars station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Bond Street tube station]]></name>
+			<Point>
+				<coordinates>-0.15,51.514,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Bond_Street_tube_station">Bond Street tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Borough tube station]]></name>
+			<Point>
+				<coordinates>-0.093,51.501,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Borough_tube_station">Borough tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Cannon Street station]]></name>
+			<Point>
+				<coordinates>-0.0907,51.5104,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Cannon_Street_station">Cannon Street station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Chancery Lane tube station]]></name>
+			<Point>
+				<coordinates>-0.111,51.518,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Chancery_Lane_tube_station">Chancery Lane tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Charing Cross railway station]]></name>
+			<Point>
+				<coordinates>-0.123,51.507,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Charing_Cross_railway_station">Charing Cross railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Charing Cross tube station]]></name>
+			<Point>
+				<coordinates>-0.12475,51.508,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Charing_Cross_tube_station">Charing Cross tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[City Thameslink railway station]]></name>
+			<Point>
+				<coordinates>-0.1037,51.5163,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/City_Thameslink_railway_station">City Thameslink railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Covent Garden tube station]]></name>
+			<Point>
+				<coordinates>-0.12425,51.513028,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Covent_Garden_tube_station">Covent Garden tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Earl's Court tube station]]></name>
+			<Point>
+				<coordinates>-0.1947,51.4913,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Earl's_Court_tube_station">Earl's Court tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Edgware Road tube station]]></name>
+			<Point>
+				<coordinates>-0.17,51.52,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Edgware_Road_tube_station">Edgware Road tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Elephant & Castle railway station]]></name>
+			<Point>
+				<coordinates>-0.0998,51.4944,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Elephant_&_Castle_railway_station">Elephant & Castle railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Elephant & Castle tube station]]></name>
+			<Point>
+				<coordinates>-0.0997,51.4944,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Elephant_&_Castle_tube_station">Elephant & Castle tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Embankment tube station]]></name>
+			<Point>
+				<coordinates>-0.122,51.507,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Embankment_tube_station">Embankment tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Euston Square tube station]]></name>
+			<Point>
+				<coordinates>-0.1358,51.5258,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Euston_Square_tube_station">Euston Square tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Euston railway station]]></name>
+			<Point>
+				<coordinates>-0.1331,51.5284,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Euston_railway_station">Euston railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Farringdon station]]></name>
+			<Point>
+				<coordinates>-0.1053,51.52,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Farringdon_station">Farringdon station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Fenchurch Street railway station]]></name>
+			<Point>
+				<coordinates>-0.07881,51.51167,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Fenchurch_Street_railway_station">Fenchurch Street railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Gloucester Road tube station]]></name>
+			<Point>
+				<coordinates>-0.183,51.4947,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Gloucester_Road_tube_station">Gloucester Road tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Goodge Street tube station]]></name>
+			<Point>
+				<coordinates>-0.13444,51.52083,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Goodge_Street_tube_station">Goodge Street tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Great Portland Street tube station]]></name>
+			<Point>
+				<coordinates>-0.1438,51.5238,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Great_Portland_Street_tube_station">Great Portland Street tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Green Park tube station]]></name>
+			<Point>
+				<coordinates>-0.1428,51.5067,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Green_Park_tube_station">Green Park tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[High Street Kensington tube station]]></name>
+			<Point>
+				<coordinates>-0.1925,51.5008,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/High_Street_Kensington_tube_station">High Street Kensington tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Holborn tube station]]></name>
+			<Point>
+				<coordinates>-0.120111111111111111,51.5174305555555556,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Holborn_tube_station">Holborn tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Hyde Park Corner tube station]]></name>
+			<Point>
+				<coordinates>-0.152777777777777778,51.5027777777777778,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Hyde_Park_Corner_tube_station">Hyde Park Corner tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[King's Cross St. Pancras tube station]]></name>
+			<Point>
+				<coordinates>-0.1241,51.5302,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/King's_Cross_St._Pancras_tube_station">King's Cross St. Pancras tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Knightsbridge tube station]]></name>
+			<Point>
+				<coordinates>-0.160833333333333333,51.5016666666666667,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Knightsbridge_tube_station">Knightsbridge tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Lambeth North tube station]]></name>
+			<Point>
+				<coordinates>-0.1118,51.499,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Lambeth_North_tube_station">Lambeth North tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Lancaster Gate tube station]]></name>
+			<Point>
+				<coordinates>-0.175472,51.51175,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Lancaster_Gate_tube_station">Lancaster Gate tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Leicester Square tube station]]></name>
+			<Point>
+				<coordinates>-0.128055555555555556,51.5113888888888889,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Leicester_Square_tube_station">Leicester Square tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Liverpool Street station]]></name>
+			<Point>
+				<coordinates>-0.0813,51.5186,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Liverpool_Street_station">Liverpool Street station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London Bridge station]]></name>
+			<Point>
+				<coordinates>-0.086,51.505,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_Bridge_station">London Bridge station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London King's Cross railway station]]></name>
+			<Point>
+				<coordinates>-0.1233,51.5321,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_King's_Cross_railway_station">London King's Cross railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London Paddington station]]></name>
+			<Point>
+				<coordinates>-0.1774,51.5173,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_Paddington_station">London Paddington station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London Victoria station]]></name>
+			<Point>
+				<coordinates>-0.1448,51.4966,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_Victoria_station">London Victoria station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London Waterloo East railway station]]></name>
+			<Point>
+				<coordinates>-0.1101,51.5041,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_Waterloo_East_railway_station">London Waterloo East railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[London Waterloo station]]></name>
+			<Point>
+				<coordinates>-0.1132,51.5031,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_Waterloo_station">London Waterloo station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Blackfriars]]></name>
+			<Point>
+				<coordinates>-0.103,51.511,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Cannon Street]]></name>
+			<Point>
+				<coordinates>-0.09,51.51,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[City Thameslink]]></name>
+			<Point>
+				<coordinates>-0.103,51.516,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Euston]]></name>
+			<Point>
+				<coordinates>-0.133,51.528,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Fenchurch Street]]></name>
+			<Point>
+				<coordinates>-0.078,51.511,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Kings Cross]]></name>
+			<Point>
+				<coordinates>-0.123,51.532,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Liverpool Street]]></name>
+			<Point>
+				<coordinates>-0.081,51.518,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Marylebone]]></name>
+			<Point>
+				<coordinates>-0.163,51.522,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Moorgate]]></name>
+			<Point>
+				<coordinates>-0.088,51.518,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Old Street]]></name>
+			<Point>
+				<coordinates>-0.087,51.525,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Paddington]]></name>
+			<Point>
+				<coordinates>-0.177,51.517,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[St Pancras]]></name>
+			<Point>
+				<coordinates>-0.125,51.53,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Vauxhall]]></name>
+			<Point>
+				<coordinates>-0.122,51.485,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Victoria]]></name>
+			<Point>
+				<coordinates>-0.144,51.496,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Waterloo]]></name>
+			<Point>
+				<coordinates>-0.113,51.503,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Waterloo East]]></name>
+			<Point>
+				<coordinates>-0.11,51.504,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/London_station_group">London station group</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Mansion House tube station]]></name>
+			<Point>
+				<coordinates>-0.0941,51.5122,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Mansion_House_tube_station">Mansion House tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Marble Arch tube station]]></name>
+			<Point>
+				<coordinates>-0.158333333333333333,51.5136111111111111,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Marble_Arch_tube_station">Marble Arch tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Marylebone station]]></name>
+			<Point>
+				<coordinates>-0.1634,51.5223,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Marylebone_station">Marylebone station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Moorgate station]]></name>
+			<Point>
+				<coordinates>-0.0886,51.5186,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Moorgate_station">Moorgate station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Notting Hill Gate tube station]]></name>
+			<Point>
+				<coordinates>-0.197,51.509,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Notting_Hill_Gate_tube_station">Notting Hill Gate tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Old Street station]]></name>
+			<Point>
+				<coordinates>-0.08709,51.52581,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Old_Street_station">Old Street station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Oxford Circus tube station]]></name>
+			<Point>
+				<coordinates>-0.1416,51.51519,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Oxford_Circus_tube_station">Oxford Circus tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Piccadilly Circus tube station]]></name>
+			<Point>
+				<coordinates>-0.134,51.5101,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Piccadilly_Circus_tube_station">Piccadilly Circus tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Pimlico tube station]]></name>
+			<Point>
+				<coordinates>-0.133333333333333333,51.4894444444444444,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Pimlico_tube_station">Pimlico tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Queensway tube station]]></name>
+			<Point>
+				<coordinates>-0.187222222222222222,51.5104444444444444,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Queensway_tube_station">Queensway tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Regent's Park tube station]]></name>
+			<Point>
+				<coordinates>-0.14643,51.5235,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Regent's_Park_tube_station">Regent's Park tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Russell Square tube station]]></name>
+			<Point>
+				<coordinates>-0.124444444444444444,51.5230555555555556,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Russell_Square_tube_station">Russell Square tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Shoreditch High Street railway station]]></name>
+			<Point>
+				<coordinates>-0.0768,51.5234,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Shoreditch_High_Street_railway_station">Shoreditch High Street railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Sloane Square tube station]]></name>
+			<Point>
+				<coordinates>-0.1566,51.4925,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Sloane_Square_tube_station">Sloane Square tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[South Kensington tube station]]></name>
+			<Point>
+				<coordinates>-0.1738,51.4941,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/South_Kensington_tube_station">South Kensington tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Southwark tube station]]></name>
+			<Point>
+				<coordinates>-0.105,51.503,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Southwark_tube_station">Southwark tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[St. James's Park tube station]]></name>
+			<Point>
+				<coordinates>-0.1344,51.4994,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/St._James's_Park_tube_station">St. James's Park tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[St. Paul's tube station]]></name>
+			<Point>
+				<coordinates>-0.09745,51.51483,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/St._Paul's_tube_station">St. Paul's tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Temple tube station]]></name>
+			<Point>
+				<coordinates>-0.1144,51.5111,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Temple_tube_station">Temple tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Tottenham Court Road tube station]]></name>
+			<Point>
+				<coordinates>-0.1309,51.5162,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Tottenham_Court_Road_tube_station">Tottenham Court Road tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Tower Gateway DLR station]]></name>
+			<Point>
+				<coordinates>-0.0747722222222222222,51.5106111111111111,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Tower_Gateway_DLR_station">Tower Gateway DLR station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Tower Hill tube station]]></name>
+			<Point>
+				<coordinates>-0.076,51.51,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Tower_Hill_tube_station">Tower Hill tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Vauxhall station]]></name>
+			<Point>
+				<coordinates>-0.122903,51.485404,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Vauxhall_station">Vauxhall station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Warren Street tube station]]></name>
+			<Point>
+				<coordinates>-0.13833,51.52472,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Warren_Street_tube_station">Warren Street tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Waterloo International railway station]]></name>
+			<Point>
+				<coordinates>-0.1135,51.5032,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Waterloo_International_railway_station">Waterloo International railway station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Waterloo tube station]]></name>
+			<Point>
+				<coordinates>-0.113,51.5025,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Waterloo_tube_station">Waterloo tube station</a>]]></description>
+		</Placemark>
+		<Placemark>
+			<name><![CDATA[Westminster tube station]]></name>
+			<Point>
+				<coordinates>-0.125,51.501,0</coordinates>
+			</Point>
+			<Snippet></Snippet>
+			<description><![CDATA[<br>Source: Wikipedia article <a href="http://en.wikipedia.org/wiki/Westminster_tube_station">Westminster tube station</a>]]></description>
+		</Placemark>
+</Document>
+</kml>
