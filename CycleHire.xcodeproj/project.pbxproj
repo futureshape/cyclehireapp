@@ -38,6 +38,10 @@
 		FA8BD13611939CF4009CDBFF /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = FA8BD13511939CF4009CDBFF /* acknowledgements.html */; };
 		FA8F51C51152DB41003966EE /* parseCSV.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F51C41152DB41003966EE /* parseCSV.m */; };
 		FA8F51D31152DBFF003966EE /* rail.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA8F51D21152DBFF003966EE /* rail.csv */; };
+		FA928F881197F93700762888 /* osm-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928F871197F93700762888 /* osm-logo.png */; };
+		FA928F981197FB2100762888 /* cyclestreets-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928F971197FB2100762888 /* cyclestreets-logo.png */; };
+		FA928FAD1197FDC000762888 /* cyclehireapp-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */; };
+		FA928FB31197FFB900762888 /* tfl-cyclehire-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */; };
 		FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */; };
 		FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */; };
 		FAA1EB07115E736A00BC90E2 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1EB04115E735E00BC90E2 /* libThree20.a */; };
@@ -168,6 +172,10 @@
 		FA8F51C31152DB41003966EE /* parseCSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parseCSV.h; path = Classes/parseCSV.h; sourceTree = "<group>"; };
 		FA8F51C41152DB41003966EE /* parseCSV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = parseCSV.m; path = Classes/parseCSV.m; sourceTree = "<group>"; };
 		FA8F51D21152DBFF003966EE /* rail.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rail.csv; path = Resources/rail.csv; sourceTree = "<group>"; };
+		FA928F871197F93700762888 /* osm-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "osm-logo.png"; path = "Resources/UIImages/osm-logo.png"; sourceTree = "<group>"; };
+		FA928F971197FB2100762888 /* cyclestreets-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cyclestreets-logo.png"; path = "Resources/UIImages/cyclestreets-logo.png"; sourceTree = "<group>"; };
+		FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cyclehireapp-logo.png"; path = "Resources/UIImages/cyclehireapp-logo.png"; sourceTree = "<group>"; };
+		FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tfl-cyclehire-logo.png"; path = "Resources/UIImages/tfl-cyclehire-logo.png"; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EAFE115E735E00BC90E2 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -406,6 +414,10 @@
 		FA8BD0B011939A15009CDBFF /* UI Images */ = {
 			isa = PBXGroup;
 			children = (
+				FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */,
+				FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */,
+				FA928F971197FB2100762888 /* cyclestreets-logo.png */,
+				FA928F871197F93700762888 /* osm-logo.png */,
 				FAD99D0A11518B06007C66DC /* cancel.png */,
 				FAD99D0B11518B07007C66DC /* crosshair.png */,
 				FAD99D0C11518B07007C66DC /* crosshair-white.png */,
@@ -643,6 +655,10 @@
 				FA8BD0DA11939B41009CDBFF /* underground.csv in Resources */,
 				FA8BD0FC11939B8F009CDBFF /* postcodes.db in Resources */,
 				FA8BD13611939CF4009CDBFF /* acknowledgements.html in Resources */,
+				FA928F881197F93700762888 /* osm-logo.png in Resources */,
+				FA928F981197FB2100762888 /* cyclestreets-logo.png in Resources */,
+				FA928FAD1197FDC000762888 /* cyclehireapp-logo.png in Resources */,
+				FA928FB31197FFB900762888 /* tfl-cyclehire-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

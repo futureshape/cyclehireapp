@@ -22,18 +22,26 @@ static NSString *appFeedbackEmailTemplate =
 		
 		TTURLMap *map = [TTNavigator navigator].URLMap;
 		[map from:@"cyclehire://information/feedback" toObject:self selector:@selector(appFeedback)];
-
 		
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:@"Acknowledgements",
 						   [TTTableSubtitleItem itemWithText:@"Maps by OpenStreetMap" 
 													subtitle:@"Under a CC-BY-SA 2.0 license"
-													imageURL:@"bundle://cycle-hire-icon.png" 
+													imageURL:@"bundle://osm-logo.png" 
 														 URL:@"http://www.openstreetmap.org/"],
 						   [TTTableSubtitleItem itemWithText:@"Directions by CycleStreets" 
 													subtitle:nil
-													imageURL:@"bundle://cycle-hire-icon.png" 
+													imageURL:@"bundle://cyclestreets-logo.png" 
 														 URL:@"http://www.cyclestreets.net"],
 						   [TTTableTextItem itemWithText:NSLocalizedString(@"More ...", nil) URL:@"bundle://acknowledgements.html"],
+						   @"Links",
+						   [TTTableSubtitleItem itemWithText:@"Cycle Hire App website" 
+													subtitle:nil
+													imageURL:@"bundle://cyclehireapp-logo.png"  
+														 URL:@"http://cyclehireapp.com/"],
+						   [TTTableSubtitleItem itemWithText:@"TfL Cycle Hire website"
+													subtitle:@"Official Cycle Hire scheme website"
+													imageURL:@"bundle://tfl-cyclehire-logo.png"  
+														 URL:@"http://www.tfl.gov.uk/cyclehire"],
 						   @"",
 						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) URL:@"cyclehire://information/feedback"],
 						   nil];
