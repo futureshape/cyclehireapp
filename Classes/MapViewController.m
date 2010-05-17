@@ -1,5 +1,5 @@
 //
-//  RootViewController.m
+//  MapViewController.m
 //  CycleHire
 //
 //  Created by Alexander Baxevanis on 17/03/2010.
@@ -84,7 +84,6 @@
 	
 	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
 	
-	NSLog(@"Running on an %@ with software version %@", [[UIDevice currentDevice] localizedModel], [[UIDevice currentDevice] systemVersion]);
 	NSLog(@"Miles = %d", [CycleStreetsPlanner shouldUseMilesForDistances]);
 	
 }

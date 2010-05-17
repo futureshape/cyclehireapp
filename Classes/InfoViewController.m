@@ -13,7 +13,8 @@
 static NSString *appFeedbackEmailTemplate = 
 	@"Dear Cycle Hire App,<p>" \
 	"<i>Write about your suggestions or issues here</i><p>" \
-	"Thanks!";
+	"Thanks!<p>"\
+	"P.S. I'm using Cycle Hire App on an %@ with software version %@";
 
 -(id) init {
 	if (self = [super init]) {
@@ -23,27 +24,28 @@ static NSString *appFeedbackEmailTemplate =
 		TTURLMap *map = [TTNavigator navigator].URLMap;
 		[map from:@"cyclehire://information/feedback" toObject:self selector:@selector(appFeedback)];
 		
-		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:@"Acknowledgements",
-						   [TTTableSubtitleItem itemWithText:@"Maps by OpenStreetMap" 
-													subtitle:@"Under a CC-BY-SA 2.0 license"
+		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:NSLocalizedString(@"Acknowledgements", nil),
+						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Maps by OpenStreetMap",nil) 
+													subtitle:NSLocalizedString(@"Under a CC-BY-SA 2.0 license", nil)
 													imageURL:@"bundle://osm-logo.png" 
 														 URL:@"http://www.openstreetmap.org/"],
-						   [TTTableSubtitleItem itemWithText:@"Directions by CycleStreets" 
+						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Directions by CycleStreets", nil) 
 													subtitle:nil
 													imageURL:@"bundle://cyclestreets-logo.png" 
 														 URL:@"http://www.cyclestreets.net"],
 						   [TTTableTextItem itemWithText:NSLocalizedString(@"More ...", nil) URL:@"bundle://acknowledgements.html"],
-						   @"Links",
-						   [TTTableSubtitleItem itemWithText:@"Cycle Hire App website" 
+						   NSLocalizedString(@"Links", nil),
+						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Cycle Hire App website", nil) 
 													subtitle:nil
 													imageURL:@"bundle://cyclehireapp-logo.png"  
 														 URL:@"http://cyclehireapp.com/"],
-						   [TTTableSubtitleItem itemWithText:@"TfL Cycle Hire website"
-													subtitle:@"Official Cycle Hire scheme website"
+						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"TfL Cycle Hire website", nil)
+													subtitle:NSLocalizedString(@"Official Cycle Hire scheme website", nil)
 													imageURL:@"bundle://tfl-cyclehire-logo.png"  
 														 URL:@"http://www.tfl.gov.uk/cyclehire"],
 						   @"",
-						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) URL:@"cyclehire://information/feedback"],
+						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
+												   URL:@"cyclehire://information/feedback"],
 						   nil];
 	}
 	return self;
@@ -62,7 +64,9 @@ static NSString *appFeedbackEmailTemplate =
 	NSArray *toRecipients = [NSArray arrayWithObject:@"feedback@cyclehireapp.com"];
 	[mailComposer setToRecipients:toRecipients];
 	
-	NSString *emailBody = appFeedbackEmailTemplate;
+	NSString *emailBody = [NSString stringWithFormat:appFeedbackEmailTemplate, 
+						   [[UIDevice currentDevice] localizedModel], 
+						   [[UIDevice currentDevice] systemVersion]];
 	[mailComposer setMessageBody:emailBody isHTML:YES];
 	
 	[self presentModalViewController:mailComposer animated:YES];
