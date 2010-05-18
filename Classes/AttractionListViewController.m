@@ -82,7 +82,7 @@ static NSString *attractionsFeedbackEmailTemplate =
 
 	if (result == MFMailComposeResultSent) {
 		UIAlertView *thankYouAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Thank you", nil) 
-																message:NSLocalizedString(@"Attractions thank you message", nil)   
+																message:NSLocalizedString(@"We'll check your suggestion and update this list in the next version of the Cycle Hire app", nil)   
 															   delegate:nil 
 													  cancelButtonTitle:NSLocalizedString(@"OK", nil) 
 													  otherButtonTitles:nil];

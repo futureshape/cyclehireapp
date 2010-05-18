@@ -374,7 +374,7 @@
 
 	[self cancelFindMe];
 	[self showErrorAlertWithTitle:NSLocalizedString(@"Can't find location", nil)
-						  message:NSLocalizedString(@"Your location can be found right now. Please try again later.", nil) 
+						  message:NSLocalizedString(@"Your location can't be found right now. Please try again later.", nil) 
 			   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 	[self stopLocationTimeoutTimer];
 }
@@ -397,7 +397,7 @@
 		[self cancelFindMe];
 	} else if (errorCode == kCLErrorNetwork) {
 		[self showErrorAlertWithTitle:NSLocalizedString(@"Can't find location", nil)
-							  message:NSLocalizedString(@"Your location can be found right now. Please try again later.", nil) 
+							  message:NSLocalizedString(@"Your location can't be found right now. Please try again later.", nil) 
 				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 		[self cancelFindMe];
 	}
@@ -602,8 +602,11 @@
 #pragma mark Postcode Search
 
 - (IBAction) showPostcodeEntryAlert {
-	UIAlertView *postcodeEntryAlert = [[UIAlertView alloc] initWithTitle:@"Enter a postcode:" message:@"\n\n"
-														   delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel",nil) otherButtonTitles:NSLocalizedString(@"Search",nil), nil];
+	UIAlertView *postcodeEntryAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enter a postcode:", nil) 
+																 message:@"\n\n"
+																delegate:self 
+													   cancelButtonTitle:NSLocalizedString(@"Cancel",nil) 
+													   otherButtonTitles:NSLocalizedString(@"Search",nil), nil];
 		
 	UITextField *postcodeField = [[UITextField alloc] initWithFrame:CGRectMake(16,50,252,42)];
 	postcodeField.tag = 101;
@@ -670,9 +673,9 @@
 	NSString *normalizedPostcode = [postcode stringByReplacingOccurrencesOfString:@" " withString:@""];
 	
 	if (![PostcodeDatabase isValidPostcode:normalizedPostcode]) {
-		[self showErrorAlertWithTitle:@"Invalid postcode" 
-							  message:@"You may have made a typing mistake or typed an incomplete postcode." 
-				   dismissButtonLabel:@"OK"];
+		[self showErrorAlertWithTitle:NSLocalizedString(@"Invalid postcode", nil) 
+							  message:NSLocalizedString(@"You may have made a typing mistake or typed an incomplete postcode.", nil) 
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 		return;
 	}
 		
@@ -681,9 +684,9 @@
 		[self centerOnLat:postcodeCoord.latitude Long:postcodeCoord.longitude withZoom:16
 			andDropMarker:@"pin" withTitle:postcode atPostcode:nil];
 	} else {
-		[self showErrorAlertWithTitle:@"Out of Cyce Hire area" 
-							  message:@"This postcode is located outside the area covered by the Cycle Hire scheme." 
-				   dismissButtonLabel:@"OK"];
+		[self showErrorAlertWithTitle:NSLocalizedString(@"Out of Cyce Hire area", nil) 
+							  message:NSLocalizedString(@"This postcode is located outside the area covered by the Cycle Hire scheme.", nil) 
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 	}
 }
 
