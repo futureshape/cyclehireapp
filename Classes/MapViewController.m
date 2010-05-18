@@ -126,7 +126,6 @@
 #pragma mark Map delegate methods
 
 - (void) afterMapMove: (RMMapView*) map {
-	
 	// NOTE: this only gets called when map is moved by touch, not programmatically
 	if (locationState == kLocationTracking) {
 		[self setLocationState:kLocationVisible];
@@ -136,29 +135,32 @@
 	
 	CLLocationCoordinate2D viewTopLeft = [map.contents pixelToLatLong:CGPointZero];
 	CLLocationCoordinate2D viewBottomRight = [map.contents pixelToLatLong:CGPointMake(map.bounds.size.width, map.bounds.size.height)];
-	CLLocationCoordinate2D mapCenter = [map.contents mapCenter]; 
+	CLLocationCoordinate2D originalMapCenter = map.contents.mapCenter; 
+	CLLocationCoordinate2D newMapCenter = originalMapCenter; 
 	
 	if (viewTopLeft.latitude > coverageTopLeft.latitude) {				// Latitude out of topLeft 
-		mapCenter.latitude -= viewTopLeft.latitude - coverageTopLeft.latitude; 
+		newMapCenter.latitude -= viewTopLeft.latitude - coverageTopLeft.latitude; 
 	}
 	
 	if (viewTopLeft.longitude < coverageTopLeft.longitude) {			// Longitude out of topLeft
-		mapCenter.longitude -= viewTopLeft.longitude - coverageTopLeft.longitude; 
+		newMapCenter.longitude -= viewTopLeft.longitude - coverageTopLeft.longitude; 
 	}
 
 	if (viewBottomRight.latitude < coverageBottomRight.latitude) {		// Latitude out of bottomRight
-		mapCenter.latitude -= viewBottomRight.latitude - coverageBottomRight.latitude; 
+		newMapCenter.latitude -= viewBottomRight.latitude - coverageBottomRight.latitude; 
 	}
 	
 	if (viewBottomRight.longitude > coverageBottomRight.longitude) {	// Longitude out of bottomRight 
-		mapCenter.longitude -= viewBottomRight.longitude - coverageBottomRight.longitude; 
+		newMapCenter.longitude -= viewBottomRight.longitude - coverageBottomRight.longitude; 
 	}	
-	
-	[map.contents moveToLatLong:mapCenter];
+
+	if (newMapCenter.latitude != originalMapCenter.latitude || 
+		newMapCenter.longitude != originalMapCenter.longitude) {
+		[map.contents moveToLatLong:newMapCenter];	
+	}
 }
 
 - (void) afterMapZoom: (RMMapView*) map byFactor: (float) zoomFactor near:(CGPoint) center {
-
 	// NOTE: when the map gets zoomed programmatically, we call this with zoomFactor = 0, center = 0
 	if (locationState == kLocationTracking && !CGPointEqualToPoint(center, CGPointZero)) {
 		[self setLocationState:kLocationVisible];
@@ -185,7 +187,6 @@
 			[(RMMarker*)marker replaceUIImage:[UIImage imageNamed:@"marker-blue-bike.png"] anchorPoint:CGPointMake(0.5, 1.0)];
 		} 
 	}
-
 }
 
 - (void) singleTapOnMap: (RMMapView*) map At: (CGPoint) point {
