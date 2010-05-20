@@ -82,14 +82,11 @@
 	directionsStartingPoint = CLInvalidCoordinate();
 	directionsFinishPoint = CLInvalidCoordinate();
 	
-	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
-	
-	NSLog(@"Miles = %d", [CycleStreetsPlanner shouldUseMilesForDistances]);
-	
+	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];	
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 	self.navigationController.navigationBarHidden = YES;
 	self.navigationItem.title = NSLocalizedString(@"Map", nil);
 }
@@ -166,9 +163,9 @@
 		[self setLocationState:kLocationVisible];
 	}
 	
-	if(accuracyCircleMarker != nil) {
-		UIImage *circleImage = [self makeAccuracyMarkerImage];
-		[accuracyCircleMarker replaceUIImage:circleImage];
+	if(currentLocationMarker != nil) {
+		UIImage *circleImage = [self makeCurrentLocationMarkerImage];
+		[currentLocationMarker replaceUIImage:circleImage];
 	}
 	
 	if (map.contents.zoom < 14.5) {
@@ -363,10 +360,7 @@
 	[self setLocationState:kLocationCancelled];
 	
 	[[mapView markerManager] removeMarker:currentLocationMarker];
-	[[mapView markerManager] removeMarker:accuracyCircleMarker];
 	
-	[accuracyCircleMarker release];
-	accuracyCircleMarker = nil;
 	[currentLocationMarker release];
 	currentLocationMarker = nil;
 }
@@ -454,54 +448,58 @@
 		[self afterMapZoom:mapView byFactor: 0.0 near:CGPointZero];
 	}
 	
-	UIImage *circleImage = [self makeAccuracyMarkerImage];
+	UIImage *circleImage = [self makeCurrentLocationMarkerImage];
 	
-	if(accuracyCircleMarker == nil) {
-		accuracyCircleMarker = [[RMMarker alloc] initWithUIImage:circleImage];
-		[[mapView markerManager] addMarker:accuracyCircleMarker AtLatLong:currentLocation];
-	} else {
-		[accuracyCircleMarker replaceUIImage:circleImage];
-		[[mapView markerManager] moveMarker:accuracyCircleMarker AtLatLon:currentLocation];
-	}
-	
-	if (currentLocationMarker == nil) {
-		UIImage *currentLocationMarkerImage = [UIImage imageNamed:@"you-are-here.png"];
-		currentLocationMarker = [[RMMarker alloc] initWithUIImage:currentLocationMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
+	if(currentLocationMarker == nil) {
+		currentLocationMarker = [[RMMarker alloc] initWithUIImage:circleImage];
 		[[mapView markerManager] addMarker:currentLocationMarker AtLatLong:currentLocation];
 	} else {
-		[[mapView markerManager] moveMarker:currentLocationMarker AtLatLon:currentLocation]; 
+		[currentLocationMarker replaceUIImage:circleImage];
+		[[mapView markerManager] moveMarker:currentLocationMarker AtLatLon:currentLocation];
 	}
-
+	
 	if (locationState == kLocationSearching) {
 		[self setLocationState:kLocationTracking];		
 	}
 }
 
-- (UIImage *)makeAccuracyMarkerImage {
-	// TODO: return an empty image if circle diameter is too small
+- (UIImage *)makeCurrentLocationMarkerImage {
+	UIImage *centerImage = [UIImage imageNamed:@"you-are-here.png"];
 	
 	NSInteger accuracyInPixels = accuracy / [[mapView contents] metersPerPixel];
 	CGFloat squareSide = 2*(accuracyInPixels+kAccuracyCircleStrokeWidth);
+
+	if ([centerImage size].width > squareSide) {
+		// Circle would be too small, draw only the center image
+		return centerImage;
+	}
+	
 	UIGraphicsBeginImageContext(CGSizeMake(squareSide, squareSide));		
 	CGContextRef context = UIGraphicsGetCurrentContext();		
 	UIGraphicsPushContext(context);								
 
+	// Draw circle
 	CGContextAddArc(context, 
 					(CGFloat) squareSide/2, 
 					(CGFloat) squareSide/2, 
 					(CGFloat) accuracyInPixels, 
 					0.0, 2*M_PI, 0);
 	CGContextSetLineWidth (context, kAccuracyCircleStrokeWidth);
-	CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-	CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 0.3);
+	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 1.0, 1.0);
+	CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 0.3);
 	CGContextDrawPath(context, kCGPathFillStroke);
+	
+	// Draw center image
+	[centerImage drawAtPoint:CGPointMake(squareSide/2-[centerImage size].width/2, 
+										 squareSide/2-[centerImage size].height/2)];
+	
 	UIGraphicsPopContext();								
 	UIImage *circleImage= UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return circleImage;
 }
 
-- (void) saveMapState {
+- (void) saveAppState {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setDouble:[[mapView contents] mapCenter].latitude forKey:kLastLocationLatKey];
 	[defaults setDouble:[[mapView contents] mapCenter].longitude forKey:kLastLocationLongKey];

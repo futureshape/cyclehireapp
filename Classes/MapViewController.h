@@ -69,8 +69,6 @@ typedef enum {
 	NSUInteger locationState;
 	NSTimer *locationTimeoutTimer;
 	RMMarker *currentLocationMarker;
-	RMMarker *accuracyCircleMarker;
-	BOOL userMovedMapAfterGeolocation;
 
 	// Location UI
 	IBOutlet UIButton *locationCrosshairButton;
@@ -121,7 +119,7 @@ typedef enum {
 - (IBAction) findMe;
 - (IBAction) cancelFindMe;
 
-- (UIImage *)makeAccuracyMarkerImage;
+- (UIImage *)makeCurrentLocationMarkerImage;
 - (void) makeLocationPopup;
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
@@ -130,7 +128,7 @@ typedef enum {
 
 - (void) setLocationState: (kLocationState) state;
 
-- (void) saveMapState;
+- (void) saveAppState;
 
 - (IBAction) showStationsList;
 - (void) centerOnPOICoordinate: (CLLocationCoordinate2D) coordinate withZoom: (float) zoom;
