@@ -794,7 +794,7 @@
 	NSString *distanceUnits;
 	float distanceValue;
 	if ([CycleStreetsPlanner shouldUseMilesForDistances]) {
-		distanceUnits = @"miles";
+		distanceUnits = NSLocalizedString(@"miles", nil);
 		distanceValue = distanceInKilometers * 0.621;
 	} else {
 		distanceUnits = NSLocalizedString(@"km", "kilometers");
