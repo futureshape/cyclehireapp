@@ -388,7 +388,6 @@
 		// do nothing, location manager will keep trying
 		// timeout handler will cancel if no location is found after looking for a while
 	} else if (errorCode == kCLErrorDenied) {
-		// TODO: ask user not to deny location?
 		[self cancelFindMe];
 	} else if (errorCode == kCLErrorNetwork) {
 		[self showErrorAlertWithTitle:NSLocalizedString(@"Can't find location", nil)
@@ -485,8 +484,8 @@
 					(CGFloat) accuracyInPixels, 
 					0.0, 2*M_PI, 0);
 	CGContextSetLineWidth (context, kAccuracyCircleStrokeWidth);
-	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 1.0, 1.0);
-	CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 0.3);
+	CGContextSetRGBStrokeColor(context, (float) 18/256, (float) 109/256, (float) 151/256, 0.8);
+	CGContextSetRGBFillColor(context, (float) 18/256, (float) 109/256, (float) 151/256, 0.3);
 	CGContextDrawPath(context, kCGPathFillStroke);
 	
 	// Draw center image
