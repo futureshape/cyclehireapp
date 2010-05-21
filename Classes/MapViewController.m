@@ -190,6 +190,11 @@
 	if (drawerViewVisible && !CGRectContainsPoint(self.drawerView.frame, point)) {
 		[self toggleDrawerView];
 	}
+	
+	if(popupView != nil && popupView.superview != nil) {
+		[self closeLocationPopup];
+	}
+	
 }
 
 #pragma mark -
@@ -273,6 +278,7 @@
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
 	if([animationID isEqualToString:kAnimationClosePopup]) {
 		[popupView removeFromSuperview];
+		self.currentlyVisibleMarker = nil;
 	} else if([animationID isEqualToString:kAnimationOpenPopup]) {
 		locationPopupViewController.tableView.hidden = NO;
 	}

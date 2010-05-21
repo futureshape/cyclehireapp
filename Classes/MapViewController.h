@@ -121,6 +121,7 @@ typedef enum {
 
 - (UIImage *)makeCurrentLocationMarkerImage;
 - (void) makeLocationPopup;
+- (void) closeLocationPopup;
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
