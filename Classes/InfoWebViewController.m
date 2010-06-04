@@ -10,15 +10,6 @@
 
 @implementation InfoWebViewController
 
-- (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
-	if (self = [super initWithNavigatorURL:URL query:query]) {
-		[_toolbar removeFromSuperview];
-		_webView.frame = TTNavigationFrame();
-	}
-	return self;
-}
-
-
 - (void)openURL:(NSURL*)URL {
 	NSLog(@"InfoWebViewController openURL:%@", [URL description]);
 	
@@ -31,7 +22,6 @@
 		[super openURL:URL];
 	}
 }
-
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request
  navigationType:(UIWebViewNavigationType)navigationType {

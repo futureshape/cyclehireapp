@@ -193,8 +193,7 @@
 	
 	if(popupView != nil && popupView.superview != nil) {
 		[self closeLocationPopup];
-	}
-	
+	}	
 }
 
 #pragma mark -
