@@ -73,7 +73,6 @@
 							maxZoomLevel:16
 							minZoomLevel:13 
 						 backgroundImage:nil] autorelease];
-	[self loadCycleHireLocations];
 	
 	drawerViewVisible = NO;
 	locationManager = nil;
@@ -82,13 +81,20 @@
 	directionsStartingPoint = CLInvalidCoordinate();
 	directionsFinishPoint = CLInvalidCoordinate();
 	
-	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];	
+	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
+	
+	firstAppearance = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 	self.navigationController.navigationBarHidden = YES;
-	self.navigationItem.title = NSLocalizedString(@"Map", nil);
+	
+	if(firstAppearance) {
+		self.navigationItem.title = NSLocalizedString(@"Map", nil);
+		[self loadCycleHireLocations];
+		firstAppearance = NO;
+	}
 }
 
 - (void)didReceiveMemoryWarning {

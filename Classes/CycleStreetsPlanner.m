@@ -40,7 +40,7 @@ static NSString *APItemplate = @"http://www.cyclestreets.net/api/journey.xml?key
 	}
 	
 	request = [[TTURLRequest alloc] initWithURL:APIcall delegate:self];
-	request.cachePolicy = TTURLRequestCachePolicyNone; // TODO: is there any point in caching?
+	request.cachePolicy = TTURLRequestCachePolicyNone;
 	request.response = [[[TTURLDataResponse alloc] init] autorelease];
 	request.httpMethod = @"GET";
 	[request send];

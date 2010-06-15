@@ -97,6 +97,8 @@ typedef enum {
 													
 	StationsViewController *stationsViewController;
 	LocationPopupViewController *locationPopupViewController;
+	
+	BOOL firstAppearance;
 }
 
 @property (nonatomic, retain) IBOutlet RMMapView * mapView;
