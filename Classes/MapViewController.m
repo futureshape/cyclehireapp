@@ -703,24 +703,51 @@
 #pragma mark Directons handling
 
 - (void) directionsFromLat:(CLLocationDegrees) latitude Long:(CLLocationDegrees) longitude {
-	directionsStartingPoint.latitude = latitude;
-	directionsStartingPoint.longitude = longitude;
-		
+	
 	[self closeLocationPopup];
+	
+	if(latitude == directionsFinishPoint.latitude && longitude == directionsFinishPoint.longitude) {
+		[self showErrorAlertWithTitle:NSLocalizedString(@"Starting point same as destination", nil)
+							  message:NSLocalizedString(@"Please select a different station to start or finish your route.", nil)
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
+		return;
+	}
+	
+	directionsStartingPoint.latitude = latitude;
+	directionsStartingPoint.longitude = longitude; 
 
 	if (CLIsValidCoordinate(directionsFinishPoint)) {
 		[self updateDirections];
+	} else {
+		// TODO: replace this with something more subtle than UIAlertView
+		[self showErrorAlertWithTitle:nil
+							  message:[NSString stringWithFormat:NSLocalizedString(@"Now find a station near your destination and tap '%@'.", nil),
+									   NSLocalizedString(@"Directions to here", nil)]
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 	}
 }
 
 - (void) directionsToLat:(CLLocationDegrees) latitude Long:(CLLocationDegrees) longitude {
-	directionsFinishPoint.latitude = latitude;
-	directionsFinishPoint.longitude = longitude;
 	
 	[self closeLocationPopup];
 	
+	if(latitude == directionsStartingPoint.latitude && longitude == directionsStartingPoint.longitude) {
+		[self showErrorAlertWithTitle:NSLocalizedString(@"Starting point same as destination", nil)
+							  message:NSLocalizedString(@"Please select a different station to start or finish your route.", nil)
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
+		return;
+	}	
+	
+	directionsFinishPoint.latitude = latitude;
+	directionsFinishPoint.longitude = longitude;
+		
 	if (CLIsValidCoordinate(directionsStartingPoint)) {
 		[self updateDirections];
+	} else {
+		[self showErrorAlertWithTitle:nil
+							  message:[NSString stringWithFormat:NSLocalizedString(@"Now find the station you're starting from and tap '%@'.", nil),
+									   NSLocalizedString(@"Directions from here", nil)]
+				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 	}
 }
 
