@@ -49,5 +49,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] saveAppState];
 }
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] saveAppState];
+}
+
 @end
 

@@ -17,10 +17,10 @@
 		self.variableHeightRows = YES;
 		
 		self.dataSource = [TTListDataSource dataSourceWithObjects:
-						   [TTTableImageItem itemWithText:NSLocalizedString(@"Famous areas & landmarks", nil)
-												 imageURL:@"bundle://landmarks.png"
-													  URL:[@"cyclehire://attractions/category/Famous areas & landmarks/attractions-landmarks.csv"
-														   stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]],
+//						   [TTTableImageItem itemWithText:NSLocalizedString(@"Famous areas & landmarks", nil)
+//												 imageURL:@"bundle://landmarks.png"
+//													  URL:[@"cyclehire://attractions/category/Famous areas & landmarks/attractions-landmarks.csv"
+//														   stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]],
 						   [TTTableImageItem itemWithText:NSLocalizedString(@"Museums", nil)
 												 imageURL:@"bundle://landmarks.png"
 													  URL:@"cyclehire://attractions/category/Museums/attractions-museums.csv"],

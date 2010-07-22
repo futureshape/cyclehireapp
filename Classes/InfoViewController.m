@@ -57,6 +57,18 @@ static NSString *appFeedbackEmailTemplate =
 }
 
 - (void) appFeedback {
+	
+	if(![MFMailComposeViewController canSendMail]) {
+		UIAlertView *noMailAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No email available", nil) 
+																message:NSLocalizedString(@"Email hasn't been set up on your device. Please use your computer to email your feedback to feedback@cyclehireapp.com", nil)   
+															   delegate:nil 
+													  cancelButtonTitle:NSLocalizedString(@"OK", nil) 
+													  otherButtonTitles:nil];
+		[noMailAlert show];
+		[noMailAlert release];	
+		return;
+	}
+	
 	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
 	mailComposer.mailComposeDelegate = self;
 	

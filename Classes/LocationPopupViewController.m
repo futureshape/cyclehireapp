@@ -38,12 +38,15 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		[map from:@"cyclehire://location/favourite/" toObject:self selector:@selector(toggleFavourite)];
 		
 		locationTitleTableItem = [[TTTableStyledTextItem alloc] init];
+
+		bikesCapacityTableItem = [[TTTableImageItem alloc] init];
+		bikesCapacityTableItem.imageURL = @"bundle://bike-icon.png";
 		
-		bikesAvailableTableItem = [[TTTableImageItem alloc] init];
-		bikesAvailableTableItem.imageURL = @"bundle://bike-icon.png";
-		
-		spacesAvailableTableItem = [[TTTableImageItem alloc] init];
-		spacesAvailableTableItem.imageURL = @"bundle://bike-parking.png";	
+//		bikesAvailableTableItem = [[TTTableImageItem alloc] init];
+//		bikesAvailableTableItem.imageURL = @"bundle://bike-icon.png";
+//		
+//		spacesAvailableTableItem = [[TTTableImageItem alloc] init];
+//		spacesAvailableTableItem.imageURL = @"bundle://bike-parking.png";	
 		
 		directionsFromHereButton = [[TTTableButton alloc] init];
 		directionsFromHereButton.text = NSLocalizedString(@"Directions from here", nil);
@@ -54,20 +57,21 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		addRemoveFavouritesButton = [[TTTableButton alloc] init];
 		addRemoveFavouritesButton.URL = @"cyclehire://location/favourite/";
 		
-		reportProblemButton = [[TTTableButton alloc] init];
-		reportProblemButton.text = NSLocalizedString(@"Report a problem", nil);
-		reportProblemButton.URL = @"cyclehire://location/report/";
+//		reportProblemButton = [[TTTableButton alloc] init];
+//		reportProblemButton.text = NSLocalizedString(@"Report a problem", nil);
+//		reportProblemButton.URL = @"cyclehire://location/report/";
 		
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 						   @"",
 						   locationTitleTableItem,
-						   bikesAvailableTableItem,
-						   spacesAvailableTableItem,
+						   bikesCapacityTableItem,
+//						   bikesAvailableTableItem,
+//						   spacesAvailableTableItem,
 						   @"",
 						   directionsFromHereButton,
 						   directionsToHereButton,
 						   addRemoveFavouritesButton,
-						   reportProblemButton,
+//						   reportProblemButton,
 						   nil];
 	}		
 
@@ -82,10 +86,12 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 							   stringWithFormat:@"<span class=\"locationText\">%@ <span class=\"redText\">%@</span></span>",
 							   location.locationName, location.postcodeArea];
 	locationTitleTableItem.text = [TTStyledText textFromXHTML:locationXHTML];
-	
-	bikesAvailableTableItem.text = [location localizedBikesAvailableText];
 
-	spacesAvailableTableItem.text = [location localizedSpacesAvailableText];
+	bikesCapacityTableItem.text = [NSString stringWithFormat:@"%d docking points", location.capacity];
+	
+//	bikesAvailableTableItem.text = [location localizedBikesAvailableText];
+//
+//	spacesAvailableTableItem.text = [location localizedSpacesAvailableText];
 	
 	NSString *directionsFromURL = [NSString stringWithFormat:@"cyclehire://map/from/%f/%f", 
 								 location.coordinate.latitude, location.coordinate.longitude];
@@ -155,11 +161,15 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 	}	
 }
 
+- (void) didReceiveMemoryWarning { 
+	// TODO: allow release of table view & re-build later 
+}
+
 - (void) toggleFavourite {
 	currentCycleHireLocation.favourite = !currentCycleHireLocation.favourite;
 	
-	[self updateFavouritesButton];
-	[self.tableView reloadData];
+	// button isn't happy when it's updated from within the event handler
+	[self performSelectorOnMainThread:@selector(updateFavouritesButton) withObject:nil waitUntilDone:NO];
 }
 
 - (void)updateFavouritesButton {
@@ -167,6 +177,7 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 									   NSLocalizedString(@"Remove from favourites", nil) : 
 									   NSLocalizedString(@"Add to favourites", nil));
 	addRemoveFavouritesButton.text = favouritesButtonLabel;	
+	[self.tableView reloadData];
 }
 
 - (void)dealloc {

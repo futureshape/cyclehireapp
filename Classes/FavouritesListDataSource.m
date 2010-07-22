@@ -33,9 +33,11 @@
 
 -(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location {
 	NSString *title = [NSString stringWithFormat:@"%@, %@", location.locationName, location.postcodeArea];
-	NSString *subtitle = [NSString stringWithFormat:@"%@, %@", 
-						  [location localizedBikesAvailableText], 
-						  [location localizedSpacesAvailableText]];
+//	NSString *subtitle = [NSString stringWithFormat:@"%@, %@", 
+//						  [location localizedBikesAvailableText], 
+//						  [location localizedSpacesAvailableText]];
+
+	NSString *subtitle = [NSString stringWithFormat:@"%d docking points", location.capacity];
 	
 	// Need to replaces slashes in TfL reference with the url-encoded alternative
 	NSString *encodedLocationId = [location.locationId stringByReplacingOccurrencesOfString:@"/" withString:@"_"];

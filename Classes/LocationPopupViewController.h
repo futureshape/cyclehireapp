@@ -19,6 +19,7 @@
 	TTTableStyledTextItem *locationTitleTableItem; 
 	TTTableImageItem *bikesAvailableTableItem;
 	TTTableImageItem *spacesAvailableTableItem;
+	TTTableImageItem *bikesCapacityTableItem;
 
 	TTTableButton *directionsFromHereButton;
 	TTTableButton *directionsToHereButton;

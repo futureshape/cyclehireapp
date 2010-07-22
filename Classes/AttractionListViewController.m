@@ -38,12 +38,15 @@ static NSString *attractionsFeedbackEmailTemplate =
 									   [attractionRecord objectAtIndex:3]];
 			[titlesArray addObject:[TTTableTextItem itemWithText:attractionName URL:attractionURL]];
 		}
-		
+
 		TTListDataSource *attractionsDataSource = [TTListDataSource dataSourceWithItems:titlesArray];
-		[attractionsDataSource.items addObject:[TTTableSubtitleItem  
-													itemWithText:NSLocalizedString(@"Can't find what you're looking for?", nil) 
-														subtitle:NSLocalizedString(@"Tell us what else should be in this list", nil)
-														     URL:@"cyclehire://attractions/suggest/"]];
+		if([MFMailComposeViewController canSendMail]) {
+			[attractionsDataSource.items addObject:[TTTableSubtitleItem  
+														itemWithText:NSLocalizedString(@"Can't find what you're looking for?", nil) 
+															subtitle:NSLocalizedString(@"Tell us what else should be in this list", nil)
+																 URL:@"cyclehire://attractions/suggest/"]];
+		}
+		
 		self.dataSource = attractionsDataSource;
 		[parser release];
 		

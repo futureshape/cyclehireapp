@@ -50,6 +50,7 @@
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	if([defaults objectForKey:kLastLocationLatKey] == nil) {
+		NSLog(@"No saved coordinates, using default");
 		startLocation.latitude	= kDefaultStartLocationLat;
 		startLocation.longitude = kDefaultStartLocationLong;
 		startZoom = kDefaultStartZoom;
@@ -88,13 +89,17 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-	self.navigationController.navigationBarHidden = YES;
 	
 	if(firstAppearance) {
 		self.navigationItem.title = NSLocalizedString(@"Map", nil);
 		[self loadCycleHireLocations];
 		firstAppearance = NO;
 	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,6 +116,7 @@
 		UIImage *bikeMarkerImage = [UIImage imageNamed:(mapView.contents.zoom < 14.5 ? @"marker-blue-bike-small.png" : @"marker-blue-bike.png")]; 
 		RMMarker *locationMarker = [[RMMarker alloc] initWithUIImage:bikeMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
 		locationMarker.data = location;
+		locationMarker.zPosition = 100;
 		[[mapView markerManager] addMarker:locationMarker AtLatLong:location.coordinate];
 		[markersForLocations setObject:locationMarker forKey:location.locationId];
 		[locationMarker release];
@@ -219,7 +225,7 @@
 		
 	self.currentlyVisibleMarker = marker;
 
-	CGRect fullFrame = CGRectMake(12, 35, 304, 380);
+	CGRect fullFrame = CGRectMake(12, 35, 304, 270);
 	CGRect initialFrame = CGRectMake(marker.position.x, marker.position.y, 0, 0);
 	
 	popupView.frame = initialFrame;
@@ -244,19 +250,17 @@
 							 [TTSolidBorderStyle styleWithColor:[UIColor colorWithRed:0.76 green:0.77 blue:0.79 alpha:1.0] width:1.0 
 														   next:nil]]]];
 	
-	CGRect frame = CGRectMake(12, 35, 304, 380);
+	CGRect frame = CGRectMake(12, 35, 304, 270);	// TODO: duplicated in tapOnMarker
     popupView = [[TTView alloc] initWithFrame:frame];
     popupView.backgroundColor = [UIColor clearColor];
     popupView.style = popupStyle;
 	
 	locationPopupViewController = [[LocationPopupViewController alloc] init];
 	[locationPopupViewController viewWillAppear:NO];
-	locationPopupViewController.tableView.frame=CGRectMake(10, 10, 280, 350);
+	locationPopupViewController.tableView.frame=CGRectMake(10, 10, 280, 250);
 	locationPopupViewController.tableView.backgroundColor = [UIColor clearColor];
 	[popupView addSubview:locationPopupViewController.tableView];
 	[locationPopupViewController viewDidAppear:NO];	
-	[locationPopupViewController.tableView sizeToFit];
-	popupView.height = locationPopupViewController.tableView.height;
 	locationPopupViewController.tableView.hidden = YES;
 	
 	UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -299,6 +303,7 @@
 		newFrame.origin.y += 235;
 	} else {
 		newFrame.origin.y -= 235;
+		[self closeLocationPopup];
 	}
 	drawerViewVisible = !drawerViewVisible;
 	[self.mapView setNeedsDisplay];
@@ -510,6 +515,9 @@
 }
 
 - (void) saveAppState {
+	
+	NSLog(@"saveAppState");
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setDouble:[[mapView contents] mapCenter].latitude forKey:kLastLocationLatKey];
 	[defaults setDouble:[[mapView contents] mapCenter].longitude forKey:kLastLocationLongKey];
@@ -629,8 +637,9 @@
 	postcodeField.borderStyle =	UITextBorderStyleRoundedRect;
 	[postcodeField becomeFirstResponder];
 	[postcodeEntryAlert addSubview:postcodeField];
-	
-	[postcodeEntryAlert setTransform:CGAffineTransformMakeTranslation(0,109)];
+
+//	iOS3
+//	[postcodeEntryAlert setTransform:CGAffineTransformMakeTranslation(0,109)];
 	[postcodeEntryAlert show];
 	[postcodeEntryAlert release];
 	[postcodeField release];

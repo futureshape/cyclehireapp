@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <extThree20XML/extThree20XML.h>
 #import <Three20/Three20.h>
 
 #import "CycleStreetsRoute.h"
