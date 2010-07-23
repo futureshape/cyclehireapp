@@ -60,6 +60,7 @@
 		FAA1ECF51160B73200BC90E2 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA1ECF41160B73200BC90E2 /* MessageUI.framework */; };
 		FAB83B1111F7A37000DC289D /* favourites.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB83B1011F7A37000DC289D /* favourites.png */; };
 		FAB83B1411F7A45B00DC289D /* postcode.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB83B1311F7A45B00DC289D /* postcode.png */; };
+		FAB83BD011F8D04700DC289D /* cycle-hire-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB83BCF11F8D04700DC289D /* cycle-hire-icon@2x.png */; };
 		FAC7338D11D014E600FEE92C /* libextThree20XML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC7338A11D014D300FEE92C /* libextThree20XML.a */; };
 		FACEFCEC1174614F006AE272 /* CycleStreetsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEFCEB1174614F006AE272 /* CycleStreetsRoute.m */; };
 		FACEFEAB117685D6006AE272 /* red-x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACEFEAA117685D6006AE272 /* red-x.png */; };
@@ -241,7 +242,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* CycleHireAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHireAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* CycleHireAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleHireAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Cycle Hire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cycle Hire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* CycleHire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CycleHire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* CycleHire_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHire_Prefix.pch; sourceTree = "<group>"; };
@@ -311,6 +312,7 @@
 		FAA1EE1A1162A3E000BC90E2 /* Greek */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Greek; path = Greek.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAB83B1011F7A37000DC289D /* favourites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favourites.png; path = Resources/UIImages/favourites.png; sourceTree = "<group>"; };
 		FAB83B1311F7A45B00DC289D /* postcode.png */ = {isa = PBXFileReference; explicitFileType = image.png; name = postcode.png; path = Resources/UIImages/postcode.png; sourceTree = "<group>"; };
+		FAB83BCF11F8D04700DC289D /* cycle-hire-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cycle-hire-icon@2x.png"; sourceTree = "<group>"; };
 		FAC7337F11D014D200FEE92C /* extThree20XML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20XML.xcodeproj; path = ../three20/src/extThree20XML/extThree20XML.xcodeproj; sourceTree = SOURCE_ROOT; };
 		FACEFCEA1174614F006AE272 /* CycleStreetsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycleStreetsRoute.h; path = Classes/CycleStreetsRoute.h; sourceTree = "<group>"; };
 		FACEFCEB1174614F006AE272 /* CycleStreetsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CycleStreetsRoute.m; path = Classes/CycleStreetsRoute.m; sourceTree = "<group>"; };
@@ -382,7 +384,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Cycle Hire.app */,
+				1D6058910D05DD3D006BFB54 /* CycleHire.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -439,6 +441,7 @@
 				FA7EE222115374CD0003861D /* Location & Map Data */,
 				FA457DBB11522593007B42A8 /* Default.png */,
 				FAD99D0D11518B07007C66DC /* cycle-hire-icon.png */,
+				FAB83BCF11F8D04700DC289D /* cycle-hire-icon@2x.png */,
 				28AD735F0D9D9599002E5188 /* Xibs */,
 				8D1107310486CEB800E47090 /* CycleHire-Info.plist */,
 				FA457C62115192D5007B42A8 /* Localizable.strings */,
@@ -746,7 +749,7 @@
 			);
 			name = CycleHire;
 			productName = CycleHire;
-			productReference = 1D6058910D05DD3D006BFB54 /* Cycle Hire.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* CycleHire.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -990,6 +993,7 @@
 				FA928FB31197FFB900762888 /* tfl-cyclehire-logo.png in Resources */,
 				FAB83B1111F7A37000DC289D /* favourites.png in Resources */,
 				FAB83B1411F7A45B00DC289D /* postcode.png in Resources */,
+				FAB83BD011F8D04700DC289D /* cycle-hire-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1079,7 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "CycleHire-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1101,6 +1106,7 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "CycleHire-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1150,6 +1156,55 @@
 			};
 			name = Release;
 		};
+		FAB83BF411F8D87500DC289D /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../three20/Build/Products/three20,
+					"../route-me-read-only/MapView/Map",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.0;
+				VALID_ARCHS = armv6;
+			};
+			name = Distribution;
+		};
+		FAB83BF511F8D87500DC289D /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = armv6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../route-me-read-only/MapView\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CycleHire_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"../route-me-read-only/MapView/Map/**",
+					../three20/Build/Products/three20,
+				);
+				INFOPLIST_FILE = "CycleHire-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = CycleHire;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				VALID_ARCHS = armv6;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1158,6 +1213,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				FAB83BF511F8D87500DC289D /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1167,6 +1223,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				FAB83BF411F8D87500DC289D /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
