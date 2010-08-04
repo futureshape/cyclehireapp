@@ -41,7 +41,6 @@
 		FA928F881197F93700762888 /* osm-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928F871197F93700762888 /* osm-logo.png */; };
 		FA928F981197FB2100762888 /* cyclestreets-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928F971197FB2100762888 /* cyclestreets-logo.png */; };
 		FA928FAD1197FDC000762888 /* cyclehireapp-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */; };
-		FA928FB31197FFB900762888 /* tfl-cyclehire-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */; };
 		FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */; };
 		FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */; };
 		FAA1EB17115E73AB00BC90E2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EB16115E73AB00BC90E2 /* Three20.bundle */; };
@@ -290,7 +289,6 @@
 		FA928F871197F93700762888 /* osm-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "osm-logo.png"; path = "Resources/UIImages/osm-logo.png"; sourceTree = "<group>"; };
 		FA928F971197FB2100762888 /* cyclestreets-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cyclestreets-logo.png"; path = "Resources/UIImages/cyclestreets-logo.png"; sourceTree = "<group>"; };
 		FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cyclehireapp-logo.png"; path = "Resources/UIImages/cyclehireapp-logo.png"; sourceTree = "<group>"; };
-		FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tfl-cyclehire-logo.png"; path = "Resources/UIImages/tfl-cyclehire-logo.png"; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
@@ -556,7 +554,6 @@
 			children = (
 				FAB83B1311F7A45B00DC289D /* postcode.png */,
 				FAB83B1011F7A37000DC289D /* favourites.png */,
-				FA928FB21197FFB900762888 /* tfl-cyclehire-logo.png */,
 				FA928FAC1197FDC000762888 /* cyclehireapp-logo.png */,
 				FA928F971197FB2100762888 /* cyclestreets-logo.png */,
 				FA928F871197F93700762888 /* osm-logo.png */,
@@ -990,7 +987,6 @@
 				FA928F881197F93700762888 /* osm-logo.png in Resources */,
 				FA928F981197FB2100762888 /* cyclestreets-logo.png in Resources */,
 				FA928FAD1197FDC000762888 /* cyclehireapp-logo.png in Resources */,
-				FA928FB31197FFB900762888 /* tfl-cyclehire-logo.png in Resources */,
 				FAB83B1111F7A37000DC289D /* favourites.png in Resources */,
 				FAB83B1411F7A45B00DC289D /* postcode.png in Resources */,
 				FAB83BD011F8D04700DC289D /* cycle-hire-icon@2x.png in Resources */,
@@ -1172,6 +1168,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
+				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = armv6;
 			};
 			name = Distribution;

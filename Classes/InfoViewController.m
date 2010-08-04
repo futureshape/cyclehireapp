@@ -33,16 +33,16 @@ static NSString *appFeedbackEmailTemplate =
 													subtitle:nil
 													imageURL:@"bundle://cyclestreets-logo.png" 
 														 URL:@"http://www.cyclestreets.net"],
-						   [TTTableTextItem itemWithText:NSLocalizedString(@"More ...", nil) URL:@"bundle://acknowledgements.html"],
+						   [TTTableTextItem itemWithText:NSLocalizedString(@"More ...", nil) URL:@"http://cyclehireapp.com/acknowledgements.html"],
 						   NSLocalizedString(@"Links", nil),
 						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Cycle Hire App website", nil) 
 													subtitle:nil
-													imageURL:@"bundle://cyclehireapp-logo.png"  
+//													imageURL:@"bundle://cyclehireapp-logo.png"  
 														 URL:@"http://cyclehireapp.com/"],
-						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"TfL Cycle Hire website", nil)
-													subtitle:NSLocalizedString(@"Official Cycle Hire scheme website", nil)
-													imageURL:@"bundle://tfl-cyclehire-logo.png"  
-														 URL:@"http://www.tfl.gov.uk/cyclehire"],
+//						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"TfL Cycle Hire website", nil)
+//													subtitle:NSLocalizedString(@"Official Cycle Hire scheme website", nil)
+//													imageURL:@"bundle://tfl-cyclehire-logo.png"  
+//														 URL:@"http://www.tfl.gov.uk/cyclehire"],
 						   @"",
 						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
 												   URL:@"cyclehire://information/feedback"],
@@ -54,6 +54,21 @@ static NSString *appFeedbackEmailTemplate =
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.navigationController.navigationBarHidden = NO;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(didBecomeActive:) 
+												 name:UIApplicationDidBecomeActiveNotification
+											   object:nil];
+	
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) didBecomeActive: (NSNotification *)notification {
+	[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
 }
 
 - (void) appFeedback {

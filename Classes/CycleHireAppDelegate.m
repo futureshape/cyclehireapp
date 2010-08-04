@@ -31,7 +31,8 @@
 	navigator.persistenceMode = TTNavigatorPersistenceModeNone;
 	
 	TTURLMap* map = navigator.URLMap;
-	[map from:@"*" toViewController:[InfoWebViewController class]];
+	
+	[[TTNavigator navigator] setOpensExternalURLs:YES];
 
 	[map from:@"cyclehire://attractions/category/(initWithTitle:)/(attractionsCSV:)" toSharedViewController:([AttractionListViewController class])];
 	[map from:@"cyclehire://attractions/" toSharedViewController:([AttractionCategoryViewController class])];
