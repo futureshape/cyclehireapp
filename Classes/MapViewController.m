@@ -850,8 +850,28 @@
 	
 	NSString *minutesLocalized = NSLocalizedString(@"minutes", nil);
 	
-	self.directionsLabel.text = [NSString stringWithFormat:@"%.2f %@ - %d %@", 
-								 distanceValue, distanceUnits, timeInMinutesRounded, minutesLocalized];
+	NSString *routeCost = @"";
+	
+	if(timeInMinutesRounded <= 30) {
+		routeCost = NSLocalizedString(@" - Free", nil);
+	} else if(timeInMinutesRounded <= 60) {
+		routeCost = @" - £1";
+	} else if (timeInMinutesRounded <= 90) {
+		routeCost = @" - £4"; 
+	} else if (timeInMinutesRounded <= 120) {
+		routeCost = @" - £6"; 
+	} else if (timeInMinutesRounded <= 150) {
+		routeCost = @" - £10"; 
+	} else if (timeInMinutesRounded <= 4 * 60) {
+		routeCost = @" - £15"; 
+	} else if (timeInMinutesRounded <= 6 * 60) {
+		routeCost = @" - £35"; 
+	} else if (timeInMinutesRounded <= 24 * 60) {
+		routeCost = @" - £50"; 
+	}
+	
+	self.directionsLabel.text = [NSString stringWithFormat:@"%.2f %@ - %d %@%@", 
+								 distanceValue, distanceUnits, timeInMinutesRounded, minutesLocalized, routeCost];
 	[self setDirectionsState:kDirectionsVisible];
 }
 
