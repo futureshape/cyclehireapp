@@ -13,7 +13,7 @@
 // TODO: support for different route types - balanced|fastest|quietest|shortest
 static NSString *APItemplate = @"http://www.cyclestreets.net/api/journey.xml?key=%@"\
 								"&start_latitude=%f&start_longitude=%f"\
-								"&finish_latitude=%f&finish_longitude=%f&plan=balanced";
+								"&finish_latitude=%f&finish_longitude=%f&segments=0&plan=balanced";
 
 @synthesize APIkey;
 @synthesize delegate;
@@ -61,12 +61,11 @@ static NSString *APItemplate = @"http://www.cyclestreets.net/api/journey.xml?key
 	
 	if(parseOK) {
 		NSDictionary *xmlRoot = parser.rootObject;
-		
-		NSLog([xmlRoot description]);
-		
-		NSString *coordinatesAsString = [[[xmlRoot objectForKey:@"marker"] objectAtIndex:0] objectForKey:@"coordinates"];
-		NSString *distanceString = [[[xmlRoot objectForKey:@"marker"] objectAtIndex:0] objectForKey:@"length"];
-		NSString *timeString = [[[xmlRoot objectForKey:@"marker"] objectAtIndex:0] objectForKey:@"time"];
+
+		NSString *coordinatesAsString = [[xmlRoot objectForKey:@"marker"]  objectForKey:@"coordinates"];	
+	
+		NSString *distanceString = [[xmlRoot objectForKey:@"marker"] objectForKey:@"length"];
+		NSString *timeString = [[xmlRoot objectForKey:@"marker"] objectForKey:@"time"];
 		
 		//TODO: detect error message in response
 		// <markers><marker type="error" id="1" code="" description="" /></markers>
