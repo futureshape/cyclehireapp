@@ -140,6 +140,10 @@
 		[self setLocationState:kLocationVisible];
 	}
 	
+	if (drawerViewVisible) {
+		[self toggleDrawerView];
+	}
+	
 	// Stops the map view from being dragged outside the area covered by the preloaded map
 	
 	CLLocationCoordinate2D viewTopLeft = [map.contents pixelToLatLong:CGPointZero];
