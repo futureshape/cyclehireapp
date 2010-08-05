@@ -372,6 +372,11 @@
 	}		
 }
 
+- (void) returnToMapAndFindMe {
+	[self.navigationController popToRootViewControllerAnimated:YES];
+	[self findMe];
+}
+
 - (IBAction) cancelFindMe {
 	[locationManager stopUpdatingLocation];
 	
@@ -923,19 +928,68 @@
 		[self toggleDrawerView];
 	}
 	
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Remind me to return the bike in:", nil) 
-															 delegate:nil 
-													cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
-											   destructiveButtonTitle:nil 
-													otherButtonTitles:NSLocalizedString(@"25 minutes", nil),
-								  NSLocalizedString(@"55 minutes", nil), 
-								  NSLocalizedString(@"1 hour 25 minutes", nil), nil];
-	[actionSheet showInView:mapView];	
+	NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+	
+	if ([localNotifications count] == 0) {
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Remind me to return the bike in:", nil) 
+																 delegate:self 
+														cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+												   destructiveButtonTitle:nil 
+														otherButtonTitles:NSLocalizedString(@"25 minutes", nil),
+									  NSLocalizedString(@"55 minutes", nil), 
+									  NSLocalizedString(@"1 hour 25 minutes", nil), nil];
+		[actionSheet showInView:mapView];
+		[actionSheet release];
+	} else {
+		UILocalNotification *timerNotification = [localNotifications objectAtIndex:0];
+		
+		NSDateComponents *remainingTime = 
+			[[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit 
+											fromDate:[NSDate date] 
+											  toDate:timerNotification.fireDate 
+											 options:0];
+		NSString *timerStatus = 
+			[NSString stringWithFormat:@"You'll be reminded to return the bike in %@%d minutes", 
+			 ([remainingTime hour] > 0 ? @"1 hour and " : @""), [remainingTime minute]];		
+		
+		
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:timerStatus 
+																 delegate:self
+														cancelButtonTitle:NSLocalizedString(@"Close", nil) 
+												   destructiveButtonTitle:NSLocalizedString(@"Cancel reminder", nil) 
+														otherButtonTitles:nil];
+		[actionSheet showInView:mapView];
+		[actionSheet release];
+	}
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == actionSheet.cancelButtonIndex) return;
 	
+	if (buttonIndex == actionSheet.destructiveButtonIndex) {
+		[[UIApplication sharedApplication] cancelAllLocalNotifications];
+		return;
+	}
+	
+	NSUInteger reminderIntervalInMinutes;
+	if (buttonIndex == actionSheet.firstOtherButtonIndex) {
+		reminderIntervalInMinutes = 25;
+	} else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
+		reminderIntervalInMinutes = 55;
+	} else if (buttonIndex == actionSheet.firstOtherButtonIndex + 2){
+		reminderIntervalInMinutes = 60 + 25;
+	}
+	
+	NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow: reminderIntervalInMinutes * 60];
+	
+	UILocalNotification *timerNotification = [[UILocalNotification alloc] init];
+	timerNotification.fireDate = fireDate;
+	timerNotification.alertBody = @"Time to head towards a docking station!";
+	timerNotification.alertAction = @"Find stations";
+	timerNotification.soundName = UILocalNotificationDefaultSoundName;
+	
+	[[UIApplication sharedApplication] scheduleLocalNotification:timerNotification];
+	[timerNotification release];
 }
 
 #pragma mark -

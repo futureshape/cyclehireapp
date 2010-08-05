@@ -23,7 +23,7 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
 	[TTStyleSheet setGlobalStyleSheet:[[[GlobalStyleSheet alloc] init] autorelease]];
 
@@ -43,8 +43,14 @@
 
 	[map from:@"cyclehire://information/" toSharedViewController:([InfoViewController class])];
 
-	
 	[navigator openURLAction:[TTURLAction actionWithURLPath:@"cyclehire://map/"]];
+	
+	if([launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil) {
+		[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"]
+			performSelectorOnMainThread:@selector(findMe) withObject:nil waitUntilDone:FALSE];
+	}
+	
+	return TRUE;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -55,5 +61,28 @@
 	[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] saveAppState];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+	NSLog(@"didReceiveLocalNotification");
+	if (application.applicationState == UIApplicationStateInactive) {
+		[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] returnToMapAndFindMe];
+	} else if (application.applicationState == UIApplicationStateActive) {
+		UIAlertView *simulateLocalNotification = 
+		[[UIAlertView alloc] initWithTitle:@"Reminder" 
+								   message:notification.alertBody
+								  delegate:self 
+						 cancelButtonTitle:@"Close" 
+						 otherButtonTitles:notification.alertAction, nil];
+		[simulateLocalNotification show];
+		[simulateLocalNotification release];
+	}
+	
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == alertView.firstOtherButtonIndex) {
+		[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] returnToMapAndFindMe];
+	}
+}
+	
 @end
 
