@@ -304,9 +304,9 @@
 	
 	CGRect newFrame = [self.drawerView frame];
 	if(drawerViewVisible) {
-		newFrame.origin.y += 235;
+		newFrame.origin.y += 230;
 	} else {
-		newFrame.origin.y -= 235;
+		newFrame.origin.y -= 230;
 		[self closeLocationPopup];
 	}
 	drawerViewVisible = !drawerViewVisible;
