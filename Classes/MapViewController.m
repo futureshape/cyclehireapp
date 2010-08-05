@@ -830,7 +830,10 @@
 	if (mapView.contents.zoom > mapView.contents.maxZoom) {
 		// zoomWithLatLngBoundsNorthEast seems to ignore maximum zoom
 		[self zoomAndUpdate:mapView.contents.maxZoom];
+	} else {
+		[self zoomAndUpdate:mapView.contents.zoom];
 	}
+
 	NSLog(@"Zoom after2:%f", mapView.contents.zoom);
 
 	[mapView.contents zoomWithRMMercatorRectBounds:mapView.contents.projectedBounds]; // this causes the map to redisplay!
