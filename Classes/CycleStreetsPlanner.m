@@ -13,7 +13,7 @@
 // TODO: support for different route types - balanced|fastest|quietest|shortest
 static NSString *APItemplate = @"http://www.cyclestreets.net/api/journey.xml?key=%@"\
 								"&start_latitude=%f&start_longitude=%f"\
-								"&finish_latitude=%f&finish_longitude=%f&segments=0&plan=balanced";
+								"&finish_latitude=%f&finish_longitude=%f&segments=0&plan=%@";
 
 @synthesize APIkey;
 @synthesize delegate;
@@ -28,9 +28,15 @@ static NSString *APItemplate = @"http://www.cyclestreets.net/api/journey.xml?key
 }
 
 - (void) requestDirectionsFrom:(CLLocationCoordinate2D)startCoordinate to:(CLLocationCoordinate2D)finishCoordinate {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *routeType = [defaults objectForKey:@"route_type"];
+	if(routeType == nil) {
+		routeType = @"balanced";
+	}
+	
 	NSString *APIcall = [NSString stringWithFormat:APItemplate, APIkey,
 						 startCoordinate.latitude, startCoordinate.longitude,
-						 finishCoordinate.latitude, finishCoordinate.longitude];
+						 finishCoordinate.latitude, finishCoordinate.longitude, routeType];
 
 	NSLog(@"Sending request to %@", APIcall);
 	

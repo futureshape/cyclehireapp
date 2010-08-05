@@ -19,6 +19,7 @@
 		FA04C2CC1167AEC3003126BD /* bike-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C2CB1167AEC3003126BD /* bike-icon.png */; };
 		FA04C31C1167D0AD003126BD /* bike-parking.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C31B1167D0AD003126BD /* bike-parking.png */; };
 		FA22A6D11188A74300FBF741 /* FavouritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */; };
+		FA2884F0120B4FC000B8AE5D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA2884EF120B4FC000B8AE5D /* Settings.bundle */; };
 		FA3077621188DAD000E6D336 /* FavouritesListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */; };
 		FA457C63115192D5007B42A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA457C62115192D5007B42A8 /* Localizable.strings */; };
 		FA457DBC11522593007B42A8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA457DBB11522593007B42A8 /* Default.png */; };
@@ -257,6 +258,7 @@
 		FA04C31B1167D0AD003126BD /* bike-parking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-parking.png"; path = "Resources/UIImages/bike-parking.png"; sourceTree = "<group>"; };
 		FA22A6CF1188A74300FBF741 /* FavouritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListViewController.h; path = Classes/FavouritesListViewController.h; sourceTree = "<group>"; };
 		FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListViewController.m; path = Classes/FavouritesListViewController.m; sourceTree = "<group>"; };
+		FA2884EF120B4FC000B8AE5D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FA3077601188DAD000E6D336 /* FavouritesListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListDataSource.h; path = Classes/FavouritesListDataSource.h; sourceTree = "<group>"; };
 		FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListDataSource.m; path = Classes/FavouritesListDataSource.m; sourceTree = "<group>"; };
 		FA457C5F115192BA007B42A8 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				FA6D81E51192BFC5005A3629 /* Information Views */,
 				FA8F52261152E996003966EE /* Helpers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				FA2884EF120B4FC000B8AE5D /* Settings.bundle */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				FAA1EB16115E73AB00BC90E2 /* Three20.bundle */,
 				FAD99CCF115187DC007C66DC /* MapView.xcodeproj */,
@@ -990,6 +993,7 @@
 				FAB83B1111F7A37000DC289D /* favourites.png in Resources */,
 				FAB83B1411F7A45B00DC289D /* postcode.png in Resources */,
 				FAB83BD011F8D04700DC289D /* cycle-hire-icon@2x.png in Resources */,
+				FA2884F0120B4FC000B8AE5D /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
