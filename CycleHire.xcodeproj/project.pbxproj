@@ -15,7 +15,6 @@
 		28AD73600D9D9599002E5188 /* Xibs in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* Xibs */; };
 		28C286E10D94DF7D0034E888 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* MapViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
-		FA04C2891167A307003126BD /* GlobalStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA04C2881167A307003126BD /* GlobalStyleSheet.m */; };
 		FA04C2CC1167AEC3003126BD /* bike-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C2CB1167AEC3003126BD /* bike-icon.png */; };
 		FA04C31C1167D0AD003126BD /* bike-parking.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C31B1167D0AD003126BD /* bike-parking.png */; };
 		FA22A6D11188A74300FBF741 /* FavouritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */; };
@@ -252,8 +251,6 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; explicitFileType = file.xib; name = RootViewController.xib; path = Xibs/RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CycleHire-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CycleHire-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		FA04C2871167A307003126BD /* GlobalStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalStyleSheet.h; path = Classes/GlobalStyleSheet.h; sourceTree = "<group>"; };
-		FA04C2881167A307003126BD /* GlobalStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalStyleSheet.m; path = Classes/GlobalStyleSheet.m; sourceTree = "<group>"; };
 		FA04C2CB1167AEC3003126BD /* bike-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-icon.png"; path = "Resources/UIImages/bike-icon.png"; sourceTree = "<group>"; };
 		FA04C31B1167D0AD003126BD /* bike-parking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-parking.png"; path = "Resources/UIImages/bike-parking.png"; sourceTree = "<group>"; };
 		FA22A6CF1188A74300FBF741 /* FavouritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListViewController.h; path = Classes/FavouritesListViewController.h; sourceTree = "<group>"; };
@@ -611,8 +608,6 @@
 			children = (
 				FA6D7FF11190C0CF005A3629 /* RegexKitLite */,
 				FA8F51D11152DB50003966EE /* CSV Parser */,
-				FA04C2871167A307003126BD /* GlobalStyleSheet.h */,
-				FA04C2881167A307003126BD /* GlobalStyleSheet.m */,
 				FACEFEE011779821006AE272 /* CoreLocationAdditions.h */,
 				FACEFEE111779821006AE272 /* CoreLocationAdditions.m */,
 			);
@@ -1011,7 +1006,6 @@
 				FA8F51C51152DB41003966EE /* parseCSV.m in Sources */,
 				FAA1EB28115E757C00BC90E2 /* AttractionCategoryViewController.m in Sources */,
 				FAA1EBA31160071300BC90E2 /* AttractionListViewController.m in Sources */,
-				FA04C2891167A307003126BD /* GlobalStyleSheet.m in Sources */,
 				FA578181116B2B5B00A26504 /* LocationPopupViewController.m in Sources */,
 				FA578479116F192800A26504 /* CycleHireLocation.m in Sources */,
 				FAE1D16811730CE20051D828 /* CycleStreetsPlanner.m in Sources */,

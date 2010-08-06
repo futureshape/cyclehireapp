@@ -12,7 +12,6 @@
 #import "AttractionCategoryViewController.h"
 #import "LocationPopupViewController.h"
 #import "FavouritesListViewController.h"
-#import "GlobalStyleSheet.h"
 #import "InfoViewController.h"
 #import "InfoWebViewController.h"
 
@@ -25,8 +24,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
-	[TTStyleSheet setGlobalStyleSheet:[[[GlobalStyleSheet alloc] init] autorelease]];
-
 	TTNavigator* navigator = [TTNavigator navigator];
 	navigator.persistenceMode = TTNavigatorPersistenceModeNone;
 	

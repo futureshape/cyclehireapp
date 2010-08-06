@@ -16,7 +16,7 @@
 @interface LocationPopupViewController : TTTableViewController  <UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 	CycleHireLocation *currentCycleHireLocation;
 
-	TTTableStyledTextItem *locationTitleTableItem; 
+	TTTableSubtitleItem *locationTitleTableItem;
 	TTTableImageItem *bikesAvailableTableItem;
 	TTTableImageItem *spacesAvailableTableItem;
 	TTTableImageItem *bikesCapacityTableItem;

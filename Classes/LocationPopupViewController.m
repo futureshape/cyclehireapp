@@ -37,7 +37,8 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		[map from:@"cyclehire://map/to/(directionsToLat:)/(Long:)" toObject:[map objectForURL:@"cyclehire://map/"]];	
 		[map from:@"cyclehire://location/favourite/" toObject:self selector:@selector(toggleFavourite)];
 		
-		locationTitleTableItem = [[TTTableStyledTextItem alloc] init];
+//		locationTitleTableItem = [[TTTableStyledTextItem alloc] init];
+		locationTitleTableItem = [[TTTableSubtitleItem alloc] init];
 
 		bikesCapacityTableItem = [[TTTableImageItem alloc] init];
 		bikesCapacityTableItem.imageURL = @"bundle://bike-icon.png";
@@ -82,11 +83,9 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 	
 	currentCycleHireLocation = location;
 	
-	NSString *locationXHTML = [NSString 
-							   stringWithFormat:@"<span class=\"locationText\">%@ <span class=\"redText\">%@</span></span>",
-							   location.locationName, location.postcodeArea];
-	locationTitleTableItem.text = [TTStyledText textFromXHTML:locationXHTML];
-
+	locationTitleTableItem.text = location.locationName;
+	locationTitleTableItem.subtitle = location.postcodeArea;
+	
 	bikesCapacityTableItem.text = [NSString stringWithFormat:@"%d docking points", location.capacity];
 	
 //	bikesAvailableTableItem.text = [location localizedBikesAvailableText];

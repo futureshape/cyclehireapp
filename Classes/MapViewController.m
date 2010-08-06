@@ -229,7 +229,7 @@
 		
 	self.currentlyVisibleMarker = marker;
 
-	CGRect fullFrame = CGRectMake(12, 35, 304, 270);
+	CGRect fullFrame = CGRectMake(12, 35, 304, 300);
 	CGRect initialFrame = CGRectMake(marker.position.x, marker.position.y, 0, 0);
 	
 	popupView.frame = initialFrame;
@@ -254,14 +254,14 @@
 							 [TTSolidBorderStyle styleWithColor:[UIColor colorWithRed:0.76 green:0.77 blue:0.79 alpha:1.0] width:1.0 
 														   next:nil]]]];
 	
-	CGRect frame = CGRectMake(12, 35, 304, 270);	// TODO: duplicated in tapOnMarker
+	CGRect frame = CGRectMake(12, 35, 304, 300);	// TODO: duplicated in tapOnMarker
     popupView = [[TTView alloc] initWithFrame:frame];
     popupView.backgroundColor = [UIColor clearColor];
     popupView.style = popupStyle;
 	
 	locationPopupViewController = [[LocationPopupViewController alloc] init];
 	[locationPopupViewController viewWillAppear:NO];
-	locationPopupViewController.tableView.frame=CGRectMake(10, 10, 280, 250);
+	locationPopupViewController.tableView.frame=CGRectMake(10, 10, 280, 270);
 	locationPopupViewController.tableView.backgroundColor = [UIColor clearColor];
 	[popupView addSubview:locationPopupViewController.tableView];
 	[locationPopupViewController viewDidAppear:NO];	
