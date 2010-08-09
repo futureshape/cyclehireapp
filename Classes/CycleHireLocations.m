@@ -11,18 +11,38 @@
 
 @implementation CycleHireLocations
 
+@synthesize lastUpdatedTimestamp;
+
 -(id) init {
 	if(self = [super init]) {
+		
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0]; 
 		
 		// Load all locations
 		
 		locationsDictionary = [[NSMutableDictionary alloc] init];
-		
 		CSVParser *parser = [CSVParser new];
-		NSString *csvPath = [[NSBundle mainBundle] pathForResource:@"cyclehire" ofType:@"csv"]; 
-		[parser openFile: csvPath];
-		NSArray *hireLocations = [parser parseFile];
+		
+		csvDocPath = [[documentsDirectory stringByAppendingPathComponent:CYCLEHIRE_LOCATIONS_FILE] retain];
+		NSString *csvBundlePath = [[NSBundle mainBundle] pathForResource:@"cyclehire" ofType:@"csv"];
+		
+		if ([[NSFileManager defaultManager] fileExistsAtPath:csvDocPath]) {
+			[parser openFile: csvDocPath];
+		} else {
+			NSLog(@"CycleHireLocations: no list saved in documents, opening from bundle");
+			[parser openFile: csvBundlePath];
+		}
+		
+		[parser setDelimiter:','];
+		NSMutableArray *hireLocations = [parser parseFile];
 		[parser closeFile];
+		
+		NSString *timeStampString = [[hireLocations objectAtIndex:0] objectAtIndex:0]; 
+		NSDate *newTimeStamp = [self timeStampDateFromString:timeStampString];
+		self.lastUpdatedTimestamp = newTimeStamp;
+		NSLog(@"Loaded initial data with timestamp: %@", lastUpdatedTimestamp);
+		[hireLocations removeObjectAtIndex:0]; // Remove first line comment
 		
 		for (NSArray *hireLocationRecord in hireLocations) {
 			CycleHireLocation *location = [[CycleHireLocation alloc] initWithAttributesArray:hireLocationRecord];
@@ -34,9 +54,6 @@
 		NSLog(@"Loaded %d cycle hire locations", [locationsDictionary count]);
 		
 		// Load favourites
-		
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0]; 
 		favouritesPath = [[NSString stringWithFormat:@"%@/%@", documentsDirectory, FAVOURITES_FILE] retain];
 		
 		NSArray *favouriteLocationIDs = [NSMutableArray arrayWithContentsOfFile:favouritesPath];
@@ -89,11 +106,87 @@
 	}
 }
 
+- (void) startUpdateFromServer {
+	if(updateRequest != nil) {
+		[updateRequest cancel];
+		[updateRequest release];
+	}
+	
+	updateRequest = [[TTURLRequest alloc] initWithURL:LIVE_DATA_URL delegate:self];
+	updateRequest.cachePolicy = TTURLRequestCachePolicyNone;
+	updateRequest.response = [[[TTURLDataResponse alloc] init] autorelease];
+	updateRequest.httpMethod = @"GET";
+	[updateRequest send];
+}
+
+- (void)requestDidFinishLoad:(TTURLRequest*)_request {
+	TTURLDataResponse *response = _request.response;
+	
+	NSString *responseString = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
+	[responseString writeToFile:csvDocPath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+
+	CSVParser *parser = [CSVParser new];
+	[parser openFile:csvDocPath];
+	[parser setDelimiter:','];
+	NSMutableArray *hireLocations = [parser parseFile];
+	[parser closeFile];
+	
+	NSString *timeStampString = [[hireLocations objectAtIndex:0] objectAtIndex:0]; 
+	NSDate *newTimeStamp = [self timeStampDateFromString:timeStampString];
+	
+	if (newTimeStamp == nil) return;
+
+	self.lastUpdatedTimestamp = newTimeStamp;
+	NSLog(@"Downloaded live data with timestamp: %@", lastUpdatedTimestamp);
+	
+	[hireLocations removeObjectAtIndex:0]; // Remove timestamp from data (1st line)
+
+	for (NSArray *hireLocationRecord in hireLocations) {
+		CycleHireLocation *locationToUpdate = [self locationWithId:[hireLocationRecord objectAtIndex:0]];
+		
+		NSUInteger newBikes = [(NSString *)[hireLocationRecord objectAtIndex:5] integerValue];
+		NSUInteger newSpaces = [(NSString *)[hireLocationRecord objectAtIndex:6] integerValue];
+		
+		// TEST: by assigning random values below
+		locationToUpdate.bikesAvailable = newBikes;
+		locationToUpdate.spacesAvailable = newSpaces;
+//		locationToUpdate.bikesAvailable = rand() % 10;
+//		locationToUpdate.spacesAvailable = rand() % 10;
+	}
+	
+	[parser release];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:LIVE_DATA_UPDATED_NOTIFICATION object:self];
+}
+
+- (void)request:(TTURLRequest*)_request didFailLoadWithError:(NSError*)error {
+	if (![self freshDataAvailable]) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:LIVE_DATA_TOO_OLD_NOTIFICATION object:self];
+	}
+}
+
+- (BOOL) freshDataAvailable {
+	NSTimeInterval dataAge = -[self.lastUpdatedTimestamp timeIntervalSinceNow];
+	
+	return !(dataAge > LIVE_DATA_MAX_AGE);
+}
+
+- (NSDate *) timeStampDateFromString: (NSString *) timeStampString {
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	[df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+	[df setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	[df setLenient:YES];
+	NSDate *timeStamp = [df dateFromString: timeStampString];
+	[df release];
+	return timeStamp;
+}
+
 - (void) dealloc {
 	[super dealloc];
 	[favouriteLocations release];
 	[locationsDictionary release];
 	[favouritesPath release];
+	[csvDocPath release];
 }
 
 @end

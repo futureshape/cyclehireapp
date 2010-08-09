@@ -37,17 +37,16 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		[map from:@"cyclehire://map/to/(directionsToLat:)/(Long:)" toObject:[map objectForURL:@"cyclehire://map/"]];	
 		[map from:@"cyclehire://location/favourite/" toObject:self selector:@selector(toggleFavourite)];
 		
-//		locationTitleTableItem = [[TTTableStyledTextItem alloc] init];
 		locationTitleTableItem = [[TTTableSubtitleItem alloc] init];
 
-		bikesCapacityTableItem = [[TTTableImageItem alloc] init];
-		bikesCapacityTableItem.imageURL = @"bundle://bike-icon.png";
+//		bikesCapacityTableItem = [[TTTableImageItem alloc] init];
+//		bikesCapacityTableItem.imageURL = @"bundle://bike-icon.png";
 		
-//		bikesAvailableTableItem = [[TTTableImageItem alloc] init];
-//		bikesAvailableTableItem.imageURL = @"bundle://bike-icon.png";
-//		
-//		spacesAvailableTableItem = [[TTTableImageItem alloc] init];
-//		spacesAvailableTableItem.imageURL = @"bundle://bike-parking.png";	
+		bikesAvailableTableItem = [[TTTableImageItem alloc] init];
+		bikesAvailableTableItem.imageURL = @"bundle://bike-icon.png";
+		
+		spacesAvailableTableItem = [[TTTableImageItem alloc] init];
+		spacesAvailableTableItem.imageURL = @"bundle://bike-parking.png";	
 		
 		directionsFromHereButton = [[TTTableButton alloc] init];
 		directionsFromHereButton.text = NSLocalizedString(@"Directions from here", nil);
@@ -65,32 +64,54 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 						   @"",
 						   locationTitleTableItem,
-						   bikesCapacityTableItem,
-//						   bikesAvailableTableItem,
-//						   spacesAvailableTableItem,
+//						   bikesCapacityTableItem,
+						   bikesAvailableTableItem,
+						   spacesAvailableTableItem,
 						   @"",
 						   directionsFromHereButton,
 						   directionsToHereButton,
 						   addRemoveFavouritesButton,
 //						   reportProblemButton,
 						   nil];
-	}		
-
+	}
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(refreshWithLiveData) 
+												 name:LIVE_DATA_UPDATED_NOTIFICATION 
+											   object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(liveDataTooOld) 
+												 name:LIVE_DATA_TOO_OLD_NOTIFICATION 
+											   object:nil];
 	return self;
 }
 
-- (void)updateForLocation:(CycleHireLocation *)location {
+- (void) refreshWithLiveData {
+	[self updateForLocation:currentCycleHireLocation withFreshData:YES];
+}
+
+- (void) liveDataTooOld {
+	[self updateForLocation:currentCycleHireLocation withFreshData:NO];
+}
+
+- (void)updateForLocation:(CycleHireLocation *)location withFreshData:(BOOL)freshData {
 	
 	currentCycleHireLocation = location;
 	
 	locationTitleTableItem.text = location.locationName;
-	locationTitleTableItem.subtitle = location.postcodeArea;
-	
-	bikesCapacityTableItem.text = [NSString stringWithFormat:@"%d docking points", location.capacity];
-	
-//	bikesAvailableTableItem.text = [location localizedBikesAvailableText];
-//
-//	spacesAvailableTableItem.text = [location localizedSpacesAvailableText];
+	locationTitleTableItem.subtitle = location.villageName;
+		
+	if (freshData) {
+		bikesAvailableTableItem.text = [location localizedBikesAvailableText];
+		
+		spacesAvailableTableItem.imageURL = @"bundle://bike-parking.png";	
+		spacesAvailableTableItem.text = [location localizedSpacesAvailableText];
+	} else {
+		bikesAvailableTableItem.text = [location localizedCapacityText];
+		
+		spacesAvailableTableItem.imageURL = nil;	
+		spacesAvailableTableItem.text = NSLocalizedString(@"No live data available", nil);
+	}
 	
 	NSString *directionsFromURL = [NSString stringWithFormat:@"cyclehire://map/from/%f/%f", 
 								 location.coordinate.latitude, location.coordinate.longitude];

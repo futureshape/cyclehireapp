@@ -12,26 +12,26 @@
 
 @synthesize locationId;
 @synthesize locationName;
-@synthesize postcodeArea;
+@synthesize villageName;
 @synthesize coordinate;
-@synthesize capacity;
+@synthesize bikesAvailable;
+@synthesize spacesAvailable;
 @synthesize favourite;
 
 - (id) initWithLocationId: (NSString *)_locationId 
-					 name:(NSString *)_locationName 
-				 postcode:(NSString *)_postcodeArea 
-				 location:(CLLocationCoordinate2D)_coordinate 
-				 capacity: (NSUInteger) _capacity {
+					 name: (NSString *)_locationName 
+				  village: (NSString *)_villageName 
+				 location: (CLLocationCoordinate2D)_coordinate 
+		   bikesAvailable: (NSUInteger) _bikes
+		  spacesAvailable: (NSUInteger) _spaces {
 	
 	if (self = [super init]) {
 		self.locationId = _locationId;
 		self.locationName = _locationName;
-		self.postcodeArea = _postcodeArea;
+		self.villageName = _villageName;
 		self.coordinate = _coordinate;
-		self.capacity = _capacity;
-		
-		spacesAvailable = self.capacity;
-		bikesAvailable = 0;
+		self.spacesAvailable = _spaces;
+		self.bikesAvailable = _bikes;
 	}
 	
 	return self;
@@ -40,25 +40,27 @@
 - (id) initWithAttributesArray:(NSArray *)array {
 	NSString *_locationId = (NSString *)[array objectAtIndex:0];
 	NSString *_locationName = (NSString *)[array objectAtIndex:1];
-	NSString *_postcodeArea = (NSString *)[array objectAtIndex:2];
+	NSString *_villageName = (NSString *)[array objectAtIndex:2];
 	
 	CLLocationCoordinate2D _coordinate;
 	_coordinate.latitude = [(NSString *)[array objectAtIndex:3] doubleValue];
 	_coordinate.longitude = [(NSString *)[array objectAtIndex:4] doubleValue];
 	
-	NSUInteger _capacity = [(NSString *)[array objectAtIndex:5] integerValue];
-	
+	NSUInteger _bikes = [(NSString *)[array objectAtIndex:5] integerValue];
+	NSUInteger _spaces = [(NSString *)[array objectAtIndex:6] integerValue];
+		
 	return [self initWithLocationId:_locationId
 							   name:_locationName 
-						   postcode:_postcodeArea 
+							village:_villageName 
 						   location:_coordinate 
-						   capacity:_capacity];
+					 bikesAvailable:_bikes
+					spacesAvailable:_spaces];
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"CycleHireLocation: %@, %@ [%@] (%f,%f) c:%d", 
-			self.locationName, self.postcodeArea, self.locationId, 
-			self.coordinate.latitude, self.coordinate.longitude, self.capacity];
+	return [NSString stringWithFormat:@"CycleHireLocation: %@, %@ [%@] (%f,%f) b:%d s:%d c:%d", 
+			self.locationName, self.villageName, self.locationId, 
+			self.coordinate.latitude, self.coordinate.longitude, self.bikesAvailable, self.spacesAvailable, self.capacity];
 }
 
 - (NSString *)localizedBikesAvailableText {
@@ -81,5 +83,19 @@
 	}
 }
 
+- (NSString *)localizedCapacityText {
+	if (self.capacity == 0) {
+		return NSLocalizedString(@"Out of order", nil);
+	} else if (self.capacity == 1) {
+		return NSLocalizedString(@"1 docking point", nil);
+	} else {
+		return [NSString stringWithFormat:NSLocalizedString(@"%d docking points", nil), self.capacity];
+	}
+}
+
+
+- (NSUInteger) capacity {
+	return self.spacesAvailable + self.bikesAvailable;
+}
 
 @end

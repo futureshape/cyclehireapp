@@ -12,30 +12,33 @@
 @interface CycleHireLocation : NSObject {
 	NSString *locationId;
 	NSString *locationName;
-	NSString *postcodeArea;
+	NSString *villageName;
 	CLLocationCoordinate2D coordinate;
-	NSUInteger capacity;
 	BOOL favourite;
 	
-	// Dummy variables below at the moment:
 	NSUInteger bikesAvailable;
 	NSUInteger spacesAvailable;
 }
 
 @property(nonatomic, retain) NSString *locationId;
 @property(nonatomic, retain) NSString *locationName;
-@property(nonatomic, retain) NSString *postcodeArea;
+@property(nonatomic, retain) NSString *villageName;
 @property(nonatomic) CLLocationCoordinate2D coordinate;
-@property(nonatomic) NSUInteger capacity;
+@property(nonatomic) NSUInteger bikesAvailable;
+@property(nonatomic) NSUInteger spacesAvailable;
+@property(nonatomic,readonly) NSUInteger capacity;
 @property(nonatomic) BOOL favourite;
 
 - (id) initWithLocationId: (NSString *)_locationId 
-					 name:(NSString *)_locationName 
-				 postcode:(NSString *)_postcodeArea 
-				 location:(CLLocationCoordinate2D)_coordinate 
-				 capacity: (NSUInteger) _capacity;
+					 name: (NSString *)_locationName 
+				  village: (NSString *)_villageName 
+				 location: (CLLocationCoordinate2D)_coordinate 
+		   bikesAvailable: (NSUInteger) _bikes
+		  spacesAvailable: (NSUInteger) _spaces;
 - (id) initWithAttributesArray:(NSArray *)array;
 
 - (NSString *)localizedBikesAvailableText;
 - (NSString *)localizedSpacesAvailableText;
+- (NSString *)localizedCapacityText;
+- (NSUInteger) capacity;
 @end

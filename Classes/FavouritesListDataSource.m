@@ -10,12 +10,11 @@
 
 @implementation FavouritesListDataSource
 
-- (id)initWithFavouriteLocations: (NSArray *) _favouriteLocations {
-	favouriteLocations = _favouriteLocations;
+- (id)initWithCycleHireLocations: (CycleHireLocations *) _cycleHireLocations {
+	cycleHireLocations = _cycleHireLocations;
+	favouriteLocations = [cycleHireLocations favouriteLocations];
 	if (self = [super init]) {
-		for (CycleHireLocation *location in favouriteLocations) {
-			[self.items addObject:[self tableItemForLocation:location]];
-		}
+		[self refreshData];
 	}
 	return self;
 }
@@ -31,15 +30,26 @@
     }   
 }
 
--(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location {
-	NSString *title = [NSString stringWithFormat:@"%@, %@", location.locationName, location.postcodeArea];
-//	NSString *subtitle = [NSString stringWithFormat:@"%@, %@", 
-//						  [location localizedBikesAvailableText], 
-//						  [location localizedSpacesAvailableText]];
+-(void) refreshData {
+	[self.items removeAllObjects];
+	for (CycleHireLocation *location in favouriteLocations) {
+		[self.items addObject:[self tableItemForLocation:location]];
+	}	
+}
 
-	NSString *subtitle = [NSString stringWithFormat:@"%d docking points", location.capacity];
+-(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location {
+	NSString *title = [NSString stringWithFormat:@"%@, %@", location.locationName, location.villageName];
 	
-	// Need to replaces slashes in TfL reference with the url-encoded alternative
+	NSString *subtitle;
+	if ([cycleHireLocations freshDataAvailable]) {
+		subtitle = [NSString stringWithFormat:@"%@, %@", 
+					[location localizedBikesAvailableText], 
+					[location localizedSpacesAvailableText]];
+	} else {
+		subtitle = [location localizedCapacityText];
+	}
+	
+	// Need to replace slashes in TfL reference with the url-encoded alternative
 	NSString *encodedLocationId = [location.locationId stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 	NSString *URL = [NSString stringWithFormat:@"cyclehire://map/cycleHireLocation/%@", encodedLocationId];
 	return [TTTableSubtitleItem itemWithText:title subtitle:subtitle URL:URL];

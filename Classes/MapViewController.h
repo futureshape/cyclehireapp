@@ -98,6 +98,8 @@ typedef enum {
 	StationsViewController *stationsViewController;
 	LocationPopupViewController *locationPopupViewController;
 	
+	NSTimer *dataRefreshTimer;
+	
 	BOOL firstAppearance;
 }
 

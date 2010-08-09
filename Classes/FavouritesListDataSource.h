@@ -12,10 +12,12 @@
 #import "CycleHireLocations.h";
 
 @interface FavouritesListDataSource : TTListDataSource {
+	CycleHireLocations *cycleHireLocations;
 	NSArray *favouriteLocations;
 }
 
-- (id)initWithFavouriteLocations: (NSArray *) favouriteLocations;
+- (id)initWithCycleHireLocations: (CycleHireLocations *) cycleHireLocations;
 -(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location;
+-(void) refreshData;
 
 @end

@@ -12,6 +12,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 #import "CycleHireLocation.h"
+#import "CycleHireLocations.h"
 
 @interface LocationPopupViewController : TTTableViewController  <UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 	CycleHireLocation *currentCycleHireLocation;
@@ -27,7 +28,7 @@
 	TTTableButton *reportProblemButton;	
 }
 
-- (void)updateForLocation:(CycleHireLocation *)location;
+- (void)updateForLocation:(CycleHireLocation *)location withFreshData:(BOOL)freshData;
 
 - (void)updateFavouritesButton;
 

@@ -72,7 +72,6 @@
 		[simulateLocalNotification show];
 		[simulateLocalNotification release];
 	}
-	
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

@@ -13,19 +13,20 @@
 - (id)initWithName:(NSString*)name query:(NSDictionary*)query {
 	if (self = [super init]) {
 		self.title = NSLocalizedString(@"Favourites", nil);		
-		NSArray *favouriteLocations = [(CycleHireLocations *)[query objectForKey:@"locations"] favouriteLocations];
+		CycleHireLocations *cycleHireLocations = (CycleHireLocations *)[query objectForKey:@"locations"];
 		
-		if([favouriteLocations count] > 0) {
+		if([[cycleHireLocations favouriteLocations] count] > 0) {
 			self.navigationItem.rightBarButtonItem = self.editButtonItem;
 		}
 
-		self.dataSource = [[[FavouritesListDataSource alloc] initWithFavouriteLocations:favouriteLocations] autorelease];
+		self.dataSource = [[[FavouritesListDataSource alloc] initWithCycleHireLocations:cycleHireLocations] autorelease];
 		
 		TTNavigator *navigator = [TTNavigator navigator];
 		TTURLMap *map = navigator.URLMap;
 		[map removeObjectForURL:@"cyclehire://map/cycleHireLocation/(openCycleHireLocationWithId:)"]; 
 		[map from:@"cyclehire://map/cycleHireLocation/(openCycleHireLocationWithId:)" 
 			toObject:[map objectForURL:@"cyclehire://map/"]];
+		
 	}
 	return self;
 }
@@ -33,6 +34,23 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.navigationController.navigationBarHidden = NO;
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(refreshData) 
+												 name:LIVE_DATA_UPDATED_NOTIFICATION 
+											   object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(refreshData) 
+												 name:LIVE_DATA_TOO_OLD_NOTIFICATION 
+											   object:nil];
+}
+
+- (void) refreshData {
+	[self.dataSource refreshData];
+	[self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)model:(id<TTModel>)model didDeleteObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
