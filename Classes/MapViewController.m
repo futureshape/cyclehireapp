@@ -230,6 +230,11 @@
 		[self toggleDrawerView];
 	}
 	
+	if(popupView != nil && popupView.superview != nil) {
+		[self closeLocationPopup];
+		return;
+	}	
+	
 	if(popupView == nil) {
 		[self makeLocationPopup];
 	}
