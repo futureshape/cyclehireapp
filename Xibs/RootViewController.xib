@@ -220,7 +220,7 @@
 							<object class="IBUIButton" id="206546717">
 								<reference key="NSNextResponder" ref="149301139"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{229, 7}, {37, 37}}</string>
+								<string key="NSFrame">{{235, 8}, {37, 37}}</string>
 								<reference key="NSSuperview" ref="149301139"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -237,7 +237,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="489016010"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">stopwatch.png</string>
+									<string key="NSResourceName">clock.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="173537218">
@@ -260,7 +260,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="489016010"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">crosshair-white.png</string>
+									<string key="NSResourceName">radar.png</string>
 								</object>
 							</object>
 							<object class="IBUIActivityIndicatorView" id="373529857">
@@ -545,12 +545,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="669034820"/>
 							<reference ref="407317409"/>
-							<reference ref="206546717"/>
 							<reference ref="835830798"/>
 							<reference ref="373529857"/>
 							<reference ref="173537218"/>
 							<reference ref="570731701"/>
 							<reference ref="562306291"/>
+							<reference ref="206546717"/>
 							<reference ref="401229598"/>
 						</object>
 						<reference key="parent" ref="629698962"/>
@@ -1108,22 +1108,22 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>cancel.png</string>
-				<string>crosshair-white.png</string>
+				<string>clock.png</string>
 				<string>favourites.png</string>
 				<string>landmarks.png</string>
 				<string>postcode.png</string>
+				<string>radar.png</string>
 				<string>rail.png</string>
-				<string>stopwatch.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{20, 20}</string>
-				<string>{20, 20}</string>
+				<string>{30, 30}</string>
 				<string>{45, 26}</string>
 				<string>{45, 41}</string>
 				<string>{45, 16}</string>
+				<string>{30, 30}</string>
 				<string>{45, 39}</string>
-				<string>{22, 26}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>

@@ -14,6 +14,7 @@
 #import "FavouritesListViewController.h"
 #import "InfoViewController.h"
 #import "InfoWebViewController.h"
+#import "GlobalStyleSheet.h"
 
 #import <Three20/Three20.h>
 
@@ -23,6 +24,8 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+	
+//	[TTStyleSheet setGlobalStyleSheet:[[[GlobalStyleSheet alloc] init] autorelease]];
 	
 	TTNavigator* navigator = [TTNavigator navigator];
 	navigator.persistenceMode = TTNavigatorPersistenceModeNone;

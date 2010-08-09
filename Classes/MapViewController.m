@@ -36,7 +36,7 @@
 @synthesize stationsViewController;
 @synthesize currentlyVisibleMarker;
 
-- (id)init {
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
 	return [super initWithNibName:@"RootViewController" bundle:nil];
 }
 
@@ -66,7 +66,7 @@
 	
 	coverageTopLeft = [dbTilesource topLeftOfCoverage];
 	coverageBottomRight = [dbTilesource bottomRightOfCoverage];
-	
+	NSLog(@"mapView: %@", mapView);
 	[[[RMMapContents alloc] initWithView:mapView 
 							  tilesource:dbTilesource
 							centerLatLon:startLocation 
@@ -85,6 +85,7 @@
 	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
 	
 	firstAppearance = YES;
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {

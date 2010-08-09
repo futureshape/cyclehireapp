@@ -16,15 +16,20 @@ static NSString *appFeedbackEmailTemplate =
 	"Thanks!<p>"\
 	"P.S. I'm using Cycle Hire App on an %@ with software version %@";
 
--(id) init {
-	if (self = [super init]) {
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
+	if (self = [super initWithNibName:nibName bundle:nibBundle]) {
 		self.tableViewStyle = UITableViewStyleGrouped;
 		self.title = NSLocalizedString(@"About", nil);
 		
 		TTURLMap *map = [TTNavigator navigator].URLMap;
 		[map from:@"cyclehire://information/feedback" toObject:self selector:@selector(appFeedback)];
 		
-		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:NSLocalizedString(@"Acknowledgements", nil),
+		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+						   NSLocalizedString(@"Help & Support", nil),
+						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
+												   URL:@"cyclehire://information/feedback"],
+						   
+						   NSLocalizedString(@"Acknowledgements", nil),
 						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Maps by OpenStreetMap",nil) 
 													subtitle:NSLocalizedString(@"Under a CC-BY-SA 2.0 license", nil)
 													imageURL:@"bundle://osm-logo.png" 
@@ -34,19 +39,8 @@ static NSString *appFeedbackEmailTemplate =
 													imageURL:@"bundle://cyclestreets-logo.png" 
 														 URL:@"http://www.cyclestreets.net"],
 						   [TTTableTextItem itemWithText:NSLocalizedString(@"More ...", nil) URL:@"http://cyclehireapp.com/acknowledgements.html"],
-						   NSLocalizedString(@"Links", nil),
-						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"Cycle Hire App website", nil) 
-													subtitle:nil
-//													imageURL:@"bundle://cyclehireapp-logo.png"  
-														 URL:@"http://cyclehireapp.com/"],
-//						   [TTTableSubtitleItem itemWithText:NSLocalizedString(@"TfL Cycle Hire website", nil)
-//													subtitle:NSLocalizedString(@"Official Cycle Hire scheme website", nil)
-//													imageURL:@"bundle://tfl-cyclehire-logo.png"  
-//														 URL:@"http://www.tfl.gov.uk/cyclehire"],
-						   @"",
-						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
-												   URL:@"cyclehire://information/feedback"],
 						   nil];
+		
 	}
 	return self;
 }
@@ -54,7 +48,7 @@ static NSString *appFeedbackEmailTemplate =
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	self.navigationController.navigationBarHidden = NO;
-	
+		
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(didBecomeActive:) 
 												 name:UIApplicationDidBecomeActiveNotification

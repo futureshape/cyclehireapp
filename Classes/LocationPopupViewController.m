@@ -38,9 +38,6 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		[map from:@"cyclehire://location/favourite/" toObject:self selector:@selector(toggleFavourite)];
 		
 		locationTitleTableItem = [[TTTableSubtitleItem alloc] init];
-
-//		bikesCapacityTableItem = [[TTTableImageItem alloc] init];
-//		bikesCapacityTableItem.imageURL = @"bundle://bike-icon.png";
 		
 		bikesAvailableTableItem = [[TTTableImageItem alloc] init];
 		bikesAvailableTableItem.imageURL = @"bundle://bike-icon.png";
@@ -64,7 +61,6 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 						   @"",
 						   locationTitleTableItem,
-//						   bikesCapacityTableItem,
 						   bikesAvailableTableItem,
 						   spacesAvailableTableItem,
 						   @"",
