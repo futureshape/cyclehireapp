@@ -242,7 +242,7 @@
 		
 	self.currentlyVisibleMarker = marker;
 
-	CGRect fullFrame = CGRectMake(12, 35, 304, 350);
+	CGRect fullFrame = CGRectMake(12, 50, 304, 350);
 	CGRect initialFrame = CGRectMake(marker.position.x, marker.position.y, 0, 0);
 	
 	popupView.frame = initialFrame;
@@ -268,7 +268,7 @@
 							 [TTSolidBorderStyle styleWithColor:[UIColor colorWithRed:0.76 green:0.77 blue:0.79 alpha:1.0] width:1.0 
 														   next:nil]]]];
 	
-	CGRect frame = CGRectMake(12, 35, 304, 350);	// TODO: duplicated in tapOnMarker
+	CGRect frame = CGRectMake(12, 50, 304, 350);	// TODO: duplicated in tapOnMarker
     popupView = [[TTView alloc] initWithFrame:frame];
     popupView.backgroundColor = [UIColor clearColor];
     popupView.style = popupStyle;
@@ -284,7 +284,7 @@
 	UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	UIImage *closeImage = [UIImage imageNamed:@"red-x.png"];
 	closeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
-	closeButton.frame = CGRectMake(285, -closeImage.size.height/2, closeImage.size.width, closeImage.size.height);
+	closeButton.frame = CGRectMake(280, -closeImage.size.height/2, closeImage.size.width, closeImage.size.height);
 	[closeButton setImage:closeImage forState:UIControlStateNormal];
 	[closeButton addTarget:self action:@selector(closeLocationPopup) forControlEvents:UIControlEventTouchUpInside];
 	[popupView addSubview:closeButton];
