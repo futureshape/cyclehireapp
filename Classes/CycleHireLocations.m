@@ -154,6 +154,11 @@
 	for (NSArray *hireLocationRecord in hireLocations) {
 		CycleHireLocation *locationToUpdate = [self locationWithId:[hireLocationRecord objectAtIndex:0]];
 		
+		if (locationToUpdate == nil) {
+			// New location has been added, will be loaded on next app launch
+			continue;
+		}
+		
 		NSUInteger newBikes = [(NSString *)[hireLocationRecord objectAtIndex:5] integerValue];
 		NSUInteger newSpaces = [(NSString *)[hireLocationRecord objectAtIndex:6] integerValue];
 		
