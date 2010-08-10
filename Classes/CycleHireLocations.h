@@ -23,6 +23,7 @@
 	
 	NSString *favouritesPath;
 	NSString *csvDocPath;
+	NSString *csvTempPath;
 	
 	TTURLRequest *updateRequest;
 	

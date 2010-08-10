@@ -25,6 +25,7 @@
 		CSVParser *parser = [CSVParser new];
 		
 		csvDocPath = [[documentsDirectory stringByAppendingPathComponent:CYCLEHIRE_LOCATIONS_FILE] retain];
+		csvTempPath = [[NSTemporaryDirectory() stringByAppendingPathComponent:CYCLEHIRE_LOCATIONS_FILE] retain];
 		NSString *csvBundlePath = [[NSBundle mainBundle] pathForResource:@"cyclehire" ofType:@"csv"];
 		
 		if ([[NSFileManager defaultManager] fileExistsAtPath:csvDocPath]) {
@@ -123,19 +124,28 @@
 	TTURLDataResponse *response = _request.response;
 	
 	NSString *responseString = [[NSString alloc] initWithData:response.data encoding:NSUTF8StringEncoding];
-	[responseString writeToFile:csvDocPath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+	[responseString writeToFile:csvTempPath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 
 	CSVParser *parser = [CSVParser new];
-	[parser openFile:csvDocPath];
+	[parser openFile:csvTempPath];
 	[parser setDelimiter:','];
 	NSMutableArray *hireLocations = [parser parseFile];
 	[parser closeFile];
+	[parser release];
+	
+	if ((hireLocations == nil) || [hireLocations count] == 0) {
+		NSLog(@"Downloaded invalid data - aborting update");
+		return;
+	}
 	
 	NSString *timeStampString = [[hireLocations objectAtIndex:0] objectAtIndex:0]; 
 	NSDate *newTimeStamp = [self timeStampDateFromString:timeStampString];
 	
-	if (newTimeStamp == nil) return;
-
+	if (newTimeStamp == nil) { 
+		NSLog(@"Downloaded invalid data (no timestamp) - aborting update");
+		return;
+	}
+	
 	self.lastUpdatedTimestamp = newTimeStamp;
 	NSLog(@"Downloaded live data with timestamp: %@", lastUpdatedTimestamp);
 	
@@ -153,8 +163,10 @@
 //		locationToUpdate.bikesAvailable = rand() % 10;
 //		locationToUpdate.spacesAvailable = rand() % 10;
 	}
-	
-	[parser release];
+		
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	[fileManager removeItemAtPath:csvDocPath error:NULL];
+	[fileManager copyItemAtPath:csvTempPath toPath:csvDocPath error:NULL];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:LIVE_DATA_UPDATED_NOTIFICATION object:self];
 }

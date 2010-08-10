@@ -13,7 +13,6 @@
 #import "LocationPopupViewController.h"
 #import "FavouritesListViewController.h"
 #import "InfoViewController.h"
-#import "InfoWebViewController.h"
 #import "GlobalStyleSheet.h"
 
 #import <Three20/Three20.h>
