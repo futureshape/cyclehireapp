@@ -362,6 +362,10 @@
 		[self toggleDrawerView];
 	}
 	
+	if(popupView != nil && popupView.superview != nil) {
+		[self closeLocationPopup];
+	}
+	
 	if (locationState == kLocationVisible) {
 		mapView.contents.mapCenter = currentLocation;
 		[self setLocationState:kLocationTracking];
