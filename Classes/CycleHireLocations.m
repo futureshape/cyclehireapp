@@ -190,7 +190,7 @@
 
 - (NSDate *) timeStampDateFromString: (NSString *) timeStampString {
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	[df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+	[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	[df setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
 	[df setLenient:YES];
 	NSDate *timeStamp = [df dateFromString: timeStampString];
