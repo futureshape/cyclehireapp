@@ -13,7 +13,7 @@
 
 @interface FavouritesListDataSource : TTListDataSource {
 	CycleHireLocations *cycleHireLocations;
-	NSArray *favouriteLocations;
+	NSMutableArray *favouriteLocations;
 }
 
 - (id)initWithCycleHireLocations: (CycleHireLocations *) cycleHireLocations;

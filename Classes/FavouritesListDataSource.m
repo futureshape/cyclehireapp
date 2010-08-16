@@ -31,7 +31,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-	//
+	NSUInteger fromRow = fromIndexPath.row;
+	NSUInteger toRow = toIndexPath.row;
+	
+	[favouriteLocations moveRowAtIndex:fromRow toIndex:toRow];
+	
+	NSLog(@"favs after move: %@", favouriteLocations);
+	
+	[self refreshData];
 }
 
 -(void) refreshData {

@@ -17,6 +17,7 @@
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
 		FA04C2CC1167AEC3003126BD /* bike-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C2CB1167AEC3003126BD /* bike-icon.png */; };
 		FA04C31C1167D0AD003126BD /* bike-parking.png in Resources */ = {isa = PBXBuildFile; fileRef = FA04C31B1167D0AD003126BD /* bike-parking.png */; };
+		FA05482A1219575700C66025 /* NSMutableArray-RowMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0548291219575700C66025 /* NSMutableArray-RowMoving.m */; };
 		FA22A6D11188A74300FBF741 /* FavouritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */; };
 		FA2884F0120B4FC000B8AE5D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA2884EF120B4FC000B8AE5D /* Settings.bundle */; };
 		FA3077621188DAD000E6D336 /* FavouritesListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */; };
@@ -274,6 +275,8 @@
 		8D1107310486CEB800E47090 /* CycleHire-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CycleHire-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		FA04C2CB1167AEC3003126BD /* bike-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-icon.png"; path = "Resources/UIImages/bike-icon.png"; sourceTree = "<group>"; };
 		FA04C31B1167D0AD003126BD /* bike-parking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bike-parking.png"; path = "Resources/UIImages/bike-parking.png"; sourceTree = "<group>"; };
+		FA0548281219575700C66025 /* NSMutableArray-RowMoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray-RowMoving.h"; path = "Classes/NSMutableArray-RowMoving.h"; sourceTree = "<group>"; };
+		FA0548291219575700C66025 /* NSMutableArray-RowMoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray-RowMoving.m"; path = "Classes/NSMutableArray-RowMoving.m"; sourceTree = "<group>"; };
 		FA22A6CF1188A74300FBF741 /* FavouritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListViewController.h; path = Classes/FavouritesListViewController.h; sourceTree = "<group>"; };
 		FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListViewController.m; path = Classes/FavouritesListViewController.m; sourceTree = "<group>"; };
 		FA2884EF120B4FC000B8AE5D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -676,6 +679,8 @@
 		FA8F52261152E996003966EE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA0548281219575700C66025 /* NSMutableArray-RowMoving.h */,
+				FA0548291219575700C66025 /* NSMutableArray-RowMoving.m */,
 				FA93602C12130DF00057EA41 /* Progress HUD */,
 				FA935F431212CC330057EA41 /* ASIHTTPRequest */,
 				FAD620DC121043B500EB90C0 /* GlobalStyleSheet.h */,
@@ -1152,6 +1157,7 @@
 				FA935F5A1212CC6C0057EA41 /* ASINetworkQueue.m in Sources */,
 				FA935F5D1212CC7A0057EA41 /* Reachability.m in Sources */,
 				FA93603412130E170057EA41 /* MBProgressHUD.m in Sources */,
+				FA05482A1219575700C66025 /* NSMutableArray-RowMoving.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
