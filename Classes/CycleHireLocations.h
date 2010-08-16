@@ -35,7 +35,7 @@
 -(id) init;
 
 -(NSArray *)allLocations;
--(NSArray *)favouriteLocations;
+-(NSMutableArray *)favouriteLocations;
 -(void)saveFavouriteLocations;
 -(CycleHireLocation *)locationWithId: (NSString*) locationId;
 - (void) startUpdateFromServer;

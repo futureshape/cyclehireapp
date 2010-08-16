@@ -30,6 +30,10 @@
     }   
 }
 
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+	//
+}
+
 -(void) refreshData {
 	[self.items removeAllObjects];
 	for (CycleHireLocation *location in favouriteLocations) {

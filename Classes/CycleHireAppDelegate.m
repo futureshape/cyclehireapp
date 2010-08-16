@@ -13,6 +13,7 @@
 #import "LocationPopupViewController.h"
 #import "FavouritesListViewController.h"
 #import "InfoViewController.h"
+#import "AccountViewController.h"
 #import "GlobalStyleSheet.h"
 
 #import <Three20/Three20.h>
@@ -41,6 +42,8 @@
 	[map from:@"cyclehire://favourites/(initWithName:)" toSharedViewController:([FavouritesListViewController class])];
 
 	[map from:@"cyclehire://information/" toSharedViewController:([InfoViewController class])];
+
+	[map from:@"cyclehire://account/" toSharedViewController:([AccountViewController class])];	
 
 	[navigator openURLAction:[TTURLAction actionWithURLPath:@"cyclehire://map/"]];
 	

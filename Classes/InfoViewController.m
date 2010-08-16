@@ -25,6 +25,8 @@ static NSString *appFeedbackEmailTemplate =
 		[map from:@"cyclehire://information/feedback" toObject:self selector:@selector(appFeedback)];
 		
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+						   NSLocalizedString(@"", nil),
+						   [TTTableTextItem itemWithText:@"Your Cycle Hire account" URL:@"cyclehire://account/"],
 						   NSLocalizedString(@"Help & Support", nil),
 						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
 												   URL:@"cyclehire://information/feedback"],

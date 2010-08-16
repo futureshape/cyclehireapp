@@ -81,7 +81,7 @@
 	return [locationsDictionary objectForKey:locationId];
 }
 
--(NSArray *)favouriteLocations {
+-(NSMutableArray *)favouriteLocations {
 	return favouriteLocations;
 }
 
