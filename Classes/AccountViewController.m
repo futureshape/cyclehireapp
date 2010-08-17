@@ -23,7 +23,7 @@
 		if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
 			[self setupForLogin];
 		} else {
-			self.title = @"Journey history";
+			self.title = @"Your account";
 			self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableTextItem itemWithText:@" "], nil];
 			[self loadCycleHireLoginPage]; 
 		}

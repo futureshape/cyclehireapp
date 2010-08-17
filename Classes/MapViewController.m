@@ -910,6 +910,7 @@
 	self.directionsLabel.text = [NSString stringWithFormat:@"%.2f %@ - %d %@%@", 
 								 distanceValue, distanceUnits, timeInMinutesRounded, minutesLocalized, routeCost];
 	[self setDirectionsState:kDirectionsVisible];
+	[self setLocationState:kLocationVisible];
 }
 
 - (void) cycleStreetsPlanner: (CycleStreetsPlanner *)planner didFailWithError:(NSError *)error {
