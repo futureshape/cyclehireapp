@@ -96,6 +96,8 @@
 		[self loadCycleHireLocations];
 		firstAppearance = NO;
 	}
+	
+	[self updateTimerBadge];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -124,11 +126,16 @@
 	}
 	
 	[cycleHireLocations startUpdateFromServer]; // Initial update
-	dataRefreshTimer = [[NSTimer scheduledTimerWithTimeInterval:60
-														 target:cycleHireLocations 
-													   selector:@selector(startUpdateFromServer) 
-													   userInfo:nil 
-														repeats:YES] retain];
+	[NSTimer scheduledTimerWithTimeInterval:60
+									 target:self 
+								   selector:@selector(oneMinuteUpdate) 
+								   userInfo:nil 
+									repeats:YES];
+}
+
+- (void) oneMinuteUpdate {
+	[self updateTimerBadge];
+	[cycleHireLocations startUpdateFromServer];
 }
 
 - (void)dealloc {
@@ -960,19 +967,7 @@
 		[actionSheet showInView:mapView];
 		[actionSheet release];
 	} else {
-		UILocalNotification *timerNotification = [localNotifications objectAtIndex:0];
-		
-		NSDateComponents *remainingTime = 
-			[[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit 
-											fromDate:[NSDate date] 
-											  toDate:timerNotification.fireDate 
-											 options:0];
-		NSString *timerStatus = 
-			[NSString stringWithFormat:@"You'll be reminded to return the bike in %@%d minutes", 
-			 ([remainingTime hour] > 0 ? @"1 hour and " : @""), [remainingTime minute]];		
-		
-		
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:timerStatus 
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
 																 delegate:self
 														cancelButtonTitle:NSLocalizedString(@"Close", nil) 
 												   destructiveButtonTitle:NSLocalizedString(@"Cancel reminder", nil) 
@@ -987,6 +982,7 @@
 	
 	if (buttonIndex == actionSheet.destructiveButtonIndex) {
 		[[UIApplication sharedApplication] cancelAllLocalNotifications];
+		[self updateTimerBadge];
 		return;
 	}
 	
@@ -1009,7 +1005,44 @@
 	
 	[[UIApplication sharedApplication] scheduleLocalNotification:timerNotification];
 	[timerNotification release];
+	
+	[self updateTimerBadge];
 }
+
+- (void) updateTimerBadge {
+	if(timerBadge == nil) {
+		timerBadge = [[TTLabel alloc] init];
+		timerBadge.style = TTSTYLE(largeBadge);
+		timerBadge.backgroundColor = [UIColor clearColor];
+		timerBadge.userInteractionEnabled = NO;
+		[timerButton addSubview:timerBadge];
+	}
+	
+	NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+	if ([localNotifications count] == 0) {
+		[timerBadge setHidden:YES];
+		return;
+	}
+	
+	UILocalNotification *timerNotification = [localNotifications objectAtIndex:0];
+	
+	NSDateComponents *remainingTime = 
+	[[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit 
+									fromDate:[NSDate date] 
+									  toDate:timerNotification.fireDate 
+									 options:0];
+	NSString *timerStatus = [NSString stringWithFormat:@"%d:%02d", [remainingTime hour], [remainingTime minute] + 1];	
+	timerBadge.text = timerStatus;
+	
+	[timerBadge sizeToFit];
+	CGRect badgeFrame = timerBadge.frame;
+	badgeFrame.origin.y = -badgeFrame.size.height/2;
+	badgeFrame.origin.x = -(badgeFrame.size.width - timerButton.frame.size.width)/2;
+	timerBadge.frame = badgeFrame;
+	[timerButton setNeedsLayout];
+	[timerBadge setHidden:NO];
+}
+
 
 #pragma mark -
 #pragma mark Zoom/move workarounds

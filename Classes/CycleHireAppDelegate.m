@@ -48,8 +48,9 @@
 	[navigator openURLAction:[TTURLAction actionWithURLPath:@"cyclehire://map/"]];
 	
 	if([launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil) {
-		[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"]
-			performSelectorOnMainThread:@selector(findMe) withObject:nil waitUntilDone:FALSE];
+		MapViewController *mapViewController = [[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"];
+		[mapViewController performSelectorOnMainThread:@selector(updateTimerBadge) withObject:nil waitUntilDone:FALSE];
+		[mapViewController performSelectorOnMainThread:@selector(findMe) withObject:nil waitUntilDone:FALSE];
 	}
 	
 	return TRUE;
@@ -65,8 +66,10 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
 	NSLog(@"didReceiveLocalNotification");
+	MapViewController *mapViewController = [[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"];
+
 	if (application.applicationState == UIApplicationStateInactive) {
-		[[[TTNavigator navigator].URLMap objectForURL:@"cyclehire://map/"] returnToMapAndFindMe];
+		[mapViewController returnToMapAndFindMe];
 	} else if (application.applicationState == UIApplicationStateActive) {
 		UIAlertView *simulateLocalNotification = 
 		[[UIAlertView alloc] initWithTitle:@"Reminder" 
@@ -77,6 +80,8 @@
 		[simulateLocalNotification show];
 		[simulateLocalNotification release];
 	}
+	
+	[mapViewController updateTimerBadge];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

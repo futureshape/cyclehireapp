@@ -93,13 +93,15 @@ typedef enum {
 	// Postcodes 
 	PostcodeDatabase *postcodes;
 	
+	// Timer UI
+	IBOutlet UIButton *timerButton;
+	TTLabel *timerBadge;
+	
 	RMMarker *poiMarker;
 													
 	StationsViewController *stationsViewController;
 	LocationPopupViewController *locationPopupViewController;
-	
-	NSTimer *dataRefreshTimer;
-	
+		
 	BOOL firstAppearance;
 }
 
@@ -155,5 +157,7 @@ typedef enum {
 - (void) zoomAndUpdate: (float) newZoom;
 
 - (void)showErrorAlertWithTitle: (NSString*) title message: (NSString*) message dismissButtonLabel:(NSString*) label;
+
+- (void) updateTimerBadge;
 
 @end
