@@ -220,6 +220,7 @@
 		NSArray *rows = [parser.rootObject objectForKey:@"tr"];
 		
 		NSMutableArray *activityItems = [NSMutableArray arrayWithCapacity:[rows count]];
+		NSMutableArray *accountInfoItems = [NSMutableArray arrayWithCapacity:1];
 		
 		for (NSDictionary *rowEntry in rows) {
 			NSArray *rowCells = [rowEntry objectForKey:@"td"];
@@ -258,14 +259,27 @@
 													0x00A3, cost];  
 					[activityItems addObject:[TTTableSubtextItem itemWithText:startDateString caption:journeyDescription]];			
 				}
+			} else if ([rowCells count] == 3) {
+				NSString *eventType = [[[rowCells objectAtIndex:1] objectForXMLNode] stringByTrimmingCharactersInSet:
+									   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+				if ([[eventType lowercaseString] isEqualToString:@"balance"]) {
+					NSString *balance = [[[rowCells objectAtIndex:2] objectForXMLNode] stringByTrimmingCharactersInSet:
+												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+					
+					if (balance != nil) {
+						NSString *balanceFormatted = [NSString stringWithFormat:@"Balance: %C%@", 0x00A3, balance];
+						[accountInfoItems addObject:[TTTableTextItem itemWithText:balanceFormatted]];
+					}
+				}
 			}
 		}
 
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" 
-																				  style:UIBarButtonItemStyleBordered 
-																				 target:self 
-																				 action:@selector(logout)];		
-		self.title = @"Journey history";
+		UIBarButtonItem *logoutButton = [[[UIBarButtonItem alloc] initWithTitle:@"Logout" 
+																		  style:UIBarButtonItemStyleBordered 
+																		 target:self 
+																		 action:@selector(logout)] autorelease];
+		self.navigationItem.rightBarButtonItem = logoutButton; 		
+		self.title = @"Your account";
 		
 		if([activityItems count] == 0) {
 			[self switchToTableViewStyle:UITableViewStyleGrouped];
@@ -279,7 +293,7 @@
 		} else {
 			[self switchToTableViewStyle:UITableViewStylePlain];
 			
-			self.dataSource = [TTListDataSource dataSourceWithItems:activityItems];
+			self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Account status", accountInfoItems, @"Journey history", activityItems, nil];
 		}
 
 	}
