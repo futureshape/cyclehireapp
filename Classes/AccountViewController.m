@@ -51,6 +51,7 @@
 		passwordField = [[UITextField alloc] init];
 	}
 	passwordField.placeholder = @"Password";
+	passwordField.text = @"";
 	passwordField.secureTextEntry = YES;
 	passwordField.returnKeyType = UIReturnKeyGo;
 	passwordField.delegate = self;
