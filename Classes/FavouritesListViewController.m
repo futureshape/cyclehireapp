@@ -18,6 +18,17 @@
 		if([[cycleHireLocations favouriteLocations] count] > 0) {
 			self.navigationItem.rightBarButtonItem = self.editButtonItem;
 		}
+		
+		UISegmentedControl *favTypeSelection = [[UISegmentedControl alloc] init];
+		[favTypeSelection insertSegmentWithTitle:@"Favourites" atIndex:0 animated:NO];
+		[favTypeSelection insertSegmentWithTitle:@"Recent" atIndex:1 animated:NO];
+		favTypeSelection.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		favTypeSelection.segmentedControlStyle = UISegmentedControlStyleBar;
+		favTypeSelection.frame = CGRectMake(0, 0, 400, 30);
+		favTypeSelection.selectedSegmentIndex = 0;
+		[favTypeSelection addTarget:self action:@selector(favouritesTypeChanged:) forControlEvents:UIControlEventValueChanged];
+		
+		self.navigationItem.titleView = favTypeSelection;
 
 		self.dataSource = [[[FavouritesListDataSource alloc] initWithCycleHireLocations:cycleHireLocations] autorelease];
 		self.variableHeightRows = YES;
@@ -43,6 +54,13 @@
 											 selector:@selector(refreshData) 
 												 name:LIVE_DATA_TOO_OLD_NOTIFICATION 
 											   object:nil];
+}
+
+- (void) favouritesTypeChanged:(id)sender {
+	UISegmentedControl *favTypeSelection = (UISegmentedControl *)sender;
+	
+	NSLog(@"Selected:%d", favTypeSelection.selectedSegmentIndex);
+	self.editing = NO;
 }
 
 - (void) refreshData {

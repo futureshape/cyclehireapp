@@ -56,6 +56,7 @@
 		FA93603412130E170057EA41 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93603312130E170057EA41 /* MBProgressHUD.m */; };
 		FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B831222AADB00A97148 /* AccountScraper.m */; };
 		FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */; };
+		FA9D2CD31223105F00A97148 /* RecentDockingStationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2CD21223105F00A97148 /* RecentDockingStationsDataSource.m */; };
 		FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */; };
 		FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */; };
 		FAA1EB17115E73AB00BC90E2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EB16115E73AB00BC90E2 /* Three20.bundle */; };
@@ -342,6 +343,8 @@
 		FA9D2B831222AADB00A97148 /* AccountScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountScraper.m; path = Classes/AccountScraper.m; sourceTree = "<group>"; };
 		FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JourneyLogEntry.h; path = Classes/JourneyLogEntry.h; sourceTree = "<group>"; };
 		FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JourneyLogEntry.m; path = Classes/JourneyLogEntry.m; sourceTree = "<group>"; };
+		FA9D2CD11223105F00A97148 /* RecentDockingStationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentDockingStationsDataSource.h; path = Classes/RecentDockingStationsDataSource.h; sourceTree = "<group>"; };
+		FA9D2CD21223105F00A97148 /* RecentDockingStationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentDockingStationsDataSource.m; path = Classes/RecentDockingStationsDataSource.m; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
@@ -540,6 +543,8 @@
 				FA22A6D01188A74300FBF741 /* FavouritesListViewController.m */,
 				FA3077601188DAD000E6D336 /* FavouritesListDataSource.h */,
 				FA3077611188DAD000E6D336 /* FavouritesListDataSource.m */,
+				FA9D2CD11223105F00A97148 /* RecentDockingStationsDataSource.h */,
+				FA9D2CD21223105F00A97148 /* RecentDockingStationsDataSource.m */,
 			);
 			name = "Favourites List View";
 			sourceTree = "<group>";
@@ -1170,6 +1175,7 @@
 				FA6E2095121AA4C000AB5E30 /* Reachability.m in Sources */,
 				FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */,
 				FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */,
+				FA9D2CD31223105F00A97148 /* RecentDockingStationsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

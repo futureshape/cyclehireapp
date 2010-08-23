@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 #import "CycleHireLocation.h"
+#import "AccountScraper.h"
 
 #define FAVOURITES_FILE	@"favourites.plist"
 #define	CYCLEHIRE_LOCATIONS_FILE @"cyclehire.csv"
@@ -17,7 +18,7 @@
 #define	LIVE_DATA_TOO_OLD_NOTIFICATION @"LiveDataTooOld"
 #define	LIVE_DATA_MAX_AGE (10*60) // 10 minutes 
 
-@interface CycleHireLocations : NSObject {
+@interface CycleHireLocations : NSObject <AccountScraperDelegate> {
 	NSMutableDictionary *locationsDictionary;
 	NSMutableDictionary *locationsNameDictionary;
 	NSMutableArray *favouriteLocations;
@@ -29,6 +30,8 @@
 	TTURLRequest *updateRequest;
 	
 	NSDate *lastUpdatedTimestamp;
+	
+	AccountScraper *scraper;
 }
 
 @property(nonatomic, retain) NSDate *lastUpdatedTimestamp;

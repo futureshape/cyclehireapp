@@ -18,6 +18,8 @@
 	
 	NSUInteger bikesAvailable;
 	NSUInteger spacesAvailable;
+	
+	NSDate *lastUsed;
 }
 
 @property(nonatomic, retain) NSString *locationId;
@@ -28,6 +30,7 @@
 @property(nonatomic) NSUInteger spacesAvailable;
 @property(nonatomic,readonly) NSUInteger capacity;
 @property(nonatomic) BOOL favourite;
+@property(nonatomic, retain) NSDate *lastUsed;
 
 - (id) initWithLocationId: (NSString *)_locationId 
 					 name: (NSString *)_locationName 
@@ -41,4 +44,5 @@
 - (NSString *)localizedSpacesAvailableText;
 - (NSString *)localizedCapacityText;
 - (NSUInteger) capacity;
+- (NSComparisonResult) compareLastUsed: (CycleHireLocation *)otherLocation; 
 @end

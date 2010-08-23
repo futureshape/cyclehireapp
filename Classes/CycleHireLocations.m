@@ -71,6 +71,10 @@
 				location.favourite = YES;
 			}
 		}
+	
+		scraper = [[AccountScraper alloc] init];
+		scraper.delegate = self;
+		[self updateRecentlyUsedDockingStations];
 	}
 	return self;
 }
@@ -200,12 +204,45 @@
 	return timeStamp;
 }
 
+-(void) updateRecentlyUsedDockingStations {
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
+		return; // credentials not yet configured, so scraper won't work
+	}
+	
+	[scraper startScraping];
+}	
+
+- (void) scraperDidFinishScraping {
+	NSDictionary *dockingStationsVisited = scraper.uniqueDockingStationsVisited;
+	NSMutableArray *recentlyUsedDockingStations = [NSMutableArray arrayWithCapacity:[dockingStationsVisited count]];
+	
+	for (NSString *fullName in [dockingStationsVisited allKeys]) {
+		NSString *halfName = [[fullName componentsSeparatedByString:@","] objectAtIndex:0];
+		CycleHireLocation *matchingLocation =
+			[locationsNameDictionary objectForKey:[halfName stringByTrimmingCharactersInSet:
+												   [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+		
+		matchingLocation.lastUsed = [dockingStationsVisited objectForKey:fullName];
+		[recentlyUsedDockingStations addObject:matchingLocation];
+	}
+	
+	[recentlyUsedDockingStations sortUsingSelector:@selector(compareLastUsed:)];
+	
+	NSLog(@"recentlyUsedDockingStations - sortedByDate: %@", recentlyUsedDockingStations);
+}
+
+- (void) scraperDidFailWithError:(NSError *)error {
+	// We don't care :)
+}
+
 - (void) dealloc {
 	[super dealloc];
 	[favouriteLocations release];
 	[locationsDictionary release];
+	[locationsNameDictionary release];
 	[favouritesPath release];
 	[csvDocPath release];
+	[scraper release];
 }
 
 @end

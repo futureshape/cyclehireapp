@@ -133,7 +133,7 @@
 							   otherButtonTitles:nil] autorelease] show]; 
 		} else if ([error code] == kASLoginFailedError) {
 			[[[[UIAlertView alloc] initWithTitle:@"Login failed" 
-										 message:@"Please check your username & password and try again"
+										 message:@"Please check your email address & password and try again"
 										delegate:nil 
 							   cancelButtonTitle:@"OK" 
 							   otherButtonTitles:nil] autorelease] show];

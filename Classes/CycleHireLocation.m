@@ -17,6 +17,7 @@
 @synthesize bikesAvailable;
 @synthesize spacesAvailable;
 @synthesize favourite;
+@synthesize lastUsed;
 
 - (id) initWithLocationId: (NSString *)_locationId 
 					 name: (NSString *)_locationName 
@@ -32,6 +33,7 @@
 		self.coordinate = _coordinate;
 		self.spacesAvailable = _spaces;
 		self.bikesAvailable = _bikes;
+		self.lastUsed = [NSDate distantPast];
 	}
 	
 	return self;
@@ -96,6 +98,11 @@
 
 - (NSUInteger) capacity {
 	return self.spacesAvailable + self.bikesAvailable;
+}
+
+- (NSComparisonResult) compareLastUsed: (CycleHireLocation *)otherLocation {
+	// reverse sort order - we want newest on top
+	return -[self.lastUsed compare:otherLocation.lastUsed];
 }
 
 @end

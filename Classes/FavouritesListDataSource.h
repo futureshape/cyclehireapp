@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Three20/Three20.h"
 
-#import "CycleHireLocations.h";
+#import "CycleHireLocations.h"
 
-@interface FavouritesListDataSource : TTSectionedDataSource {
+#import "NSMutableArray-RowMoving.h"
+
+@interface FavouritesListDataSource : TTListDataSource {
 	CycleHireLocations *cycleHireLocations;
 	NSMutableArray *favouriteLocations;
 }

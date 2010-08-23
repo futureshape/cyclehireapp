@@ -11,10 +11,9 @@
 @implementation FavouritesListDataSource
 
 - (id)initWithCycleHireLocations: (CycleHireLocations *) _cycleHireLocations {
-	cycleHireLocations = _cycleHireLocations;
-	favouriteLocations = [cycleHireLocations favouriteLocations];
 	if (self = [super init]) {
-		self.sections = [NSArray arrayWithObjects:@"Marked as favourites", @"Recently used", nil];
+		cycleHireLocations = _cycleHireLocations;
+		favouriteLocations = [cycleHireLocations favouriteLocations];
 		[self refreshData];
 	}
 	return self;
@@ -43,16 +42,10 @@
 }
 
 -(void) refreshData {
-	NSMutableArray *favouritesTableItems = [NSMutableArray arrayWithCapacity:[favouriteLocations count]];
+	[self.items removeAllObjects];
 	for (CycleHireLocation *location in favouriteLocations) {
-		[favouritesTableItems addObject:[self tableItemForLocation:location]];
+		[self.items addObject:[self tableItemForLocation:location]];
 	}	
-
-	NSMutableArray *recentlyUsedTableItems = [NSMutableArray arrayWithCapacity:10];
-	[recentlyUsedTableItems addObject:[TTTableLongTextItem itemWithText:
-									   @"Recently used docking stations will appear here after you login to your Cycle Hire account"]];
-
-	self.items = [NSArray arrayWithObjects:favouritesTableItems, recentlyUsedTableItems, nil];
 }
 
 -(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location {
@@ -82,8 +75,8 @@
 }
 
 - (NSString*)subtitleForEmpty {
-	return NSLocalizedString(@"To add a cycle hire location to your favourites, "\
-							 "tap on the location marker on the map and select 'Add to favourites'", nil);
+	return NSLocalizedString(@"To add a docking station to your favourites, "\
+							 "tap on the marker on the map and select 'Add to favourites'", nil);
 }
 
 @end
