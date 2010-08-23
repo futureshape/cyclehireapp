@@ -338,10 +338,10 @@
 		FA935F7A1212CFEE0057EA41 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		FA93603212130E170057EA41 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/MBProgressHUD.h; sourceTree = "<group>"; };
 		FA93603312130E170057EA41 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/MBProgressHUD.m; sourceTree = "<group>"; };
-		FA9D2B821222AADB00A97148 /* AccountScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountScraper.h; sourceTree = "<group>"; };
-		FA9D2B831222AADB00A97148 /* AccountScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountScraper.m; sourceTree = "<group>"; };
-		FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyLogEntry.h; sourceTree = "<group>"; };
-		FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyLogEntry.m; sourceTree = "<group>"; };
+		FA9D2B821222AADB00A97148 /* AccountScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountScraper.h; path = Classes/AccountScraper.h; sourceTree = "<group>"; };
+		FA9D2B831222AADB00A97148 /* AccountScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountScraper.m; path = Classes/AccountScraper.m; sourceTree = "<group>"; };
+		FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JourneyLogEntry.h; path = Classes/JourneyLogEntry.h; sourceTree = "<group>"; };
+		FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JourneyLogEntry.m; path = Classes/JourneyLogEntry.m; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };

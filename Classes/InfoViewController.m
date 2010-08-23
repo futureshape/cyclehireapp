@@ -28,7 +28,7 @@ static NSString *appFeedbackEmailTemplate =
 						   NSLocalizedString(@"", nil),
 						   [TTTableTextItem itemWithText:@"Your Cycle Hire account" URL:@"cyclehire://account/"],
 						   NSLocalizedString(@"Help & Support", nil),
-						   [TTTableButton itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
+						   [TTTableTextItem itemWithText:NSLocalizedString(@"Send us your feedback", nil) 
 												   URL:@"cyclehire://information/feedback"],
 						   
 						   NSLocalizedString(@"Acknowledgements", nil),

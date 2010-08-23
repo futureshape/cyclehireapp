@@ -16,6 +16,9 @@
 		scraper.delegate = self;
 		
 		self.variableHeightRows = YES;
+		
+		df = [[NSDateFormatter alloc] init];
+		[df setDateFormat:@"EEE dd MMM yyyy - HH:mm"];
 	}
 	return self;
 }
@@ -25,7 +28,9 @@
 		[self setupForLogin];
 	} else {
 		self.title = @"Your account";
-		self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableTextItem itemWithText:@" "], nil];
+		if([self.dataSource isKindOfClass:[TTTableViewInterstitialDataSource class]]) { 
+			self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableTextItem itemWithText:@" "], nil];
+		}
 		[self loadAccountInformation]; 
 	}
 }
@@ -106,16 +111,18 @@
 - (void) loadAccountInformation {
 	if(hud == nil) { 
 		hud = [[MBProgressHUD alloc] initWithView:self.view];
-		[self.view addSubview:hud];
 	}
-	hud.labelText = @"Logging in";
+	
+	[self.view addSubview:hud];
+	hud.labelText = @"Loading";
 	[hud show:YES]; 
 
 	[scraper startScraping];
 }
 
 - (void) scraperDidFailWithError:(NSError *)error {	
-	[hud setHidden:YES];
+	[hud hide:YES];
+	[hud removeFromSuperview];
 	
 	if ([[error domain] isEqualToString:kAccountScraperErrorDomain]) {
 		if ([error code] == kASNoCsrfError) {
@@ -172,7 +179,7 @@
 										0x2192, entry.endStation,
 										0x231A, tripDuration,
 										0x00A3, entry.cost];  
-		[activityItems addObject:[TTTableSubtextItem itemWithText:[entry.startDate description] caption:journeyDescription]];			
+		[activityItems addObject:[TTTableSubtextItem itemWithText:[df stringFromDate:entry.startDate] caption:journeyDescription]];			
 	}
 
 	NSMutableArray *accountInfoItems = [NSMutableArray arrayWithCapacity:1];
@@ -205,18 +212,18 @@
 		[statsItems addObject:
 		 [TTTableTextItem itemWithText:
 		  [NSString stringWithFormat:@"%@ of cycling", [self formattedTimeFromInterval:scraper.totalCyclingTime]]]];
-//		[statsItems addObject:
-//		 [TTTableTextItem itemWithText:
-//		  [NSString stringWithFormat:@"%d docking stations visited", [dockingStationsVisited count]]]];
-		
-//		NSLog(@"Docking stations visted: %@", dockingStationsVisited);
-		
+		[statsItems addObject:
+		 [TTTableTextItem itemWithText:
+		  [NSString stringWithFormat:@"%d docking stations visited", [scraper.uniqueDockingStationsVisited count]]]];
+				
 		self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Account status", accountInfoItems,
 						   @"Statistics", statsItems,
-						   @"Journey history", activityItems, nil];			
+						   @"Journey history", activityItems, nil];
 		
 	}
 	
+	[hud hide:YES];
+	[hud removeFromSuperview];
 }
 
 - (void) logout {
@@ -246,18 +253,19 @@
 	NSMutableString *totalTimeFormatted = [NSMutableString string];
 	
 	NSInteger days = [totalTimeComps day];
+	NSInteger hours = [totalTimeComps hour];
+	NSInteger minutes = [totalTimeComps minute];
+
 	if (days > 0) {
-		[totalTimeFormatted appendFormat:@"%d day%@ ", days, (days == 1 ? @"" : @"s")];
+		[totalTimeFormatted appendFormat:@"%d day%@%@ ", days, (days == 1 ? @"" : @"s"), (minutes == 0 || hours == 0 ? @" and" : @",")];
 	}
 	
-	NSInteger hours = [totalTimeComps hour];
 	if (hours > 0) {
 		[totalTimeFormatted appendFormat:@"%d hour%@ ", hours, (hours == 1 ? @"" : @"s")];
 	}
 	
-	NSInteger minutes = [totalTimeComps minute];
 	if (minutes > 0) {
-		[totalTimeFormatted appendFormat:@"%d minute%@", minutes, (minutes == 1 ? @"" : @"s")];
+		[totalTimeFormatted appendFormat:@"%@ %d minute%@", (hours == 0 ? @"" : @"and"), minutes, (minutes == 1 ? @"" : @"s")];
 	}
 	
 	return totalTimeFormatted;
@@ -268,6 +276,7 @@
 	[emailField release];
 	[passwordField release];
 	[scraper release];
+	[df release];
 }
 
 @end

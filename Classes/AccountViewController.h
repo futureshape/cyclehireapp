@@ -20,6 +20,8 @@
 		
 	MBProgressHUD *hud;
 	
+	NSDateFormatter *df;
+	
 	AccountScraper *scraper;
 }
 
