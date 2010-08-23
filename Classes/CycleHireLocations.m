@@ -21,7 +21,8 @@
 		
 		// Load all locations
 		
-		locationsDictionary = [[NSMutableDictionary alloc] init];
+		locationsDictionary = [[NSMutableDictionary alloc] initWithCapacity:400];
+		locationsNameDictionary = [[NSMutableDictionary alloc] initWithCapacity:400];
 		CSVParser *parser = [CSVParser new];
 		
 		csvDocPath = [[documentsDirectory stringByAppendingPathComponent:CYCLEHIRE_LOCATIONS_FILE] retain];
@@ -48,6 +49,7 @@
 		for (NSArray *hireLocationRecord in hireLocations) {
 			CycleHireLocation *location = [[CycleHireLocation alloc] initWithAttributesArray:hireLocationRecord];
 			[locationsDictionary setValue:location forKey:location.locationId];
+			[locationsNameDictionary setValue:location forKey:location.locationName];
 			[location addObserver:self forKeyPath:@"favourite" options:NSKeyValueObservingOptionNew context:nil];
 			[location release];
 		}

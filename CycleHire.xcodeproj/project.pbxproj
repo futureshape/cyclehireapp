@@ -54,6 +54,8 @@
 		FA935F791212CFE20057EA41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA935F781212CFE20057EA41 /* MobileCoreServices.framework */; };
 		FA935F7B1212CFEE0057EA41 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA935F7A1212CFEE0057EA41 /* libz.1.2.3.dylib */; };
 		FA93603412130E170057EA41 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93603312130E170057EA41 /* MBProgressHUD.m */; };
+		FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B831222AADB00A97148 /* AccountScraper.m */; };
+		FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */; };
 		FAA1E6FA1157C54F00BC90E2 /* cyclehire.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */; };
 		FAA1E82D1159FF3200BC90E2 /* marker-blue-bike-small.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */; };
 		FAA1EB17115E73AB00BC90E2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAA1EB16115E73AB00BC90E2 /* Three20.bundle */; };
@@ -263,7 +265,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* CycleHireAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHireAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* CycleHireAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleHireAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* CycleHire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CycleHire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Cycle Hire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cycle Hire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* CycleHire_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleHire_Prefix.pch; sourceTree = "<group>"; };
@@ -336,6 +338,10 @@
 		FA935F7A1212CFEE0057EA41 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		FA93603212130E170057EA41 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/MBProgressHUD.h; sourceTree = "<group>"; };
 		FA93603312130E170057EA41 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/MBProgressHUD.m; sourceTree = "<group>"; };
+		FA9D2B821222AADB00A97148 /* AccountScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountScraper.h; sourceTree = "<group>"; };
+		FA9D2B831222AADB00A97148 /* AccountScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountScraper.m; sourceTree = "<group>"; };
+		FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyLogEntry.h; sourceTree = "<group>"; };
+		FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyLogEntry.m; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
@@ -443,7 +449,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* CycleHire.app */,
+				1D6058910D05DD3D006BFB54 /* Cycle Hire.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -698,6 +704,10 @@
 			children = (
 				FA935D8D1212A4600057EA41 /* AccountViewController.h */,
 				FA935D8E1212A4600057EA41 /* AccountViewController.m */,
+				FA9D2B821222AADB00A97148 /* AccountScraper.h */,
+				FA9D2B831222AADB00A97148 /* AccountScraper.m */,
+				FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */,
+				FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -866,7 +876,7 @@
 			);
 			name = CycleHire;
 			productName = CycleHire;
-			productReference = 1D6058910D05DD3D006BFB54 /* CycleHire.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Cycle Hire.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1158,6 +1168,8 @@
 				FA6E2091121AA4B300AB5E30 /* ASIInputStream.m in Sources */,
 				FA6E2092121AA4B300AB5E30 /* ASINetworkQueue.m in Sources */,
 				FA6E2095121AA4C000AB5E30 /* Reachability.m in Sources */,
+				FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */,
+				FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,23 +12,22 @@
 
 - (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
 	if (self = [super initWithNibName:nibName bundle:nibBundle]) {
+		scraper = [[AccountScraper alloc] init];
+		scraper.delegate = self;
+		
 		self.variableHeightRows = YES;
-
-		requestQueue = [[ASINetworkQueue alloc] init];
-		
-		df = [[NSDateFormatter alloc] init];
-		[df setDateFormat:@"dd MMM yyyy HH:mm"];
-		[df setLenient:YES];
-		
-		if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
-			[self setupForLogin];
-		} else {
-			self.title = @"Your account";
-			self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableTextItem itemWithText:@" "], nil];
-			[self loadCycleHireLoginPage]; 
-		}
 	}
 	return self;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
+		[self setupForLogin];
+	} else {
+		self.title = @"Your account";
+		self.dataSource = [TTListDataSource dataSourceWithObjects:[TTTableTextItem itemWithText:@" "], nil];
+		[self loadAccountInformation]; 
+	}
 }
 
 - (void) setupForLogin {
@@ -101,221 +100,124 @@
 	[[NSUserDefaults standardUserDefaults] setObject:email forKey:kEmailKey];
 	[[NSUserDefaults standardUserDefaults] setObject:password forKey:kPasswordKey];
 
-	[self loadCycleHireLoginPage];
+	[self loadAccountInformation];
 }
 
-- (void) loadCycleHireLoginPage {
-	hud = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.view addSubview:hud];
+- (void) loadAccountInformation {
+	if(hud == nil) { 
+		hud = [[MBProgressHUD alloc] initWithView:self.view];
+		[self.view addSubview:hud];
+	}
 	hud.labelText = @"Logging in";
 	[hud show:YES]; 
-		
-	NSLog(@"Loading homepage");	
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:CYCLE_HIRE_LOGIN_PAGE]];
-	[request setDelegate:self];
-	[request setDidFinishSelector:@selector(loadingHomepageFinished:)];
-	[requestQueue addOperation:request];
-	[requestQueue go];
+
+	[scraper startScraping];
 }
 
-- (void)loadingHomepageFinished:(ASIHTTPRequest *)_request{
-	NSLog(@"Homepage loaded");
-	NSString *responseString = [_request responseString];
-	
-	NSArray *captureComponents = [responseString arrayOfCaptureComponentsMatchedByRegex:CSRF_REGEX];
-	
-	if([captureComponents count] > 0 && 
-	   [[captureComponents objectAtIndex:0] count] == 2 &&
-	   ![[[captureComponents objectAtIndex:0] objectAtIndex:1] isEqualToString:@""]) {
-		NSString *CSRF = [[captureComponents objectAtIndex:0] objectAtIndex:1];
-		NSLog(@"Found CSRF token: %@", CSRF);
-		[self sendLoginRequestWithCSRF:CSRF];
-	} else {
-		[hud setHidden:YES];
-		[[[[UIAlertView alloc] initWithTitle:@"Can't connect to the Cycle Hire website" 
-									 message:@"Please try again later. (Error code: CSRF)"
-									delegate:nil 
-						   cancelButtonTitle:@"OK" 
-						   otherButtonTitles:nil] autorelease] show]; 
-	}
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)_request {
-	NSError *error = _request.error;
-	
+- (void) scraperDidFailWithError:(NSError *)error {	
 	[hud setHidden:YES];
-	[self switchToTableViewStyle:UITableViewStyleGrouped];
-	self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-					   NSLocalizedString(@"", nil),
-					   [TTTableTextItem itemWithText:@"Can't connect to the Cycle Hire website"],
-					   [TTTableGrayTextItem itemWithText:[error localizedDescription]],
-					   NSLocalizedString(@"", nil),
-					   [TTTableButton itemWithText:@"Retry" delegate:self selector:@selector(loadCycleHireLoginPage)],
-					   nil];
-}
-
-- (void) sendLoginRequestWithCSRF: (NSString *) CSRF {
-	NSLog(@"Logging in");
-
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:CYCLE_HIRE_LOGIN_PAGE]];
-	[request setDelegate:self];
-	[request setDidFinishSelector:@selector(loginRequestFinished:)];
-	[request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] forKey:@"login[Email]"]; 
-	[request setPostValue:[[NSUserDefaults standardUserDefaults] objectForKey:kPasswordKey] forKey:@"login[Password]"];
-	[request setPostValue:CSRF forKey:@"login[_csrf_token]"];
-	[requestQueue addOperation:request];
-	[requestQueue go];
-}
-
-- (void)loginRequestFinished:(ASIHTTPRequest *)_request{
-	NSString *postLoginURL = [_request.url absoluteString];
-	NSLog(@"Login request finished on page: %@", postLoginURL);
 	
-	if ([postLoginURL isEqualToString:CYCLE_HIRE_ACCOUNT_HOME]) {
-		// login worked 
-		[self loadCycleHireActivityLog];
-	} else {
-		// have been redirected somewhere else - error (most likely wrong password - extract?)
-		[hud setHidden:YES];
-		[[[[UIAlertView alloc] initWithTitle:@"Login failed" 
-									 message:@"Please check your username & password and try again"
-									delegate:nil 
-						   cancelButtonTitle:@"OK" 
-						   otherButtonTitles:nil] autorelease] show];
-		[self setupForLogin];
-	}
-}	
-		 
-- (void) loadCycleHireActivityLog {
-	hud.labelText = @"Downloading";
-	NSLog(@"Loading activity log");	
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:CYCLE_HIRE_ACTIVITY_LOG]];
-	[request setDelegate:self];
-	[request setDidFinishSelector:@selector(loadingActivityLogFinished:)];
-	[requestQueue addOperation:request];
-	[requestQueue go];
-}
-		 
-- (void)loadingActivityLogFinished:(ASIHTTPRequest *)_request{
-	hud.labelText = @"Processing";
-	NSLog(@"Activity log loaded");
-	NSString *responseString = [_request responseString];
-	
-	@try {
-		NSArray *split1 = [responseString componentsSeparatedByString:@"<tbody>"];
-		NSArray *split2 = [[split1 objectAtIndex:1] componentsSeparatedByString:@"</tbody>"];
-		NSString *tableString = [split2 objectAtIndex:0];
-		NSMutableString *tableString2 = [NSMutableString stringWithFormat:@"<tbody>%@</tbody>", tableString];
-		[tableString2 replaceOccurrencesOfString:@"&pound;"
-									  withString:@""
-										 options:NSCaseInsensitiveSearch
-										   range:NSMakeRange(0, [tableString2 length])];
-		[tableString2 replaceOccurrencesOfString:@"<br/>"
-									  withString:@" "
-										 options:NSCaseInsensitiveSearch
-										   range:NSMakeRange(0, [tableString2 length])];
-		TTXMLParser *parser = [[TTXMLParser alloc] initWithData:[tableString2 dataUsingEncoding:NSUTF8StringEncoding]];
-		[parser setTreatDuplicateKeysAsArrayItems:YES];
-		[parser parse];
-		
-		NSArray *rows = [parser.rootObject objectForKey:@"tr"];
-		
-		NSMutableArray *activityItems = [NSMutableArray arrayWithCapacity:[rows count]];
-		NSMutableArray *accountInfoItems = [NSMutableArray arrayWithCapacity:1];
-		
-		for (NSDictionary *rowEntry in rows) {
-			NSArray *rowCells = [rowEntry objectForKey:@"td"];
-			
-			if ([rowCells count] == 6) {
-				NSString *eventType = [[[rowCells objectAtIndex:4] objectForXMLNode] stringByTrimmingCharactersInSet:
-									   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-				
-				if ([[eventType lowercaseString] isEqualToString:@"hire"]) {
-					NSString *startDateString = [[[rowCells objectAtIndex:0] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					NSString *endDateString	  = [[[rowCells objectAtIndex:1] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					NSString *startStation	  = [[[rowCells objectAtIndex:2] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					NSString *endStation	  = [[[rowCells objectAtIndex:3] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					NSString *cost			  = [[[rowCells objectAtIndex:5] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					
-					NSDate *startDate = [df dateFromString:startDateString];
-					NSDate *endDate = [df dateFromString:endDateString];
-					
-					NSDateComponents *tripDurationComps = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
-																						  fromDate:startDate 
-																							toDate:endDate 
-																						   options:0];
-					NSString *tripDuration = ([tripDurationComps hour] == 0 ?
-											  [NSString stringWithFormat:@"%d mins", [tripDurationComps minute]] :
-											  [NSString stringWithFormat:@"%d hr %d mins", [tripDurationComps hour], [tripDurationComps minute]]);
-					
-					NSString *journeyDescription = [NSString stringWithFormat:@"%C %@\n%C %@\n%C %@ - %C%@", 
-													0x2190, startStation, 
-													0x2192, endStation,
-													0x231A, tripDuration,
-													0x00A3, cost];  
-					[activityItems addObject:[TTTableSubtextItem itemWithText:startDateString caption:journeyDescription]];			
-				}
-			} else if ([rowCells count] == 3) {
-				NSString *eventType = [[[rowCells objectAtIndex:1] objectForXMLNode] stringByTrimmingCharactersInSet:
-									   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-				if ([[eventType lowercaseString] isEqualToString:@"balance"]) {
-					NSString *balance = [[[rowCells objectAtIndex:2] objectForXMLNode] stringByTrimmingCharactersInSet:
-												 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-					
-					if (balance != nil) {
-						NSString *balanceFormatted = [NSString stringWithFormat:@"Balance: %C%@", 0x00A3, balance];
-						[accountInfoItems addObject:[TTTableTextItem itemWithText:balanceFormatted]];
-					}
-				}
-			}
-		}
-
-		UIBarButtonItem *logoutButton = [[[UIBarButtonItem alloc] initWithTitle:@"Logout" 
-																		  style:UIBarButtonItemStyleBordered 
-																		 target:self 
-																		 action:@selector(logout)] autorelease];
-		self.navigationItem.rightBarButtonItem = logoutButton; 		
-		self.title = @"Your account";
-		
-		if([activityItems count] == 0) {
+	if ([[error domain] isEqualToString:kAccountScraperErrorDomain]) {
+		if ([error code] == kASNoCsrfError) {
+			[[[[UIAlertView alloc] initWithTitle:@"Can't connect to the Cycle Hire website" 
+										 message:@"Please try again later. (Error code: CSRF)"
+										delegate:nil 
+							   cancelButtonTitle:@"OK" 
+							   otherButtonTitles:nil] autorelease] show]; 
+		} else if ([error code] == kASLoginFailedError) {
+			[[[[UIAlertView alloc] initWithTitle:@"Login failed" 
+										 message:@"Please check your username & password and try again"
+										delegate:nil 
+							   cancelButtonTitle:@"OK" 
+							   otherButtonTitles:nil] autorelease] show];
+			[self setupForLogin];
+		} else if ([error code] == kASParsingFailed) {
 			[self switchToTableViewStyle:UITableViewStyleGrouped];
 			self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-							   @"",
-							   [TTTableTextItem itemWithText:@"No journeys on your account"],
-							   [TTTableGrayTextItem itemWithText:@"If you've made journeys and can see them on the Cycle Hire website, please report this problem to feedback@cyclehireapp.com"],
-							   @"",
-							   [TTTableButton itemWithText:@"Reload" delegate:self selector:@selector(loadCycleHireLoginPage)],
+							   NSLocalizedString(@"", nil),
+							   [TTTableTextItem itemWithText:@"Can't process account information"],
+							   [TTTableGrayTextItem itemWithText:@"If this problem persists, please contact feedback@cyclehireapp.com."],
+							   NSLocalizedString(@"", nil),
+							   [TTTableButton itemWithText:@"Retry" delegate:self selector:@selector(loadAccountInformation)],
 							   nil];
-		} else {
-			[self switchToTableViewStyle:UITableViewStylePlain];
-			
-			self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Account status", accountInfoItems, @"Journey history", activityItems, nil];
 		}
-
-	}
-	@catch (NSException *exception) {
-		// Something went wrong with the parsing above - not much we can do about it
-		NSString *errorDescription = 
-			[NSString stringWithFormat:@"If this problem persists, please contact feedback@cyclehireapp.com. (Exception: %@, Reason:%@)", 
-			 [exception name], [exception reason]];
-		
+	} else {
+		[self switchToTableViewStyle:UITableViewStyleGrouped];
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 						   NSLocalizedString(@"", nil),
-						   [TTTableTextItem itemWithText:@"Can't process account information"],
-						   [TTTableGrayTextItem itemWithText:errorDescription],
+						   [TTTableTextItem itemWithText:@"Can't connect to the Cycle Hire website"],
+						   [TTTableGrayTextItem itemWithText:[error localizedDescription]],
 						   NSLocalizedString(@"", nil),
-						   [TTTableButton itemWithText:@"Retry" delegate:self selector:@selector(loadCycleHireLoginPage)],
+						   [TTTableButton itemWithText:@"Retry" delegate:self selector:@selector(loadAccountInformation)],
 						   nil];
 	}
-	@finally {
-		[hud hide:YES];
+}
+
+- (void) scraperDidFinishScraping {
+	NSArray *journeyLog = scraper.journeyLog;
+	
+	NSMutableArray *activityItems = [NSMutableArray arrayWithCapacity:[scraper.journeyLog count]];
+	
+	for (JourneyLogEntry *entry in journeyLog) {
+		NSDateComponents *tripDurationComps = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
+																			  fromDate:entry.startDate 
+																				toDate:entry.endDate
+																			   options:0];
+		NSString *tripDuration = ([tripDurationComps hour] == 0 ?
+								  [NSString stringWithFormat:@"%d mins", [tripDurationComps minute]] :
+								  [NSString stringWithFormat:@"%d hr %d mins", [tripDurationComps hour], [tripDurationComps minute]]);
+		
+		NSString *journeyDescription = [NSString stringWithFormat:@"%C %@\n%C %@\n%C %@ - %C%@", 
+										0x2190, entry.startStation, 
+										0x2192, entry.endStation,
+										0x231A, tripDuration,
+										0x00A3, entry.cost];  
+		[activityItems addObject:[TTTableSubtextItem itemWithText:[entry.startDate description] caption:journeyDescription]];			
 	}
-}	
+
+	NSMutableArray *accountInfoItems = [NSMutableArray arrayWithCapacity:1];
+	NSString *balanceFormatted = [NSString stringWithFormat:@"Balance: %C%@", 0x00A3, scraper.accountBalance];
+	[accountInfoItems addObject:[TTTableTextItem itemWithText:balanceFormatted]];
+	
+	UIBarButtonItem *logoutButton = [[[UIBarButtonItem alloc] initWithTitle:@"Logout" 
+																	  style:UIBarButtonItemStyleBordered 
+																	 target:self 
+																	 action:@selector(logout)] autorelease];
+	self.navigationItem.rightBarButtonItem = logoutButton; 		
+	self.title = @"Your account";
+	
+	if([activityItems count] == 0) {
+		[self switchToTableViewStyle:UITableViewStyleGrouped];
+		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+						   @"",
+						   [TTTableTextItem itemWithText:@"No journeys on your account"],
+						   [TTTableGrayTextItem itemWithText:@"If you've made journeys and can see them on the Cycle Hire website, please report this problem to feedback@cyclehireapp.com"],
+						   @"",
+						   [TTTableButton itemWithText:@"Reload" delegate:self selector:@selector(loadAccountInformation)],
+						   nil];
+	} else {
+		[self switchToTableViewStyle:UITableViewStylePlain];
+		
+		NSMutableArray *statsItems = [NSMutableArray arrayWithCapacity:2];
+		[statsItems addObject:
+		 [TTTableTextItem itemWithText:
+		  [NSString stringWithFormat:@"%d cycle hire journeys", [activityItems count]]]];
+		[statsItems addObject:
+		 [TTTableTextItem itemWithText:
+		  [NSString stringWithFormat:@"%@ of cycling", [self formattedTimeFromInterval:scraper.totalCyclingTime]]]];
+//		[statsItems addObject:
+//		 [TTTableTextItem itemWithText:
+//		  [NSString stringWithFormat:@"%d docking stations visited", [dockingStationsVisited count]]]];
+		
+//		NSLog(@"Docking stations visted: %@", dockingStationsVisited);
+		
+		self.dataSource = [TTSectionedDataSource dataSourceWithArrays:@"Account status", accountInfoItems,
+						   @"Statistics", statsItems,
+						   @"Journey history", activityItems, nil];			
+		
+	}
+	
+}
 
 - (void) logout {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:kEmailKey];
@@ -331,15 +233,41 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-	[requestQueue cancelAllOperations];
+	[scraper stopScraping];
+}
+
+- (NSString *) formattedTimeFromInterval: (NSTimeInterval) interval {
+	NSDate *fakeStartDate = [NSDate date];
+	NSDate *fakeEndDate = [fakeStartDate dateByAddingTimeInterval:interval];
+	NSDateComponents *totalTimeComps = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit
+																	   fromDate:fakeStartDate
+																		 toDate:fakeEndDate
+																		options:0];
+	NSMutableString *totalTimeFormatted = [NSMutableString string];
+	
+	NSInteger days = [totalTimeComps day];
+	if (days > 0) {
+		[totalTimeFormatted appendFormat:@"%d day%@ ", days, (days == 1 ? @"" : @"s")];
+	}
+	
+	NSInteger hours = [totalTimeComps hour];
+	if (hours > 0) {
+		[totalTimeFormatted appendFormat:@"%d hour%@ ", hours, (hours == 1 ? @"" : @"s")];
+	}
+	
+	NSInteger minutes = [totalTimeComps minute];
+	if (minutes > 0) {
+		[totalTimeFormatted appendFormat:@"%d minute%@", minutes, (minutes == 1 ? @"" : @"s")];
+	}
+	
+	return totalTimeFormatted;
 }
 
 - (void) dealloc {
 	[super dealloc];
-	[requestQueue release];
 	[emailField release];
 	[passwordField release];
-	[df release];
+	[scraper release];
 }
 
 @end

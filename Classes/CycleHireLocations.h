@@ -19,6 +19,7 @@
 
 @interface CycleHireLocations : NSObject {
 	NSMutableDictionary *locationsDictionary;
+	NSMutableDictionary *locationsNameDictionary;
 	NSMutableArray *favouriteLocations;
 	
 	NSString *favouritesPath;

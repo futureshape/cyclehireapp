@@ -11,7 +11,7 @@
 
 #import "CycleHireLocations.h";
 
-@interface FavouritesListDataSource : TTListDataSource {
+@interface FavouritesListDataSource : TTSectionedDataSource {
 	CycleHireLocations *cycleHireLocations;
 	NSMutableArray *favouriteLocations;
 }

@@ -20,6 +20,7 @@
 		}
 
 		self.dataSource = [[[FavouritesListDataSource alloc] initWithCycleHireLocations:cycleHireLocations] autorelease];
+		self.variableHeightRows = YES;
 		
 		TTNavigator *navigator = [TTNavigator navigator];
 		TTURLMap *map = navigator.URLMap;

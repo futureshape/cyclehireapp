@@ -31,7 +31,7 @@
 }
 
 @property (nonatomic, retain) NSString *APIkey;
-@property (nonatomic, retain) NSString *delegate;
+@property (nonatomic, retain) id<CycleStreetsPlannerDelegate> delegate;
 
 - (id) initWithAPIkey:(NSString *)key delegate:(id<CycleStreetsPlannerDelegate>)_delegate;
 

@@ -14,6 +14,7 @@
 	cycleHireLocations = _cycleHireLocations;
 	favouriteLocations = [cycleHireLocations favouriteLocations];
 	if (self = [super init]) {
+		self.sections = [NSArray arrayWithObjects:@"Marked as favourites", @"Recently used", nil];
 		[self refreshData];
 	}
 	return self;
@@ -42,10 +43,16 @@
 }
 
 -(void) refreshData {
-	[self.items removeAllObjects];
+	NSMutableArray *favouritesTableItems = [NSMutableArray arrayWithCapacity:[favouriteLocations count]];
 	for (CycleHireLocation *location in favouriteLocations) {
-		[self.items addObject:[self tableItemForLocation:location]];
+		[favouritesTableItems addObject:[self tableItemForLocation:location]];
 	}	
+
+	NSMutableArray *recentlyUsedTableItems = [NSMutableArray arrayWithCapacity:10];
+	[recentlyUsedTableItems addObject:[TTTableLongTextItem itemWithText:
+									   @"Recently used docking stations will appear here after you login to your Cycle Hire account"]];
+
+	self.items = [NSArray arrayWithObjects:favouritesTableItems, recentlyUsedTableItems, nil];
 }
 
 -(TTTableItem*) tableItemForLocation:(CycleHireLocation*)location {
