@@ -10,10 +10,18 @@
 #import "Three20/Three20.h"
 
 #import "FavouritesListDataSource.h"
+#import "RecentDockingStationsDataSource.h"
 #import "CycleHireLocations.h"
 
 @interface FavouritesListViewController : TTTableViewController {
 
+	FavouritesListDataSource *favouritesDataSource;
+	RecentDockingStationsDataSource *recentsDataSource;
+	
+	UISegmentedControl *favTypeSelection;
 }
+
+- (void) refreshData;
+- (void) favouritesTypeChanged:(id)sender;
 
 @end

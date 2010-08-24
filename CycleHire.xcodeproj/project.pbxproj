@@ -345,6 +345,7 @@
 		FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JourneyLogEntry.m; path = Classes/JourneyLogEntry.m; sourceTree = "<group>"; };
 		FA9D2CD11223105F00A97148 /* RecentDockingStationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecentDockingStationsDataSource.h; path = Classes/RecentDockingStationsDataSource.h; sourceTree = "<group>"; };
 		FA9D2CD21223105F00A97148 /* RecentDockingStationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentDockingStationsDataSource.m; path = Classes/RecentDockingStationsDataSource.m; sourceTree = "<group>"; };
+		FA9D2E3912242A4F00A97148 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = Classes/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		FAA1E6F91157C54F00BC90E2 /* cyclehire.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cyclehire.csv; path = Resources/cyclehire.csv; sourceTree = "<group>"; };
 		FAA1E82C1159FF3200BC90E2 /* marker-blue-bike-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker-blue-bike-small.png"; path = "Resources/MarkerImages/marker-blue-bike-small.png"; sourceTree = "<group>"; };
 		FAA1EB16115E73AB00BC90E2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
@@ -690,6 +691,7 @@
 		FA8F52261152E996003966EE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9D2E3912242A4F00A97148 /* SynthesizeSingleton.h */,
 				FA0548281219575700C66025 /* NSMutableArray-RowMoving.h */,
 				FA0548291219575700C66025 /* NSMutableArray-RowMoving.m */,
 				FA93602C12130DF00057EA41 /* Progress HUD */,

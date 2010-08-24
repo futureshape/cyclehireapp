@@ -112,7 +112,7 @@
 
 - (void) loadCycleHireLocations {
 	
-	cycleHireLocations = [[CycleHireLocations alloc] init];
+	cycleHireLocations = [CycleHireLocations sharedCycleHireLocations];
 	markersForLocations = [[NSMutableDictionary alloc] initWithCapacity:[[cycleHireLocations allLocations] count]];
 	
 	for (CycleHireLocation *location in [cycleHireLocations allLocations]) {
@@ -621,8 +621,7 @@
 
 - (void) openCycleHireLocationWithId: (NSString*) locationId {
 	
-	NSString *decodedLocationId = [locationId stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-	RMMarker *locationMarker = [markersForLocations objectForKey:decodedLocationId];
+	RMMarker *locationMarker = [markersForLocations objectForKey:locationId];
 	CycleHireLocation *locationToOpen = (CycleHireLocation *) locationMarker.data;
 	
 	[self.navigationController popToRootViewControllerAnimated:YES];
@@ -636,11 +635,7 @@
 }
 
 - (IBAction) showFavouritesList {
-	TTURLAction *openFavourites = [[[TTURLAction actionWithURLPath:@"cyclehire://favourites/dummy"] 
-									applyAnimated:YES]
-								   applyQuery:[NSDictionary dictionaryWithObject:cycleHireLocations forKey:@"locations"]];
-	
-	[[TTNavigator navigator] openURLAction:openFavourites];
+	[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"cyclehire://favourites/"] applyAnimated:YES]];
 }
 
 - (IBAction) infoButtonTapped {

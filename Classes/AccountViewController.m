@@ -24,6 +24,8 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
 	if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
 		[self setupForLogin];
 	} else {
@@ -240,6 +242,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
 	[scraper stopScraping];
 }
 

@@ -9,9 +9,14 @@
 #import "CycleHireLocations.h"
 #import "parseCSV.h"
 
+#import "SynthesizeSingleton.h"
+
 @implementation CycleHireLocations
 
+SYNTHESIZE_SINGLETON_FOR_CLASS(CycleHireLocations);
+
 @synthesize lastUpdatedTimestamp;
+@synthesize recentlyUsedDockingStations;
 
 -(id) init {
 	if(self = [super init]) {
@@ -58,23 +63,33 @@
 		
 		// Load favourites
 		favouritesPath = [[NSString stringWithFormat:@"%@/%@", documentsDirectory, FAVOURITES_FILE] retain];
-		
-		NSArray *favouriteLocationIDs = [NSMutableArray arrayWithContentsOfFile:favouritesPath];
-	
+		NSArray *favouriteLocationIDs = [NSArray arrayWithContentsOfFile:favouritesPath];
 		favouriteLocations = [[NSMutableArray alloc] 
 								initWithCapacity:(favouriteLocationIDs == nil ? 1 : [favouriteLocationIDs count])];
 		
 		if(favouriteLocationIDs != nil) {
-			NSLog(@"Loaded %d favourite cycle hire location IDs", [favouriteLocationIDs count]);
+			NSLog(@"Loaded %d favourite docking station IDs", [favouriteLocationIDs count]);
 			for (NSString *locationID in favouriteLocationIDs) {
 				CycleHireLocation *location = [locationsDictionary objectForKey:locationID];
 				location.favourite = YES;
 			}
 		}
+		
+		// Load recents
+		recentsPath = [[documentsDirectory stringByAppendingPathComponent:RECENTS_FILE] retain];
+		NSArray *recentDockIds = [NSArray arrayWithContentsOfFile:recentsPath];
+		self.recentlyUsedDockingStations = [NSMutableArray arrayWithCapacity:
+											(recentDockIds == nil ? 1 : [recentDockIds count])];
+		if (recentDockIds != nil) {
+			NSLog(@"Loaded %d recently used docking station IDs", [recentDockIds count]);
+			for (NSString *locationID in recentDockIds) {
+				CycleHireLocation *location = [locationsDictionary objectForKey:locationID];
+				[self.recentlyUsedDockingStations addObject:location];
+			}
+		}
 	
 		scraper = [[AccountScraper alloc] init];
 		scraper.delegate = self;
-		[self updateRecentlyUsedDockingStations];
 	}
 	return self;
 }
@@ -97,6 +112,14 @@
 		[locationIds addObject:favLocation.locationId];
 	}
 	[locationIds writeToFile:favouritesPath atomically:YES];
+	[locationIds release];
+	
+	NSMutableArray *recentIds = [[NSMutableArray alloc] initWithCapacity:[recentlyUsedDockingStations count]];
+	for (CycleHireLocation *recentLocation in recentlyUsedDockingStations) {
+		[recentIds addObject:recentLocation.locationId];
+	}
+	[recentIds writeToFile:recentsPath atomically:YES];
+	[recentIds release];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -214,7 +237,7 @@
 
 - (void) scraperDidFinishScraping {
 	NSDictionary *dockingStationsVisited = scraper.uniqueDockingStationsVisited;
-	NSMutableArray *recentlyUsedDockingStations = [NSMutableArray arrayWithCapacity:[dockingStationsVisited count]];
+	self.recentlyUsedDockingStations = [NSMutableArray arrayWithCapacity:[dockingStationsVisited count]];
 	
 	for (NSString *fullName in [dockingStationsVisited allKeys]) {
 		NSString *halfName = [[fullName componentsSeparatedByString:@","] objectAtIndex:0];
@@ -227,8 +250,7 @@
 	}
 	
 	[recentlyUsedDockingStations sortUsingSelector:@selector(compareLastUsed:)];
-	
-	NSLog(@"recentlyUsedDockingStations - sortedByDate: %@", recentlyUsedDockingStations);
+	[[NSNotificationCenter defaultCenter] postNotificationName:RECENTS_UPDATED_NOTIFICATION object:self];
 }
 
 - (void) scraperDidFailWithError:(NSError *)error {
@@ -241,6 +263,8 @@
 	[locationsDictionary release];
 	[locationsNameDictionary release];
 	[favouritesPath release];
+	[recentlyUsedDockingStations release];
+	[recentsPath release];
 	[csvDocPath release];
 	[scraper release];
 }

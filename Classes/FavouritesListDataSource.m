@@ -10,10 +10,9 @@
 
 @implementation FavouritesListDataSource
 
-- (id)initWithCycleHireLocations: (CycleHireLocations *) _cycleHireLocations {
+- (id)init {
 	if (self = [super init]) {
-		cycleHireLocations = _cycleHireLocations;
-		favouriteLocations = [cycleHireLocations favouriteLocations];
+		favouriteLocations = [[CycleHireLocations sharedCycleHireLocations] favouriteLocations];
 		[self refreshData];
 	}
 	return self;
@@ -52,7 +51,7 @@
 	NSString *title = [NSString stringWithFormat:@"%@, %@", location.locationName, location.villageName];
 	
 	NSString *subtitle;
-	if ([cycleHireLocations freshDataAvailable]) {
+	if ([[CycleHireLocations sharedCycleHireLocations] freshDataAvailable]) {
 		subtitle = [NSString stringWithFormat:@"%@, %@", 
 					[location localizedBikesAvailableText], 
 					[location localizedSpacesAvailableText]];
@@ -61,8 +60,7 @@
 	}
 	
 	// Need to replace slashes in TfL reference with the url-encoded alternative
-	NSString *encodedLocationId = [location.locationId stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
-	NSString *URL = [NSString stringWithFormat:@"cyclehire://map/cycleHireLocation/%@", encodedLocationId];
+	NSString *URL = [NSString stringWithFormat:@"cyclehire://map/cycleHireLocation/%@", location.locationId];
 	return [TTTableSubtitleItem itemWithText:title subtitle:subtitle URL:URL];
 }
 

@@ -38,8 +38,7 @@
 	[map from:@"cyclehire://attractions/" toSharedViewController:([AttractionCategoryViewController class])];
 	[map from:@"cyclehire://map/" toSharedViewController:([MapViewController class])];
 	
-	// TODO: initWithName is dummy so we can also pass query - is there any other way?
-	[map from:@"cyclehire://favourites/(initWithName:)" toSharedViewController:([FavouritesListViewController class])];
+	[map from:@"cyclehire://favourites/" toSharedViewController:([FavouritesListViewController class])];
 
 	[map from:@"cyclehire://information/" toSharedViewController:([InfoViewController class])];
 
