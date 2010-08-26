@@ -69,7 +69,10 @@
 					   NSLocalizedString(@"", nil),
 					   [TTTableButton itemWithText:@"Login" delegate:self selector:@selector(loginButtonTapped)],
 					   NSLocalizedString(@"", nil),
-					   [TTTableGrayTextItem itemWithText:@"Note: This is the same username & password that you use for the Cycle Hire website."],
+					   [TTTableGrayTextItem itemWithText:
+							@"This is the same email address & password that you use for the Cycle Hire website.\n\n" \
+							 "Your login details will be encrypted and sent to the Cycle Hire website in a secure way.\n\n" \
+							 "Your journey history will only be downloaded to your device and will never be shared with anyone else."],
 					   nil];
 }
 
