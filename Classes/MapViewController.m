@@ -84,6 +84,11 @@
 	
 	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
 	
+	[IZGrowlManager sharedManager].fadeInTime = 0.5;
+	[IZGrowlManager sharedManager].fadeOutTime = 0.5;
+	[IZGrowlManager sharedManager].displayTime = 4;
+	[IZGrowlManager sharedManager].offset = CGPointMake(-5, -51);
+	
 	firstAppearance = YES;
 	
 }
@@ -322,6 +327,10 @@
 #pragma mark Drawer view
 
 - (IBAction) toggleDrawerView {
+	
+	if ([IZGrowlManager sharedManager].displayedNotifications > 0) {
+		[[IZGrowlManager sharedManager] dissmissAllNotifications];
+	}
 	
 	CGRect newFrame = [self.drawerView frame];
 	if(drawerViewVisible) {
@@ -758,10 +767,12 @@
 	if (directionsFinishPoint != nil) {
 		[self updateDirections];
 	} else {
-		[self showErrorAlertWithTitle:nil
-							  message:[NSString stringWithFormat:NSLocalizedString(@"Now find a station near your destination and tap '%@'.", nil),
-									   NSLocalizedString(@"Directions to here", nil)]
-				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
+		[[IZGrowlManager sharedManager] postNotification:
+		 [[[IZGrowlNotification alloc] initWithTitle:@"Directions" 
+										 description:@"Now find another station and tap 'Directions to here'."
+											   image:[UIImage imageNamed:@"information-symbol.png"]
+											 context:nil 
+											delegate:nil] autorelease]]; 
 	}
 }
 
@@ -783,10 +794,12 @@
 	if (directionsStartingPoint != nil) {
 		[self updateDirections];
 	} else {
-		[self showErrorAlertWithTitle:nil
-							  message:[NSString stringWithFormat:NSLocalizedString(@"Now find the station you're starting from and tap '%@'.", nil),
-									   NSLocalizedString(@"Directions from here", nil)]
-				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
+		[[IZGrowlManager sharedManager] postNotification:
+		 [[[IZGrowlNotification alloc] initWithTitle:@"Directions" 
+										 description:@"Now find the station you're starting from and tap 'Directions to here'."
+											   image:[UIImage imageNamed:@"information-symbol.png"]
+											 context:nil 
+											delegate:nil] autorelease]]; 
 	}
 }
 

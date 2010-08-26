@@ -54,6 +54,11 @@
 		FA935F791212CFE20057EA41 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA935F781212CFE20057EA41 /* MobileCoreServices.framework */; };
 		FA935F7B1212CFEE0057EA41 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA935F7A1212CFEE0057EA41 /* libz.1.2.3.dylib */; };
 		FA93603412130E170057EA41 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93603312130E170057EA41 /* MBProgressHUD.m */; };
+		FA9908E8122705C100448BA0 /* growl-box-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9908E5122705C100448BA0 /* growl-box-highlighted.png */; };
+		FA9908E9122705C100448BA0 /* growl-box.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9908E6122705C100448BA0 /* growl-box.png */; };
+		FA9908EA122705C100448BA0 /* growl-close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9908E7122705C100448BA0 /* growl-close-button.png */; };
+		FA9908EC1227060300448BA0 /* information-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9908EB1227060300448BA0 /* information-symbol.png */; };
+		FA9908EF1227063600448BA0 /* IZGrowlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9908EE1227063600448BA0 /* IZGrowlManager.m */; };
 		FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B831222AADB00A97148 /* AccountScraper.m */; };
 		FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2B861222ADEE00A97148 /* JourneyLogEntry.m */; };
 		FA9D2CD31223105F00A97148 /* RecentDockingStationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9D2CD21223105F00A97148 /* RecentDockingStationsDataSource.m */; };
@@ -339,6 +344,12 @@
 		FA935F7A1212CFEE0057EA41 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		FA93603212130E170057EA41 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Classes/MBProgressHUD.h; sourceTree = "<group>"; };
 		FA93603312130E170057EA41 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Classes/MBProgressHUD.m; sourceTree = "<group>"; };
+		FA9908E5122705C100448BA0 /* growl-box-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "growl-box-highlighted.png"; path = "Resources/UIImages/growl-box-highlighted.png"; sourceTree = "<group>"; };
+		FA9908E6122705C100448BA0 /* growl-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "growl-box.png"; path = "Resources/UIImages/growl-box.png"; sourceTree = "<group>"; };
+		FA9908E7122705C100448BA0 /* growl-close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "growl-close-button.png"; path = "Resources/UIImages/growl-close-button.png"; sourceTree = "<group>"; };
+		FA9908EB1227060300448BA0 /* information-symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "information-symbol.png"; path = "Resources/UIImages/information-symbol.png"; sourceTree = "<group>"; };
+		FA9908ED1227063600448BA0 /* IZGrowlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IZGrowlManager.h; path = ../IZGrowlManager/Classes/IZGrowlManager.h; sourceTree = SOURCE_ROOT; };
+		FA9908EE1227063600448BA0 /* IZGrowlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IZGrowlManager.m; path = ../IZGrowlManager/Classes/IZGrowlManager.m; sourceTree = SOURCE_ROOT; };
 		FA9D2B821222AADB00A97148 /* AccountScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountScraper.h; path = Classes/AccountScraper.h; sourceTree = "<group>"; };
 		FA9D2B831222AADB00A97148 /* AccountScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountScraper.m; path = Classes/AccountScraper.m; sourceTree = "<group>"; };
 		FA9D2B851222ADEE00A97148 /* JourneyLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JourneyLogEntry.h; path = Classes/JourneyLogEntry.h; sourceTree = "<group>"; };
@@ -629,6 +640,10 @@
 		FA8BD0B011939A15009CDBFF /* UI Images */ = {
 			isa = PBXGroup;
 			children = (
+				FA9908EB1227060300448BA0 /* information-symbol.png */,
+				FA9908E5122705C100448BA0 /* growl-box-highlighted.png */,
+				FA9908E6122705C100448BA0 /* growl-box.png */,
+				FA9908E7122705C100448BA0 /* growl-close-button.png */,
 				FAD62147121068DF00EB90C0 /* clock.png */,
 				FAD62148121068DF00EB90C0 /* clock@2x.png */,
 				FAD6213A1210663400EB90C0 /* radar.png */,
@@ -691,6 +706,8 @@
 		FA8F52261152E996003966EE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9908ED1227063600448BA0 /* IZGrowlManager.h */,
+				FA9908EE1227063600448BA0 /* IZGrowlManager.m */,
 				FA9D2E3912242A4F00A97148 /* SynthesizeSingleton.h */,
 				FA0548281219575700C66025 /* NSMutableArray-RowMoving.h */,
 				FA0548291219575700C66025 /* NSMutableArray-RowMoving.m */,
@@ -1136,6 +1153,10 @@
 				FAD621C5121092F800EB90C0 /* cyclestreets-logo@2x.png in Resources */,
 				FAD621C7121093A800EB90C0 /* osm-logo@2x.png in Resources */,
 				FA935CC212109BB60057EA41 /* cancel@2x.png in Resources */,
+				FA9908E8122705C100448BA0 /* growl-box-highlighted.png in Resources */,
+				FA9908E9122705C100448BA0 /* growl-box.png in Resources */,
+				FA9908EA122705C100448BA0 /* growl-close-button.png in Resources */,
+				FA9908EC1227060300448BA0 /* information-symbol.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1199,7 @@
 				FA9D2B841222AADB00A97148 /* AccountScraper.m in Sources */,
 				FA9D2B871222ADEE00A97148 /* JourneyLogEntry.m in Sources */,
 				FA9D2CD31223105F00A97148 /* RecentDockingStationsDataSource.m in Sources */,
+				FA9908EF1227063600448BA0 /* IZGrowlManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

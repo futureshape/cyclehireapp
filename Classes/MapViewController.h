@@ -31,6 +31,8 @@
 #import "CoreLocationAdditions.h"
 #import "PostcodeDatabase.h"
 
+#import "IZGrowlManager.h"
+
 #define kLastLocationLatKey		@"LastLocationLat"
 #define kLastLocationLongKey	@"LastLocationLong"
 #define kLastLocationZoomKey	@"LastLocationZoom"
