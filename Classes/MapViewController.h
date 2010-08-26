@@ -79,8 +79,8 @@ typedef enum {
 	BOOL drawerViewVisible;
 	
 	// Directions
-	CLLocationCoordinate2D directionsStartingPoint;
-	CLLocationCoordinate2D directionsFinishPoint;
+	CycleHireLocation *directionsStartingPoint;
+	CycleHireLocation *directionsFinishPoint;
 	CycleStreetsPlanner *planner;
 	RMPath *directionsPath;
 

@@ -33,8 +33,8 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 	
 		TTURLMap *map = [TTNavigator navigator].URLMap;
 		[map from:@"cyclehire://location/report/" toObject:self selector:@selector(reportProblem)];
-		[map from:@"cyclehire://map/from/(directionsFromLat:)/(Long:)" toObject:[map objectForURL:@"cyclehire://map/"]];
-		[map from:@"cyclehire://map/to/(directionsToLat:)/(Long:)" toObject:[map objectForURL:@"cyclehire://map/"]];	
+		[map from:@"cyclehire://map/from/(directionsFromStationWithId:)" toObject:[map objectForURL:@"cyclehire://map/"]];
+		[map from:@"cyclehire://map/to/(directionsToStationWithId:)" toObject:[map objectForURL:@"cyclehire://map/"]];	
 		[map from:@"cyclehire://location/favourite/" toObject:self selector:@selector(toggleFavourite)];
 		
 		locationTitleTableItem = [[TTTableSubtitleItem alloc] init];
@@ -109,12 +109,10 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		spacesAvailableTableItem.text = NSLocalizedString(@"No live data available", nil);
 	}
 	
-	NSString *directionsFromURL = [NSString stringWithFormat:@"cyclehire://map/from/%f/%f", 
-								 location.coordinate.latitude, location.coordinate.longitude];
+	NSString *directionsFromURL = [NSString stringWithFormat:@"cyclehire://map/from/%@", location.locationId];
 	directionsFromHereButton.URL = directionsFromURL;
 	
-	NSString *directionsToURL = [NSString stringWithFormat:@"cyclehire://map/to/%f/%f", 
-								 location.coordinate.latitude, location.coordinate.longitude];
+	NSString *directionsToURL = [NSString stringWithFormat:@"cyclehire://map/to/%@", location.locationId];
 	directionsToHereButton.URL = directionsToURL;
 	
 	[self updateFavouritesButton];

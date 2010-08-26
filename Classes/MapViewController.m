@@ -79,8 +79,8 @@
 	locationManager = nil;
 	locationState = kLocationCancelled;
 	
-	directionsStartingPoint = CLInvalidCoordinate();
-	directionsFinishPoint = CLInvalidCoordinate();
+	directionsStartingPoint = nil;
+	directionsFinishPoint = nil;
 	
 	postcodes = [[PostcodeDatabase alloc] initWithDatabasePath:[[NSBundle mainBundle] pathForResource:@"postcodes" ofType:@"db"]];
 	
@@ -740,24 +740,24 @@
 #pragma mark -
 #pragma mark Directons handling
 
-- (void) directionsFromLat:(CLLocationDegrees) latitude Long:(CLLocationDegrees) longitude {
+- (void) directionsFromStationWithId: (NSString *) locationId {
 	
 	[self closeLocationPopup];
 	
-	if(latitude == directionsFinishPoint.latitude && longitude == directionsFinishPoint.longitude) {
+	CycleHireLocation *fromLocation = [cycleHireLocations locationWithId:locationId];
+	
+	if([fromLocation isEqual:directionsFinishPoint]) {
 		[self showErrorAlertWithTitle:NSLocalizedString(@"Starting point same as destination", nil)
 							  message:NSLocalizedString(@"Please select a different station to start or finish your route.", nil)
 				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 		return;
 	}
 	
-	directionsStartingPoint.latitude = latitude;
-	directionsStartingPoint.longitude = longitude; 
+	directionsStartingPoint = fromLocation; 
 
-	if (CLIsValidCoordinate(directionsFinishPoint)) {
+	if (directionsFinishPoint != nil) {
 		[self updateDirections];
 	} else {
-		// TODO: replace this with something more subtle than UIAlertView
 		[self showErrorAlertWithTitle:nil
 							  message:[NSString stringWithFormat:NSLocalizedString(@"Now find a station near your destination and tap '%@'.", nil),
 									   NSLocalizedString(@"Directions to here", nil)]
@@ -765,21 +765,22 @@
 	}
 }
 
-- (void) directionsToLat:(CLLocationDegrees) latitude Long:(CLLocationDegrees) longitude {
+- (void) directionsToStationWithId: (NSString *) locationId {
 	
 	[self closeLocationPopup];
+
+	CycleHireLocation *toLocation = [cycleHireLocations locationWithId:locationId];
 	
-	if(latitude == directionsStartingPoint.latitude && longitude == directionsStartingPoint.longitude) {
+	if([toLocation isEqual:directionsStartingPoint]) {
 		[self showErrorAlertWithTitle:NSLocalizedString(@"Starting point same as destination", nil)
 							  message:NSLocalizedString(@"Please select a different station to start or finish your route.", nil)
 				   dismissButtonLabel:NSLocalizedString(@"OK", nil)];
 		return;
 	}	
 	
-	directionsFinishPoint.latitude = latitude;
-	directionsFinishPoint.longitude = longitude;
-		
-	if (CLIsValidCoordinate(directionsStartingPoint)) {
+	directionsFinishPoint = toLocation;
+	
+	if (directionsStartingPoint != nil) {
 		[self updateDirections];
 	} else {
 		[self showErrorAlertWithTitle:nil
@@ -793,7 +794,7 @@
 	if(planner == nil) {
 		planner = [[CycleStreetsPlanner alloc] initWithAPIkey:CYCLESTREETS_API_KEY delegate:self];
 	}
-	[planner requestDirectionsFrom:directionsStartingPoint to:directionsFinishPoint];
+	[planner requestDirectionsFrom:directionsStartingPoint.coordinate to:directionsFinishPoint.coordinate];
 	[self setDirectionsState:kDirectionsRequested];
 }
 
@@ -805,8 +806,8 @@
 	}
 	[self setDirectionsState:kDirectionsHidden];
 	
-	directionsStartingPoint = CLInvalidCoordinate();
-	directionsFinishPoint = CLInvalidCoordinate();
+	directionsStartingPoint = nil;
+	directionsFinishPoint = nil;
 }
 
 - (void) cycleStreetsPlanner: (CycleStreetsPlanner *)planner didFindRoute: (CycleStreetsRoute *) route {
