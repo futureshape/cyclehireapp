@@ -227,12 +227,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CycleHireLocations);
 	return timeStamp;
 }
 
--(void) updateRecentlyUsedDockingStations {
+-(BOOL) updateRecentlyUsedDockingStations {
 	if ([[NSUserDefaults standardUserDefaults] objectForKey:kEmailKey] == nil) {
-		return; // credentials not yet configured, so scraper won't work
+		return NO; // credentials not yet configured, so scraper won't work
 	}
 	
 	[scraper startScraping];
+	return YES;
 }	
 
 - (void) scraperDidFinishScraping {

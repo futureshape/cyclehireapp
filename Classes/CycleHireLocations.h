@@ -58,5 +58,5 @@
 - (void) startUpdateFromServer;
 - (BOOL) freshDataAvailable;
 - (NSDate *) timeStampDateFromString: (NSString *) timeStampString;
--(void) updateRecentlyUsedDockingStations;
+-(BOOL) updateRecentlyUsedDockingStations;
 @end

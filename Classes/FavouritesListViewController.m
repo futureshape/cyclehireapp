@@ -60,6 +60,7 @@
 
 - (void) favouritesTypeChanged:(id)sender {
 	self.editing = NO;
+	[self invalidateModel];
 	if (favTypeSelection.selectedSegmentIndex == 0) {
 		self.dataSource = favouritesDataSource;
 		self.navigationItem.rightBarButtonItem.enabled = 
@@ -67,8 +68,9 @@
 	} else {
 		self.dataSource = recentsDataSource;
 		self.navigationItem.rightBarButtonItem.enabled = NO;
-		recentsDataSource.updating = YES;
-		[[CycleHireLocations sharedCycleHireLocations] updateRecentlyUsedDockingStations];
+		if([[CycleHireLocations sharedCycleHireLocations] updateRecentlyUsedDockingStations]) {
+			recentsDataSource.updating = YES;
+		}
 	}
 	[self refreshData];
 }
@@ -80,6 +82,9 @@
 
 - (void) recentsLoaded {
 	recentsDataSource.updating = NO;
+	[self invalidateModel];
+	self.dataSource = recentsDataSource;
+	self.navigationItem.rightBarButtonItem.enabled = NO;
 	[self refreshData];
 }
 
