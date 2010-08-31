@@ -23,7 +23,7 @@
 			<string>balanced</string>
 			<key>Titles</key>
 			<array>
-				<string>Default</string>
+				<string>Balanced</string>
 				<string>Fastest</string>
 				<string>Quietest</string>
 				<string>Shortest</string>

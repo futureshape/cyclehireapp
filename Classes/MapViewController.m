@@ -21,6 +21,8 @@
 
 #define CYCLESTREETS_API_KEY @"77e632deb63b5fbc"
 
+#define ZOOM_BOUNDARY	14.5
+
 @implementation MapViewController
 
 @synthesize mapView;
@@ -90,6 +92,7 @@
 	[IZGrowlManager sharedManager].offset = CGPointMake(-5, -51);
 	
 	firstAppearance = YES;
+	lastZoom = mapView.contents.zoom;
 	
 }
 
@@ -121,13 +124,20 @@
 	markersForLocations = [[NSMutableDictionary alloc] initWithCapacity:[[cycleHireLocations allLocations] count]];
 	
 	for (CycleHireLocation *location in [cycleHireLocations allLocations]) {
-		UIImage *bikeMarkerImage = [UIImage imageNamed:(mapView.contents.zoom < 14.5 ? @"marker-blue-bike-small.png" : @"marker-blue-bike.png")]; 
-		RMMarker *locationMarker = [[RMMarker alloc] initWithUIImage:bikeMarkerImage anchorPoint:CGPointMake(0.5, 1.0)];
-		locationMarker.data = location;
+
+		CycleHireLocationMarker *locationMarker = [[CycleHireLocationMarker alloc] initWithLocation:location];
+		
 		locationMarker.zPosition = 100;
+		locationMarker.data = location;
 		[[mapView markerManager] addMarker:locationMarker AtLatLong:location.coordinate];
 		[markersForLocations setObject:locationMarker forKey:location.locationId];
 		[locationMarker release];
+	}
+	
+	if (self.mapView.contents.zoom < ZOOM_BOUNDARY) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ZOOMING_OUT_NOTIFICATION object:self];
+	} else if (self.mapView.contents.zoom > ZOOM_BOUNDARY) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ZOOMING_IN_NOTIFICATION object:self];
 	}
 	
 	[cycleHireLocations startUpdateFromServer]; // Initial update
@@ -204,22 +214,13 @@
 		[currentLocationMarker replaceUIImage:circleImage];
 	}
 	
-	if (map.contents.zoom < 14.5) {
-		for (CALayer *marker in [[map markerManager] markers]) {
-			if (![marker isMemberOfClass:[RMMarker class]]) continue;
-			if (![((RMMarker*)marker).data isMemberOfClass:[CycleHireLocation class]]) continue;
-			if (marker.bounds.size.width == [UIImage imageNamed:@"marker-blue-bike-small.png"].size.width) break;
-			[(RMMarker*)marker replaceUIImage:[UIImage imageNamed:@"marker-blue-bike-small.png"] anchorPoint:CGPointMake(0.5, 1.0)];
-		} 
-		
-	} else {
-		for (RMMarker *marker in [[map markerManager] markers]) {
-			if (![marker isMemberOfClass:[RMMarker class]]) continue;
-			if (![((RMMarker*)marker).data isMemberOfClass:[CycleHireLocation class]]) continue;
-			if (marker.bounds.size.width == [UIImage imageNamed:@"marker-blue-bike.png"].size.width) break;
-			[(RMMarker*)marker replaceUIImage:[UIImage imageNamed:@"marker-blue-bike.png"] anchorPoint:CGPointMake(0.5, 1.0)];
-		} 
+	if (map.contents.zoom < ZOOM_BOUNDARY && lastZoom > ZOOM_BOUNDARY) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ZOOMING_OUT_NOTIFICATION object:self];
+	} else if (map.contents.zoom > ZOOM_BOUNDARY && lastZoom < ZOOM_BOUNDARY) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ZOOMING_IN_NOTIFICATION object:self];
 	}
+	
+	lastZoom = map.contents.zoom;
 }
 
 - (void) singleTapOnMap: (RMMapView*) map At: (CGPoint) point {
@@ -237,7 +238,7 @@
 
 - (void) tapOnMarker: (RMMarker*) marker onMap: (RMMapView*) map {
 	// only handle clicks for cycle hire location markers
-	if(![marker.data isMemberOfClass:[CycleHireLocation class]]) return; 
+	if(![marker isMemberOfClass:[CycleHireLocationMarker class]]) return; 
 	
 	if (drawerViewVisible) {
 		[self toggleDrawerView];
@@ -789,14 +790,22 @@
 		return;
 	}	
 	
-	directionsFinishPoint = toLocation;
+	if(directionsFinishPoint != nil) {
+		[directionsFinishPoint removeObserver:self forKeyPath:@"spacesAvailable"];
+	}
+	directionsFinishPoint = toLocation; 
+	[directionsFinishPoint addObserver:self 
+							forKeyPath:@"spacesAvailable" 
+							   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
+							   context:nil];
+
 	
 	if (directionsStartingPoint != nil) {
 		[self updateDirections];
 	} else {
 		[[IZGrowlManager sharedManager] postNotification:
 		 [[[IZGrowlNotification alloc] initWithTitle:@"Directions" 
-										 description:@"Now find the station you're starting from and tap 'Directions to here'."
+										 description:@"Now find another station and tap 'Directions from here'."
 											   image:[UIImage imageNamed:@"information-symbol.png"]
 											 context:nil 
 											delegate:nil] autorelease]]; 
@@ -820,6 +829,8 @@
 	[self setDirectionsState:kDirectionsHidden];
 	
 	directionsStartingPoint = nil;
+	
+	[directionsFinishPoint removeObserver:self forKeyPath:@"spacesAvailable"];
 	directionsFinishPoint = nil;
 }
 
@@ -929,6 +940,20 @@
 			   dismissButtonLabel:@"OK"];
 	[self setDirectionsState:kDirectionsHidden];
 	// TODO: give some way to retry in this case?
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {	
+	
+	NSUInteger oldValue = [(NSNumber*)[change objectForKey:NSKeyValueChangeOldKey] unsignedIntValue];
+	NSUInteger newValue = [(NSNumber*)[change objectForKey:NSKeyValueChangeNewKey] unsignedIntValue];
+
+	if((newValue == 0) && 
+	   (oldValue > 0)) {
+		[self showErrorAlertWithTitle:@"Docking Station Full"
+							  message:@"The docking station at your destination is now full. You may want to start looking for "\
+										"alternative stations to drop your bike."
+				   dismissButtonLabel:@"OK"];
+	}
 }
 
 #pragma mark -

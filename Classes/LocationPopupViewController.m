@@ -49,8 +49,8 @@ static NSString *stationBrokenFeedbackEmailTemplate =
 		directionsFromHereButton.text = NSLocalizedString(@"Directions from here", nil);
 		
 		directionsToHereButton = [[TTTableButton alloc] init];
-		directionsToHereButton.text = NSLocalizedString(@"Directions to here", nil);
-		
+		directionsToHereButton.text = NSLocalizedString(@"Directions to here", nil);							 
+				
 		addRemoveFavouritesButton = [[TTTableButton alloc] init];
 		addRemoveFavouritesButton.URL = @"cyclehire://location/favourite/";
 		

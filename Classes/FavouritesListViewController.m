@@ -82,10 +82,12 @@
 
 - (void) recentsLoaded {
 	recentsDataSource.updating = NO;
-	[self invalidateModel];
-	self.dataSource = recentsDataSource;
-	self.navigationItem.rightBarButtonItem.enabled = NO;
-	[self refreshData];
+	if (favTypeSelection.selectedSegmentIndex == 1) {
+		[self invalidateModel];
+		self.dataSource = recentsDataSource;
+		self.navigationItem.rightBarButtonItem.enabled = NO;
+		[self refreshData];
+	}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

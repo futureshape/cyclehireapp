@@ -15,7 +15,6 @@
 #endif
 
 // Map
-#import "RMCloudMadeMapSource.h"
 #import "RMDBMapSource.h"
 #import "RMMarker.h"
 #import "RMPath.h"
@@ -30,6 +29,7 @@
 #import "CycleStreetsPlanner.h"
 #import "CoreLocationAdditions.h"
 #import "PostcodeDatabase.h"
+#import "CycleHireLocationMarker.h"
 
 #import "IZGrowlManager.h"
 
@@ -105,6 +105,7 @@ typedef enum {
 	LocationPopupViewController *locationPopupViewController;
 		
 	BOOL firstAppearance;
+	float lastZoom;
 }
 
 @property (nonatomic, retain) IBOutlet RMMapView * mapView;

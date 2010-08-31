@@ -23,6 +23,7 @@
 
 	TTTableButton *directionsFromHereButton;
 	TTTableButton *directionsToHereButton;
+	
 	TTTableButton *addRemoveFavouritesButton;
 	TTTableButton *reportProblemButton;	
 }
